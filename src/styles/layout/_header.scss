@@ -16,12 +16,6 @@
 
 // 로고 영역
 .logo {
-    &-container {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 0.5rem;
@@ -31,6 +25,12 @@
     justify-content: center;
     color: white;
     font-weight: bold;
+
+    &-container {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
 
     // 로고 링크 스타일
     &-link {

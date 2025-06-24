@@ -1,5 +1,6 @@
 @use '@/styles/abstracts/variables' as v;
 @use '@/styles/abstracts/mixins' as m;
+@use 'sass:color';
 
 .cui-button {
     display: inline-flex;
@@ -16,7 +17,7 @@
         color: white;
 
         &:hover:not(:disabled) {
-            background-color: darken(#3b82f6, 10%);
+            background-color: color.adjust(#3b82f6, $lightness: -10%);
         }
     }
 
@@ -25,7 +26,7 @@
         color: white;
 
         &:hover:not(:disabled) {
-            background-color: darken(#10b981, 10%);
+            background-color: color.adjust(#10b981, $lightness: -10%);
         }
     }
 
