@@ -20,45 +20,43 @@ npm run dev
 
 ## 2. 프로젝트 구조
 
-| 폴더명/파일명      | 설명                                                  |
-| ------------------ | ----------------------------------------------------- |
-| .next              | 빌드 결과물(캐시, 정적 파일 등)                       |
-|                    |                                                       |
-| **app/**           | Next.js 앱 라우터 폴더 (루트)                         |
-| ├─ (pages)/        | 각 페이지 관련(라우팅 구조, URL에는 미표출)           |
-| │ ├─ input/        | /input 경로 페이지                                    |
-| │ │ └─ page.js     |                                                       |
-| │ ├─ searchBar/    | /searchBar 경로 페이지                                |
-| │ │ └─ page.js     |                                                       |
-| │ ├─ button/       | /button 경로 페이지                                   |
-| │ │ └─ page.js     |                                                       |
-| │ └─ layout.js     | (pages)만의 레이아웃                                  |
-| ├─ api/            | API 라우트                                            |
-| ├─ layout.js       | 전체 레이아웃 컴포넌트                                |
-| ├─ page.js         | 메인 페이지 컴포넌트                                  |
-| └─ robots.ts       | robots.txt 관련 파일                                  |
-|                    |                                                       |
-| **components/**    | UI 컴포넌트                                           |
-| ├─ **base/**       | 기본 UI 컴포넌트(더이상 쪼갤 수 없는 컴포넌트, atoms) |
-| │ ├─ button/       |                                                       |
-| │ │ ├─ Button.js   |                                                       |
-| │ │ ├─ button.scss |                                                       |
-| │ │ └─ layout.js   | (pages)만의 레이아웃                                  |
-| ├─ **common/**     | base를 조합한 공통 컴포넌트(molecules)                |
-| └─ **modules/**    | common/base를 조합한 큰 UI 블록(organisms)            |
-|                    |                                                       |
-| hooks/             | 커스텀 훅 관련                                        |
-| └─ useAppRoutes.js | 라우트 관련 커스텀 훅                                 |
-|                    |                                                       |
-| **styles/**        | 스타일(SCSS 등)                                       |
-| ├─ abstracts/      | 변수, 믹스인 등 추상화 스타일                         |
-| └─ base/           | 기본 스타일(Reset 등)                                 |
-| ├─ layout/         | 레이아웃 스타일                                       |
-| ├─ pages/          | 페이지별 스타일                                       |
-| └─ main.scss       | 전체 스타일 진입점                                    |
-|                    |                                                       |
-| utils/             | 유틸리티 함수                                         |
-| └─ navigation.js   | 네비게이션 관련 유틸 함수                             |
+```plaintext
+.next/                  # 빌드 결과물(캐시, 정적 파일 등)
+
+src/
+├── app/                    # Next.js 앱 라우터 폴더 (루트)
+│   ├── (pages)/            # 각 페이지 관련(라우팅 구조, URL에는 미표출)
+│   │   ├── input/
+│   │   │   └── page.js     # /input 경로 페이지
+│   │   ├── searchBar/
+│   │   │   └── page.js     # /searchBar 경로 페이지
+│   │   ├── button/
+│   │   │   └── page.js     # /button 경로 페이지
+│   │   └── layout.js       # (pages)만의 레이아웃
+│   ├── api/                # API 라우트
+│   ├── layout.js           # 전체 레이아웃 컴포넌트
+│   ├── page.js             # 메인 페이지 컴포넌트
+│   └── robots.ts           # robots.txt 관련 파일
+├── components/             # UI 컴포넌트
+│   ├── base/               # 기본 UI 컴포넌트(더이상 쪼갤 수 없는 컴포넌트)
+│   │   └── button/
+│   │       ├── Button.js   # 버튼 컴포넌트
+│   │       ├── button.scss # 버튼 스타일
+│   │       └── layout.js   # (pages)만의 레이아웃
+│   ├── common/             # base를 조합한 공통 컴포넌트
+│   └── modules/            # common/base를 조합한 큰 UI 블록
+├── hooks/                  # 커스텀 훅 관련
+│   └── useAppRoutes.js     # 라우트 관련 커스텀 훅
+├── styles/                 # 스타일(SCSS 등)
+│   ├── abstracts/          # 변수, 믹스인 등 추상화 스타일
+│   ├── base/               # 기본 스타일(Reset 등)
+│   ├── layout/             # 레이아웃 스타일
+│   ├── pages/              # 페이지별 스타일
+│   └── main.scss           # 전체 스타일 진입점
+├── utils/                  # 유틸리티 함수
+│   └── navigation.js       # 네비게이션 관련 유틸 함수
+...
+```
 
 ## 3. 개발 규칙
 
