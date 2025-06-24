@@ -1,0 +1,74 @@
+/// Container's width
+/// @type Length
+$medium: 768;
+$large: 1280;
+$xlarge: 1920;
+$wide: 1921;
+
+/// Breakpoints map
+/// @prop {String} keys
+/// @prop {Map} values
+$breakpoints: (
+    's': (
+        max-width: 320px,
+    ),
+    'm': (
+        max-width: #{$medium}px,
+    ),
+    'l': (
+        max-width: #{$large}px,
+    ),
+    'xl': (
+        max-width: #{$xlarge}px,
+    ),
+    'wide': (
+        min-width: #{$wide}px,
+    ),
+) !default;
+
+/// Colors
+/// @type Map
+$colors: (
+    'primary': #3b82f6,
+    'secondary': #10b981,
+    'accent': #8b5cf6,
+    'background': #ffffff,
+    'foreground': #171717,
+    'border': #e2e8f0,
+    'input': #f1f5f9,
+    'ring': rgba(59, 130, 246, 0.5),
+) !default;
+
+/// Font families
+/// @type Map
+$font-families: (
+    'sans': var(--font-noto-sans-kr),
+    'mono': var(--font-geist-mono),
+) !default;
+
+/// Spacing
+/// @type Map
+$spacing: (
+    'xs': 0.25rem,
+    'sm': 0.5rem,
+    'md': 1rem,
+    'lg': 1.5rem,
+    'xl': 2rem,
+    '2xl': 3rem,
+    '3xl': 4rem,
+) !default;
+
+/// Font sizes
+/// @type Map
+$font-sizes: (
+    'xs': 0.75rem,
+    'sm': 0.875rem,
+    'base': 1rem,
+    'lg': 1.125rem,
+    'xl': 1.25rem,
+    '2xl': 1.5rem,
+    '3xl': 1.875rem,
+    '4xl': 2.25rem,
+    '5xl': 3rem,
+    '6xl': 3.75rem,
+) !default;

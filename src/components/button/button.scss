@@ -1,0 +1,69 @@
+@use '@/styles/abstracts/variables' as v;
+@use '@/styles/abstracts/mixins' as m;
+
+.cui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--primary {
+        background-color: var(--brand-primary);
+        color: white;
+
+        &:hover:not(:disabled) {
+            background-color: darken(#3b82f6, 10%);
+        }
+    }
+
+    &--secondary {
+        background-color: var(--brand-secondary);
+        color: white;
+
+        &:hover:not(:disabled) {
+            background-color: darken(#10b981, 10%);
+        }
+    }
+
+    &--outline {
+        background-color: transparent;
+        border: 1px solid var(--border);
+        color: var(--foreground);
+
+        &:hover:not(:disabled) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &--sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    &--md {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+    &--lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+    }
+
+    &--full-width {
+        width: 100%;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &__icon {
+        margin-right: 0.5rem;
+    }
+}

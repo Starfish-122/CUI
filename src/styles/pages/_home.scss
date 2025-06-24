@@ -1,0 +1,105 @@
+// 홈 페이지 스타일
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/* 히어로 섹션 */
+.hero {
+    &-section {
+        margin-bottom: 5rem;
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+
+        @media (min-width: 768px) {
+            font-size: 3.75rem;
+        }
+    }
+}
+
+/* 섹션 제목 */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* 기능 소개 섹션 */
+.features {
+    &-section {
+        margin-bottom: 3rem;
+    }
+
+    &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+/* 기능 카드 */
+.feature {
+    &-card {
+        background-color: var(--background);
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        &:nth-child(1) .feature-icon {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--brand-primary);
+        }
+
+        &:nth-child(2) .feature-icon {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--brand-secondary);
+        }
+
+        &:nth-child(3) .feature-icon {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--brand-accent);
+        }
+    }
+
+    &-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+    }
+
+    &-title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    &-list,
+    &-description {
+        color: var(--foreground);
+        opacity: 0.7;
+    }
+}

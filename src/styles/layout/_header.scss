@@ -1,0 +1,67 @@
+// 헤더 스타일
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// 헤더 컨테이너
+.header {
+    max-width: 1024px;
+    margin: 0 auto 4rem;
+
+    &-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+// 로고 영역
+.logo {
+    &-container {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+
+    // 로고 링크 스타일
+    &-link {
+        text-decoration: none;
+        color: var(--foreground);
+
+        &:hover {
+            color: var(--brand-primary);
+        }
+    }
+}
+
+// 사이트 제목
+.site-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+// 네비게이션
+.nav {
+    &-list {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    &-link {
+        transition: color 0.2s;
+
+        &:hover,
+        &.active {
+            color: var(--brand-primary);
+        }
+    }
+}

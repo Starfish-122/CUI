@@ -1,0 +1,46 @@
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:map';
+
+/// @return {Url}
+
+@function asset($base, $path) {
+    @return url($base + $path);
+}
+
+/// @return {Url}
+// * img("image.jpg", $base-url);
+@function img($path, $base: $base-url) {
+    @return asset($base, $path);
+    // @return asset($base, $path);
+}
+
+// 3 Decimal places
+/// @return {Number} - float
+@function decimal-round($point) {
+    @return math.div(math.round($point * 1000), 1000);
+}
+
+// Gap
+/// @return {Number}
+
+@function gap-ps($gap, $parent) {
+    // @return decimal-round(calc($gap / $parent * 100%));
+    @return #{calc($gap / var($parent) * 100%)};
+}
+
+/// @return {Number}
+// * margin-top: gap-in(20, 780, ps)
+// * margin-top: gap-in(20, 780, vw)
+// * margin-top: gap-in(20, 780)
+
+// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return math.div($number, $number * 0 + 1);
+    }
+
+    @return $number;
+}

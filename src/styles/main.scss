@@ -1,0 +1,18 @@
+// Main.scss - 모든 스타일 통합
+@use 'abstracts/variables' as v;
+@use 'abstracts/functions' as func;
+@use 'abstracts/mixins' as m;
+@use 'abstracts/theme';
+@use 'base/reset';
+// @use 'base/typography';
+
+// UI Components
+// @use 'components/ui/button';
+
+// Layout
+@use 'layout/layout';
+@use 'layout/header';
+@use 'layout/footer';
+
+// Pages
+@use 'pages/home';
