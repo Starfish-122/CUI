@@ -1,8 +1,8 @@
-import Button from '@/components/button';
+import Button from '@/components/base/button/Button';
 
-export default function About() {
+export default function button() {
     return (
-        <section className="cui-section">
+        <>
             <h2 className="cui-section__title--h2">Button 컴포넌트 데모</h2>
 
             <div className="cui-section__content">
@@ -13,6 +13,6 @@ export default function About() {
                     <Button variant="outline">Outline</Button>
                 </div>
             </div>
-        </section>
+        </>
     );
 }

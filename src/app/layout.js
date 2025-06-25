@@ -1,7 +1,7 @@
 import { Noto_Sans_KR, Geist_Mono } from 'next/font/google';
 import '@/styles/main.scss';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/components/modules/Header';
+import Footer from '@/components/modules/Footer';
 
 const notoSansKR = Noto_Sans_KR({
     variable: '--font-noto-sans-kr',
