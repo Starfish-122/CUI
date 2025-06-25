@@ -1,6 +1,7 @@
 // 홈 페이지 스타일
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as f;
 
 /* 히어로 섹션 */
 .hero {
@@ -37,6 +38,8 @@
 /* 기능 소개 섹션 */
 .features {
     &-section {
+        max-width: f.to-rem(1024);
+        margin: auto;
         margin-bottom: 3rem;
     }
 

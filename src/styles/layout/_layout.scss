@@ -2,14 +2,54 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-// 컨테이너 스타일
-.container {
-    min-height: 100vh;
-    padding: 3rem 1rem;
-}
-
 // 메인 콘텐츠 영역
 .main-content {
+    margin: 0 auto;
+    min-height: 70vh;
+
+    // 사이드바가 열려있을 때 콘텐츠 영역 조정 (PC에서만)
+    @media (min-width: 769px) {
+        .sidebar--open + & {
+            margin-left: 280px;
+        }
+    }
+}
+
+// 페이지 레이아웃
+.page-layout {
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+// 컨테이너
+.container {
+    width: 100%;
     max-width: 1024px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+// 섹션
+.section {
+    margin-bottom: 2rem;
+}
+
+// 그리드 레이아웃
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+
+// 반응형 그리드
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

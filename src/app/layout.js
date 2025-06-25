@@ -1,22 +1,9 @@
-import { Noto_Sans_KR, Geist_Mono } from 'next/font/google';
 import '@/styles/main.scss';
-import Header from '@/components/modules/Header';
-import Footer from '@/components/modules/Footer';
-
-const notoSansKR = Noto_Sans_KR({
-    variable: '--font-noto-sans-kr',
-    subsets: ['latin'],
-    weight: ['400', '500', '700'],
-    display: 'swap',
-});
-
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
-    subsets: ['latin'],
-});
+import Header from '@/components/templates/Header';
+import Footer from '@/components/templates/Footer';
 
 export const metadata = {
-    title: 'React Breakers',
+    title: 'CUI',
     description: 'Next.js 웹 애플리케이션',
     icons: {
         icon: '/favicon.ico',
@@ -28,8 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="ko">
-            <body className={`${notoSansKR.variable} ${geistMono.variable}`}>
-                <div className="container">
+            <body>
+                <div className="">
                     <Header />
                     <main className="main-content">{children}</main>
                     <Footer />

@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppRoutes } from '@/routes/hooks';
@@ -15,19 +14,20 @@ export default function Header() {
 
     return (
         <header className="header">
-            <div className="header-container">
-                <div className="logo-container">
-                    <Link href="/" className="logo-link">
-                        <h1 className="site-title">CUI</h1>
+            <div className="header__container">
+                <div className="header__logo">
+                    <Link href="/" className="header__logo-link">
+                        <h1 className="header__title">CUI</h1>
                     </Link>
                 </div>
-                <nav>
-                    <ul className="nav-list">
+
+                <nav className="header__nav">
+                    <ul className="header__nav-list">
                         {navLinks.map((link) => (
-                            <li key={link.href}>
+                            <li key={link.href} className="header__nav-item">
                                 <Link
                                     href={link.href}
-                                    className={`nav-link ${currentPath === link.href ? 'active' : ''}`}
+                                    className={`header__nav-link ${currentPath === link.href ? 'header__nav-link--active' : ''}`}
                                 >
                                     {link.label}
                                 </Link>

@@ -16,9 +16,7 @@ export function useAppRoutes() {
         // 서버 사이드 렌더링 중에는 실행하지 않음
         if (typeof window === 'undefined') return;
 
-        // 기존 API 호출 방식은 더 이상 사용하지 않음
         // 모든 라우트 정보는 config.js에서 관리됨
-
         // 필요한 경우 여기서 추가적인 동적 라우트 처리 가능
         // 예: 사용자 권한에 따른 메뉴 필터링 등
     }, []);

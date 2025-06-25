@@ -5,16 +5,15 @@
 
 // 앱의 모든 라우트 정의 (홈 페이지 제외)
 export const appRoutes = [
-    { path: 'button', label: 'Button' },
-    { path: 'input', label: 'Input' },
-    { path: 'searchBar', label: 'Search Bar' },
+    { path: 'about', label: 'About' },
+    { path: 'all', label: 'Components' },
     // 새 라우트를 여기에 추가하세요
     // { path: 'newRoute', label: 'New Route' },
 ];
 
-// 네비게이션 메뉴에 표시할 링크 (홈 페이지 포함)
+// 네비게이션 메뉴에 표시할 페이지
 export const navLinks = [
-    { href: '/', label: 'Home' },
+    // { href: '/', label: 'Home' },
     ...appRoutes.map((route) => ({
         href: `/${route.path}`,
         label: route.label,
@@ -23,3 +22,52 @@ export const navLinks = [
 
 // API 라우트용 경로 배열
 export const routePaths = appRoutes.map((route) => route.path);
+
+// 사이드바에 표시할 카테고리 및 컴포넌트 정의
+export const sidebarCategories = [
+    {
+        id: 'inputs',
+        name: 'Inputs',
+        items: [
+            { name: 'Button', path: '/button' },
+            { name: 'Input', path: '/input' },
+            { name: 'Checkbox', path: '/checkbox' },
+            { name: 'Radio Group', path: '/radio-group' },
+            { name: 'Select Box', path: '/select-box' },
+            { name: 'Text Field', path: '/text-field' },
+            { name: 'Range Slider', path: '/range-slider' },
+        ],
+    },
+    {
+        id: 'navigation',
+        name: 'Navigation',
+        items: [
+            { name: 'Search Bar', path: '/search-bar' },
+            { name: 'Breadcrumb', path: '/breadcrumb' },
+            { name: 'Pagination', path: '/pagination' },
+            { name: 'Tabs', path: '/tabs' },
+            { name: 'Accordion', path: '/accordion' },
+            { name: 'Dropdown', path: '/dropdown' },
+        ],
+    },
+    {
+        id: 'layout',
+        name: 'Layout',
+        items: [
+            { name: 'Grid Container', path: '/grid-container' },
+            { name: 'Collapse Section', path: '/collapse-section' },
+        ],
+    },
+    {
+        id: 'data-display',
+        name: 'Data Display',
+        items: [
+            { name: 'Table', path: '/table' },
+            { name: 'Card', path: '/card' },
+            { name: 'List', path: '/list' },
+            { name: 'Badge', path: '/badge' },
+            { name: 'Alert', path: '/alert' },
+            { name: 'Tooltip', path: '/tooltip' },
+        ],
+    },
+];

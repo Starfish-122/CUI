@@ -1,11 +1,9 @@
-import '@/styles/pages/nav.scss';
+import '@/styles/pages/pages.scss';
 
-export default function NavLayout({ children }) {
+export default function PagesLayout({ children }) {
     return (
-        <div className="nav-layout">
-            <h2>네비게이션 헤더</h2>
+        <div className="pages-layout">
             <article>{children}</article>
-            <h3>네비게이션 푸터</h3>
         </div>
     );
 }

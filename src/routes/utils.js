@@ -51,15 +51,13 @@ export const isValidRoute = (route) => {
  */
 export const generateNavLinks = (routes) => {
     // 홈 링크는 항상 포함
-    const links = [{ href: '/', label: 'Home' }];
+    // const links = [{ href: '/', label: 'Home' }];
 
     // 유효한 라우트만 필터링하여 링크 생성
     routes.forEach((route) => {
         if (isValidRoute(route)) {
             // 라우트 그룹인 경우 건너뛰기 (API에서 처리)
-            if (isRouteGroup(route)) {
-                return;
-            }
+            if (isRouteGroup(route)) return;
 
             links.push({
                 href: `/${route}`,
