@@ -8,7 +8,7 @@ import { sidebarCategories } from '@/routes/config';
 export default function Sidebar() {
     const pathname = usePathname();
     const navLinks = useAppRoutes();
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
 
     // 카테고리 확장 상태 관리

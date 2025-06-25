@@ -1,5 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
+@use '../abstracts/functions' as f;
 
 .header {
     margin: 0 auto 4rem;
@@ -17,6 +18,7 @@
     &__logo {
         display: flex;
         align-items: center;
+        padding-left: f.to-rem(30);
     }
 
     &__logo-link {
@@ -57,6 +59,34 @@
         &:hover,
         &--active {
             color: var(--brand-primary, #3b82f6);
+        }
+    }
+
+    // 햄버거 버튼
+    &__hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10;
+        position: absolute;
+
+        &:focus {
+            outline: none;
+        }
+
+        // 햄버거 라인
+        &-line {
+            width: 100%;
+            height: 2px;
+            background-color: var(--foreground, #1f2937);
+            transition: all 0.3s ease;
+            border-radius: 2px;
         }
     }
 }

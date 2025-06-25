@@ -33,9 +33,20 @@ src/
 ├── components/             # UI 컴포넌트
 │   ├── base/               # 기본 UI 컴포넌트(더이상 쪼갤 수 없는 컴포넌트)
 │   ├── common/             # base를 조합한 공통 컴포넌트
+│   ├── modules/             # base/common을 조합한 큰 UI 블록
 │   └── templates/          # 템플릿 컴포넌트
 ├── routes/                 # 라우팅 관련 코드
+│   ├── config.js           # 라우트 설정
+│   ├── hooks.js            # 라우트 관련 훅
+│   ├── utils.js            # 라우트 유틸리티 함수
+│   ├── api.js              # 라우트 API 로직
+│   └── index.js            # 통합 내보내기
 ├── styles/                 # 스타일(SCSS 등)
+│   ├── abstracts/          # 변수, 믹스인 등 추상화 스타일
+│   ├── base/               # 기본 스타일(Reset 등)
+│   ├── layout/             # 레이아웃 스타일
+│   ├── pages/              # 페이지별 스타일
+│   └── main.scss           # 전체 스타일 진입점
 ├── context/                # 컨텍스트 API 관련 코드
 ├── hooks/                  # 커스텀 훅
 └── utils/                  # 유틸리티 함수

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppRoutes } from '@/routes/hooks';
 import { useState } from 'react';
-import Sidebar from '@/components/templates/Sidebar';
 
 /**
  * 헤더 컴포넌트
@@ -54,7 +53,6 @@ export default function Header() {
                     <span className="header__hamburger-line"></span>
                     <span className="header__hamburger-line"></span>
                 </button>
-                <Sidebar />
             </div>
         </header>
     );
