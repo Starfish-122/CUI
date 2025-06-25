@@ -59,7 +59,7 @@ export const sidebarCategories = [
         ],
     },
     {
-        id: 'data-display',
+        id: 'dataDisplay',
         name: 'Data Display',
         items: [
             { name: 'Table', path: '/table' },

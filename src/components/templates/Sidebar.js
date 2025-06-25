@@ -13,9 +13,10 @@ export default function Sidebar() {
 
     // 카테고리 확장 상태 관리
     const [expandedCategories, setExpandedCategories] = useState({
-        all: true,
-        base: true,
-        common: false,
+        inputs: true,
+        navigation: false,
+        layout: false,
+        dataDisplay: false,
     });
 
     // 화면 크기에 따라 사이드바 상태 설정
@@ -130,13 +131,15 @@ export default function Sidebar() {
                         <span className="sidebar__logo-text">Concentrix UI</span>
                     </Link>
                     <div className="sidebar__version">v1.0</div>
-                    <button
-                        className="sidebar__close"
-                        onClick={closeSidebar}
-                        aria-label="사이드바 닫기"
-                    >
-                        ✕
-                    </button>
+                    {isMobile && (
+                        <button
+                            className="sidebar__close"
+                            onClick={closeSidebar}
+                            aria-label="사이드바 닫기"
+                        >
+                            ✕
+                        </button>
+                    )}
                 </div>
 
                 <div className="sidebar__content">

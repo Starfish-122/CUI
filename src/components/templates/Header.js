@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppRoutes } from '@/routes/hooks';
+import { useState } from 'react';
+import Sidebar from '@/components/templates/Sidebar';
 
 /**
  * 헤더 컴포넌트
@@ -11,6 +13,14 @@ export default function Header() {
     const currentPath = usePathname();
     // 라우트 설정에서 네비게이션 링크 가져오기
     const navLinks = useAppRoutes();
+
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen((prev) => !prev);
+
+        const event = new CustomEvent('toggle-sidebar');
+        window.dispatchEvent(event);
+    };
 
     return (
         <header className="header">
@@ -35,6 +45,16 @@ export default function Header() {
                         ))}
                     </ul>
                 </nav>
+                <button
+                    className="header__hamburger"
+                    onClick={toggleSidebar}
+                    aria-label="메뉴 토글"
+                >
+                    <span className="header__hamburger-line"></span>
+                    <span className="header__hamburger-line"></span>
+                    <span className="header__hamburger-line"></span>
+                </button>
+                <Sidebar />
             </div>
         </header>
     );

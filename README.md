@@ -24,30 +24,20 @@ npm run dev
 src/
 ├── app/                    # Next.js 앱 라우터 폴더 (루트)
 │   ├── (pages)/            # 각 페이지 관련(라우팅 구조, URL에는 미표출)
-│   │   ├── input/          # /input 경로 페이지
-│   │   ├── searchBar/      # /searchBar 경로 페이지
-│   │   ├── button/         # /button 경로 페이지
-│   │   └── layout.js       # (pages)만의 레이아웃
+│   ├── (ui)/               # UI 컴포넌트 페이지(라우팅 구조, URL에는 미표출)
 │   ├── api/                # API 라우트
 │   ├── layout.js           # 전체 레이아웃 컴포넌트
 │   ├── page.js             # 메인 페이지 컴포넌트
+│   ├── not-found.js        # 404 페이지 컴포넌트
 │   └── robots.ts           # robots.txt 관련 파일
 ├── components/             # UI 컴포넌트
 │   ├── base/               # 기본 UI 컴포넌트(더이상 쪼갤 수 없는 컴포넌트)
 │   ├── common/             # base를 조합한 공통 컴포넌트
-│   └── modules/            # common/base를 조합한 큰 UI 블록
+│   └── templates/          # 템플릿 컴포넌트
 ├── routes/                 # 라우팅 관련 코드
-│   ├── config.js           # 라우트 설정
-│   ├── hooks.js            # 라우트 관련 훅
-│   ├── utils.js            # 라우트 유틸리티 함수
-│   ├── api.js              # 라우트 API 로직
-│   └── index.js            # 통합 내보내기
 ├── styles/                 # 스타일(SCSS 등)
-│   ├── abstracts/          # 변수, 믹스인 등 추상화 스타일
-│   ├── base/               # 기본 스타일(Reset 등)
-│   ├── layout/             # 레이아웃 스타일
-│   ├── pages/              # 페이지별 스타일
-│   └── main.scss           # 전체 스타일 진입점
+├── context/                # 컨텍스트 API 관련 코드
+├── hooks/                  # 커스텀 훅
 └── utils/                  # 유틸리티 함수
 ```
 
