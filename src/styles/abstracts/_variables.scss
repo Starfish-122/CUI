@@ -1,25 +1,26 @@
 /// Container's width
 /// @type Length
-$medium: 768;
-$large: 1280;
-$xlarge: 1920;
+$xs: 320;
+$mobile: 768;
+$tablet: 1280;
+$desktop: 1920;
 $wide: 1921;
 
 /// Breakpoints map
 /// @prop {String} keys
 /// @prop {Map} values
 $breakpoints: (
-    's': (
-        max-width: 320px,
+    'xs': (
+        max-width: #{$mobile-s}px,
     ),
-    'm': (
-        max-width: #{$medium}px,
+    'mobile': (
+        max-width: #{$mobile-m}px,
     ),
-    'l': (
-        max-width: #{$large}px,
+    'tablet': (
+        max-width: #{$tablet}px,
     ),
-    'xl': (
-        max-width: #{$xlarge}px,
+    'desktop': (
+        max-width: #{$desktop}px,
     ),
     'wide': (
         min-width: #{$wide}px,
@@ -71,4 +72,34 @@ $font-sizes: (
     '4xl': 2.25rem,
     '5xl': 3rem,
     '6xl': 3.75rem,
+) !default;
+
+
+/// Radius
+/// @type Map
+$radius: (
+  'sm': 2px,
+  'reg': 4px,
+  'md': 8px,
+  'xl': 12px,
+  '2xl': 16px,
+  '3xl': 24px,
+  '4xl': 32px,
+  'full': 9999px,
+) !default;
+
+/// Box shadow
+/// @type Map
+$box-shadow: (
+  'sm': '0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
+  'reg':
+    '0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10)',
+  'md':
+    '0px 4px 4px -1px rgba(0, 0, 0, 0.10), 0px 4px 4px -2px rgba(0, 0, 0, 0.10)',
+  'lg':
+    '0px 4px 6px -4px rgba(0, 0, 0, 0.10), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
+  'xl':
+    '0px 4px 6px -4px rgba(0, 0, 0, 0.10), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
+  '2xl': '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
+  'inner': '0px 2px 4px 0px rgba(0, 0, 0, 0.05) inset',
 ) !default;
