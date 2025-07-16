@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { flexCenter } from '@/styles/mixins';
 
@@ -26,19 +25,3 @@ export const SearchButton = styled.button`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     margin-left: ${({ theme }) => theme.spacing.xs};
 `;
-
-export default function SearchBar({ value, onChange, placeholder }) {
-    return (
-        <>
-            <SearchBarContainer>
-                <SearchInput
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    placeholder={placeholder || '검색어를 입력하세요'}
-                />
-                <SearchButton type="submit">🔍</SearchButton>
-            </SearchBarContainer>
-        </>
-    );
-}

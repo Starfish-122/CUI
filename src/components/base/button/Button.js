@@ -2,19 +2,8 @@
 
 import Link from 'next/link';
 import { forwardRef } from 'react';
-import './button.scss';
-
-const variants = {
-    primary: 'cui-button--primary',
-    secondary: 'cui-button--secondary',
-    outline: 'cui-button--outline',
-};
-
-const sizes = {
-    sm: 'cui-button--sm',
-    md: 'cui-button--md',
-    lg: 'cui-button--lg',
-};
+// import './button.scss';
+import { BasicButton } from './button-styles';
 
 const Button = forwardRef(
     (
@@ -28,23 +17,15 @@ const Button = forwardRef(
             icon,
             onClick,
             fullWidth = false,
+            bgColor,
+            textColor,
             ...props
         },
         ref
     ) => {
-        const baseClasses = 'cui-button';
-        const variantClasses = variants[variant] || variants.primary;
-        const sizeClasses = sizes[size] || sizes.md;
-        const widthClass = fullWidth ? 'cui-button--full-width' : '';
-
-        const allClasses = [baseClasses, variantClasses, sizeClasses, widthClass, className].join(
-            ' '
-        );
-
-        // 버튼 내부 콘텐츠 (아이콘 + 텍스트)
         const content = (
             <>
-                {icon && <span className="cui-button__icon">{icon}</span>}
+                {icon && <i>{icon}</i>}
                 {children}
             </>
         );
@@ -52,25 +33,43 @@ const Button = forwardRef(
         // href가 있으면 Link, 없으면 button으로 렌더링
         if (href && !disabled) {
             return (
-                <Link href={href} className={allClasses} ref={ref} {...props}>
+                <Link href={href} className={className} ref={ref} {...props}>
                     {content}
                 </Link>
             );
         }
 
         return (
-            <button
+            <BasicButton
+                variant={variant}
+                size={size}
+                fullWidth={fullWidth}
+                disabled={disabled}
+                onClick={onClick}
+                className={className}
+                ref={ref}
+                bgColor={bgColor}
+                textColor={textColor}
+                {...props}
+            >
+                {content}
+            </BasicButton>
+        );
+    }
+);
+
+/*
+<BasicButton
                 className={allClasses}
                 disabled={disabled}
                 onClick={onClick}
                 ref={ref}
+                variant={variant}
                 {...props}
             >
                 {content}
-            </button>
-        );
-    }
-);
+            </BasicButton>
+ */
 
 Button.displayName = 'Button';
 

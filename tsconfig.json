@@ -24,6 +24,7 @@
             "@/components/*": ["src/components/*"],
             "@/context/*": ["src/context/*"],
             "@/hooks/*": ["src/hooks/*"],
+            "@/lib/*": ["src/lib/*"],
             "@/routes/*": ["src/routes/*"],
             "@/styles/*": ["src/styles/*"],
             "@/utils/*": ["src/utils/*"]

@@ -1,6 +1,4 @@
-import '@/styles/main.scss';
-import Header from '@/components/templates/Header';
-import Footer from '@/components/templates/Footer';
+import ClientLayout from '@/components/templates/ClientLayout';
 
 export const metadata = {
     title: 'CUI',
@@ -10,17 +8,28 @@ export const metadata = {
         shortcut: '/favicon.ico',
         apple: '/favicon.ico',
     },
+    link: [
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.googleapis.com',
+        },
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.gstatic.com',
+            crossorigin: true,
+        },
+        {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap',
+        },
+    ],
 };
 
 export default function RootLayout({ children }) {
     return (
         <html lang="ko">
             <body>
-                <div className="">
-                    <Header />
-                    <main className="main-content">{children}</main>
-                    <Footer />
-                </div>
+                <ClientLayout>{children}</ClientLayout>
             </body>
         </html>
     );
