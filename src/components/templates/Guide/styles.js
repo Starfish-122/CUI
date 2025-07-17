@@ -26,24 +26,24 @@ export const Item = styled.li`
 export const ColorBox = styled.div`
     width: 100%;
     height: 3rem;
-    background-color: ${({ color }) => color || '#cccccc'};
+    background-color: ${({ $color }) => $color || '#cccccc'};
     ${flexCenter};
     font-size: ${({ theme }) => theme.fontSizes.md};
-    color: ${({ darkText }) => (darkText ? '#000000' : '#ffffff')};
+    color: ${({ $darkText }) => ($darkText ? '#000000' : '#ffffff')};
 `;
 export const ItemName = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.md};
     margin: 0.5rem auto;
 `;
 export const FontSizeExample = styled.div`
-    font-size: ${({ size }) => size || '1rem'};
+    font-size: ${({ $size }) => $size || '1rem'};
     padding: 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     background-color: ${({ theme }) => theme.colors.gray100};
     ${flexCenter};
 `;
 export const SpacingExample = styled.div`
-    padding: ${({ space }) => space || '1rem'};
+    padding: ${({ $space }) => $space || '1rem'};
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     background-color: ${({ theme }) => theme.colors.gray100};
     ${flexCenter};
@@ -52,14 +52,14 @@ export const BorderRadiusExample = styled.div`
     width: 100%;
     height: 100px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
-    border-radius: ${({ radius }) => radius || '0'};
+    border-radius: ${({ $radius }) => $radius || '0'};
     background-color: #f5f5f5;
     ${flexCenter};
 `;
 export const ShadowExample = styled.div`
     width: 100%;
     height: 100px;
-    box-shadow: ${({ shadow }) => shadow || 'none'};
+    box-shadow: ${({ $shadow }) => $shadow || 'none'};
     ${flexCenter};
 `;
 export const ValueText = styled.code`
@@ -75,7 +75,7 @@ export const TransitionExample = styled.div`
     background-color: ${({ theme }) => theme.colors.gray100};
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     cursor: pointer;
-    transition: all ${({ transition }) => transition || '0.3s ease-in-out'};
+    transition: all ${({ $transition }) => $transition || '0.3s ease-in-out'};
 
     &:hover {
         background-color: ${({ theme }) => theme.colors.blue200};

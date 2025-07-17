@@ -3,11 +3,7 @@ import { toRem } from '@/styles/utils';
 import { flexCenter, flexBetween } from '@/styles/mixins';
 import Link from 'next/link';
 
-export const SidebarContainer = styled.aside.attrs((props) => {
-    // isOpen prop을 제외한 나머지 prop만 전달
-    const { isOpen, ...rest } = props;
-    return rest;
-})`
+export const SidebarContainer = styled.aside`
     width: ${toRem(280)};
     height: 100vh;
     position: fixed;
@@ -25,7 +21,7 @@ export const SidebarContainer = styled.aside.attrs((props) => {
     transition: left 0.3s ease;
 
     ${(props) =>
-        props.isOpen &&
+        props.$isOpen &&
         `
         left: 0;
     `}
@@ -109,11 +105,7 @@ export const CategoryList = styled.ul`
 
 export const CategoryItem = styled.li``;
 
-export const CategoryHeader = styled.div.attrs((props) => {
-    // expanded prop을 제외한 나머지 prop만 전달
-    const { expanded, ...rest } = props;
-    return rest;
-})`
+export const CategoryHeader = styled.div`
     ${flexBetween};
     padding: ${toRem(12)} ${toRem(16)};
     font-weight: 500;
@@ -126,7 +118,7 @@ export const CategoryHeader = styled.div.attrs((props) => {
     }
 
     ${(props) =>
-        props.expanded &&
+        props.$expanded &&
         `
         background-color: rgba(0, 0, 0, 0.02);
     `}
@@ -144,11 +136,7 @@ export const ItemsList = styled.ul`
 
 export const Item = styled.li``;
 
-export const ItemLink = styled(Link).attrs((props) => {
-    // isActive prop을 제외한 나머지 prop만 전달
-    const { isActive, ...rest } = props;
-    return rest;
-})`
+export const ItemLink = styled(Link)`
     display: block;
     padding: ${toRem(8)} ${toRem(16)} ${toRem(8)} ${toRem(32)};
     font-size: ${toRem(14)};
@@ -160,8 +148,8 @@ export const ItemLink = styled(Link).attrs((props) => {
         background-color: rgba(0, 0, 0, 0.04);
     }
 
-    ${(props) =>
-        props.isActive &&
+    ${({ $isActive }) =>
+        $isActive &&
         `
         color: #3f51b5;
         background-color: rgba(63, 81, 181, 0.08);
@@ -169,11 +157,7 @@ export const ItemLink = styled(Link).attrs((props) => {
     `}
 `;
 
-export const SidebarOverlay = styled.div.attrs((props) => {
-    // visible prop을 제외한 나머지 prop만 전달
-    const { visible, ...rest } = props;
-    return rest;
-})`
+export const SidebarOverlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -188,7 +172,7 @@ export const SidebarOverlay = styled.div.attrs((props) => {
         opacity 0.3s;
 
     ${(props) =>
-        props.visible &&
+        props.$visible &&
         `
         visibility: visible;
         opacity: 1;

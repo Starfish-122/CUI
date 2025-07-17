@@ -14,6 +14,10 @@ const nextConfig = {
         ];
     },
 
+    compiler: {
+        styledComponents: true,
+    },
+
     webpack(config) {
         return config;
     },

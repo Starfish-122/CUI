@@ -136,9 +136,9 @@ export default function Sidebar() {
 
     return (
         <>
-            {isTablet && <SidebarOverlay visible={isSidebarOpen} onClick={closeSidebar} />}
+            {isTablet && <SidebarOverlay $visible={isSidebarOpen} onClick={closeSidebar} />}
 
-            <SidebarContainer ref={sidebarRef} isOpen={isSidebarOpen}>
+            <SidebarContainer ref={sidebarRef} $isOpen={isSidebarOpen}>
                 <SidebarHeader>
                     <SidebarLogo href="/">
                         <LogoIcon>CUI</LogoIcon>
@@ -154,7 +154,7 @@ export default function Sidebar() {
 
                 <SidebarContent>
                     {expandedCategories.all && (
-                        <ItemLink href="/all" isActive={pathname === '/all'}>
+                        <ItemLink href="/all" $isActive={pathname === '/all'}>
                             All components
                         </ItemLink>
                     )}
@@ -163,7 +163,7 @@ export default function Sidebar() {
                         {sidebarCategories.map((category) => (
                             <CategoryItem key={category.id}>
                                 <CategoryHeader
-                                    expanded={expandedCategories[category.id]}
+                                    $expanded={expandedCategories[category.id]}
                                     onClick={() => toggleCategory(category.id)}
                                 >
                                     <span>{category.name}</span>
@@ -178,7 +178,7 @@ export default function Sidebar() {
                                             <Item key={item.path}>
                                                 <ItemLink
                                                     href={item.path}
-                                                    isActive={pathname === item.path}
+                                                    $isActive={pathname === item.path}
                                                 >
                                                     {item.name}
                                                 </ItemLink>

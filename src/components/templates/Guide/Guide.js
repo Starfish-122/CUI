@@ -52,7 +52,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.colors).map(([key, value]) => (
                         <Item key={`color-${key}`}>
-                            <ColorBox color={value} darkText={isLightColor(value)}>
+                            <ColorBox $color={value} $darkText={isLightColor(value)}>
                                 {key}
                             </ColorBox>
                             <ItemName>
@@ -69,7 +69,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.fontSizes).map(([key, value]) => (
                         <Item key={`fontSize-${key}`}>
-                            <FontSizeExample size={value}>Aa</FontSizeExample>
+                            <FontSizeExample $size={value}>Aa</FontSizeExample>
                             <ItemName>
                                 {key}
                                 <ValueText>{value}</ValueText>
@@ -85,7 +85,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.spacing).map(([key, value]) => (
                         <Item key={`spacing-${key}`}>
-                            <SpacingExample space={value}>{key}</SpacingExample>
+                            <SpacingExample $space={value}>{key}</SpacingExample>
                             <ItemName>
                                 <ValueText>{value}</ValueText>
                             </ItemName>
@@ -115,7 +115,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.borderRadius).map(([key, value]) => (
                         <Item key={`borderRadius-${key}`}>
-                            <BorderRadiusExample radius={value}>{key}</BorderRadiusExample>
+                            <BorderRadiusExample $radius={value}>{key}</BorderRadiusExample>
                             <ItemName>
                                 <ValueText>{value}</ValueText>
                             </ItemName>
@@ -130,7 +130,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.shadows).map(([key, value]) => (
                         <Item key={`shadow-${key}`}>
-                            <ShadowExample shadow={value}>{key}</ShadowExample>
+                            <ShadowExample $shadow={value}>{key}</ShadowExample>
                             <ItemName>
                                 <ValueText>{value}</ValueText>
                             </ItemName>
@@ -145,7 +145,7 @@ export default function Guide() {
                 <ItemWrapper>
                     {Object.entries(theme.transitions).map(([key, value]) => (
                         <Item key={`transition-${key}`}>
-                            <TransitionExample transition={value}>{key}</TransitionExample>
+                            <TransitionExample $transition={value}>{key}</TransitionExample>
                             <ItemName>
                                 <ValueText>{value}</ValueText>
                             </ItemName>

@@ -3,17 +3,13 @@ import { toRem } from '@/styles/utils';
 import { media, flexCenter, flexBetween } from '@/styles/mixins';
 import Link from 'next/link';
 
-export const HeaderContainer = styled.header.attrs((props) => {
-    // hasSidebar와 isSidebarOpen prop을 제외한 나머지 prop만 전달
-    const { hasSidebar, isSidebarOpen, ...rest } = props;
-    return rest;
-})`
+export const HeaderContainer = styled.header`
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     transition: margin-left 0.3s ease;
 
     ${(props) =>
-        props.hasSidebar &&
-        props.isSidebarOpen &&
+        props.$hasSidebar &&
+        props.$isSidebarOpen &&
         `
         @media (min-width: 1024px) {
             padding-left: 17.5rem;
@@ -58,21 +54,17 @@ export const NavItem = styled.li`
     margin: 0;
 `;
 
-export const StyledLink = styled(Link).attrs((props) => {
-    // isActive prop을 제외한 나머지 prop만 전달
-    const { isActive, ...rest } = props;
-    return rest;
-})`
+export const StyledLink = styled(Link)`
     text-decoration: none;
-    color: ${({ isActive, theme }) => (isActive ? theme.colors.blue600 : theme.colors.gray700)};
+    color: ${({ $isActive, theme }) => ($isActive ? theme.colors.blue600 : theme.colors.gray700)};
     transition: color 0.2s;
     font-size: ${toRem(14)};
-    font-weight: ${({ isActive }) => (isActive ? '600' : '400')};
+    font-weight: ${({ $isActive }) => ($isActive ? '600' : '400')};
     position: relative;
     padding: ${toRem(8)} ${toRem(4)};
 
-    ${({ isActive, theme }) =>
-        isActive &&
+    ${({ $isActive, theme }) =>
+        $isActive &&
         `
         &::after {
             content: '';
