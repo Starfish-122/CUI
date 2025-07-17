@@ -1,22 +1,23 @@
 # CUI Project
 
-> [Next.js](https://nextjs.org) 기반의 UI 프로젝트
-> [데모 사이트](https://cui-dun.vercel.app/)
-
 ## 1. 시작하기
 
 ### 환경 요구사항
 
-- Node.js 22.16.0
-- npm 10.9.2 이상
+- **Node.js** : 22.16.0
+- **npm** : 10.9.2 이상
 
-### 개발 서버 실행
+### 기술 스택
 
-```bash
-npm run dev
-```
+- **프레임워크**: Next.js (15.3.4)
+- **언어**: JavaScript/TypeScript
+- **UI 라이브러리**: React (19.0.0)
+- **스타일링**: styled-components (6.1.19)
+- **코드 품질**: ESLint 9, Prettier
+- **패키지 관리**: npm
+- **빌드 도구**: Next.js 내장 빌드 시스템
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
+---
 
 ## 2. 프로젝트 구조
 
@@ -26,39 +27,39 @@ src/
 │   ├── (pages)/            # 각 페이지 관련(라우팅 구조, URL에는 미표출)
 │   ├── (ui)/               # UI 컴포넌트 페이지(라우팅 구조, URL에는 미표출)
 │   ├── api/                # API 라우트
+│   │   └── routes/         # 라우트 정보 API
+│   │       └── route.js    # 라우트 정보를 제공하는 API 엔드포인트
 │   ├── layout.js           # 전체 레이아웃 컴포넌트
 │   ├── page.js             # 메인 페이지 컴포넌트
 │   ├── not-found.js        # 404 페이지 컴포넌트
 │   └── robots.ts           # robots.txt 관련 파일
 ├── components/             # UI 컴포넌트
 │   ├── base/               # 기본 UI 컴포넌트(더이상 쪼갤 수 없는 컴포넌트)
-│   ├── common/             # base를 조합한 공통 컴포넌트
-│   ├── modules/             # base/common을 조합한 큰 UI 블록
+│   ├── common/             # base/common을 조합한 큰 UI 블록
 │   └── templates/          # 템플릿 컴포넌트
+├── lib/                    # 유틸리티 및 헬퍼 함수
+│   └── registry.js         # 스타일 레지스트리
 ├── routes/                 # 라우팅 관련 코드
 │   ├── config.js           # 라우트 설정
 │   ├── hooks.js            # 라우트 관련 훅
 │   ├── utils.js            # 라우트 유틸리티 함수
 │   ├── api.js              # 라우트 API 로직
 │   └── index.js            # 통합 내보내기
-├── styles/                 # 스타일(SCSS 등)
-│   ├── abstracts/          # 변수, 믹스인 등 추상화 스타일
-│   ├── base/               # 기본 스타일(Reset 등)
-│   ├── layout/             # 레이아웃 스타일
-│   ├── pages/              # 페이지별 스타일
-│   └── main.scss           # 전체 스타일 진입점
-├── context/                # 컨텍스트 API 관련 코드
-├── hooks/                  # 커스텀 훅
-└── utils/                  # 유틸리티 함수
+└── styles/                 # 스타일
+    ├── abstracts/          # 변수, 믹스인 등 추상화 스타일
+    ├── theme.js            # 테마 관련 설정
+    ├── utils.js            # 스타일 유틸리티 함수
+    ├── mixins.js           # 믹스인 함수 모음
+    └── globalStyles.js     # 전역 스타일 설정
 ```
 
 ## 3. 개발 가이드
 
 ### 3.1 컴포넌트 작성
 
-- **구조**: 각 컴포넌트는 폴더 단위로 관리 (JS, SCSS, index.js)
-- **스타일**: 컴포넌트 전용 스타일은 해당 컴포넌트 폴더에 작성
-- **전역 스타일**: main.scss에서 import
+- **구조**: 각 컴포넌트는 폴더 단위로 관리
+- **스타일**: styled-components를 사용한 스타일링
+- **전역 스타일**: globalStyles.js에서 관리
 
 ### 3.2 클라이언트/서버 컴포넌트
 
@@ -73,15 +74,24 @@ src/
 
 ### 3.4 네이밍 컨벤션
 
-- **폴더/파일/컴포넌트명**: camelCase 사용 (예: searchBar)
+- **파일/컴포넌트명**: camelCase 사용 (예: searchBar)
+- **폴더명** : PascalCase 사용(Button/)
 - **변수/함수명**: camelCase
-- **SCSS 클래스명**: BEM 방식 권장
+- **스타일**: styled-components의 이름 규칙 준수
+- **상태** : 접두어 사용(is-, has-)
 
-### 3.5 SCSS 사용 가이드
+    | 구분   | 예시                        |
+    | ------ | --------------------------- |
+    | 상태   | isLoading, isOpen, hasError |
+    | 이벤트 | onClick, onChange, onSubmit |
+    | 옵션   | variant, size, color        |
+    | 접근성 | aria-, role                 |
 
-- **모듈 임포트**: `@use` 구문 사용 (예: `@use "sass:color";`)
-- **색상 함수**: `color.adjust()` 함수 사용 (darken() 대신)
-- **중첩 규칙**: 중첩 규칙 이후에 선언이 오지 않도록 주의
+### 3.5 스타일링 가이드
+
+- **styled-components**: 컴포넌트 기반 스타일링 사용
+- **테마**: theme.js를 통한 일관된 디자인 시스템 적용
+- **믹스인**: mixins.js에서 재사용 가능한 스타일 패턴 관리
 
 ## 4. 라우트 관리
 
@@ -163,6 +173,7 @@ import { getRoutes } from '@/routes/api';
 
 - [Next.js 공식 문서](https://nextjs.org/docs) - Next.js 기능과 API
 - [Next.js 튜토리얼](https://nextjs.org/learn) - Next.js 학습 가이드
+- [styled-components 문서](https://styled-components.com/docs) - 스타일링 라이브러리
 
 <!--
 ## PR(Pull Request) 규칙
