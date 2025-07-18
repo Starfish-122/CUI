@@ -26,9 +26,7 @@ src/
 ├── app/                    # Next.js 앱 라우터 폴더 (루트)
 │   ├── (pages)/            # 각 페이지 관련(라우팅 구조, URL에는 미표출)
 │   ├── (ui)/               # UI 컴포넌트 페이지(라우팅 구조, URL에는 미표출)
-│   ├── api/                # API 라우트
-│   │   └── routes/         # 라우트 정보 API
-│   │       └── route.js    # 라우트 정보를 제공하는 API 엔드포인트
+│   ├── api/routes/route.js # 라우트 정보를 제공하는 API 엔드포인트
 │   ├── layout.js           # 전체 레이아웃 컴포넌트
 │   ├── page.js             # 메인 페이지 컴포넌트
 │   ├── not-found.js        # 404 페이지 컴포넌트
@@ -53,32 +51,29 @@ src/
     └── globalStyles.js     # 전역 스타일 설정
 ```
 
-## 3. 개발 가이드
+## 3. 코드 작성 및 프로젝트 규칙
 
-### 3.1 컴포넌트 작성
+### (1) 컴포넌트 작성
 
 - **구조**: 각 컴포넌트는 폴더 단위로 관리
 - **스타일**: styled-components를 사용한 스타일링
 - **전역 스타일**: globalStyles.js에서 관리
 
-### 3.2 클라이언트/서버 컴포넌트
+### (2) 클라이언트/서버 컴포넌트
 
 - **클라이언트 컴포넌트**: useState, useEffect 등 사용 시 파일 최상단에 "use client" 선언
 - **서버 컴포넌트**: 데이터 패칭, SEO 등 서버 전용 로직에 사용 (기본값)
 
-### 3.3 코드 스타일
+### (3) 코드 스타일 및 네이밍 컨벤션
 
 - **포맷팅**: Prettier, ESLint 설정 준수
 - **임포트 경로**: 절대경로(@/...) 사용 (tsconfig.json에 설정됨)
 - **컴포넌트 타입**: 함수형 컴포넌트만 사용
-
-### 3.4 네이밍 컨벤션
-
 - **파일/컴포넌트명**: camelCase 사용 (예: searchBar)
-- **폴더명** : PascalCase 사용(Button/)
+- **폴더명**: PascalCase 사용(Button/)
 - **변수/함수명**: camelCase
 - **스타일**: styled-components의 이름 규칙 준수
-- **상태** : 접두어 사용(is-, has-)
+- **상태**: 접두어 사용(is-, has-)
 
     | 구분   | 예시                        |
     | ------ | --------------------------- |
@@ -87,17 +82,41 @@ src/
     | 옵션   | variant, size, color        |
     | 접근성 | aria-, role                 |
 
-### 3.5 스타일링 가이드
+### (4) 스타일링 가이드
 
 - **styled-components**: 컴포넌트 기반 스타일링 사용
 - **테마**: theme.js를 통한 일관된 디자인 시스템 적용
 - **믹스인**: mixins.js에서 재사용 가능한 스타일 패턴 관리
 
+### (5) 커밋 및 브랜치 관리
+
+- **커밋 컨벤션** [🔗](https://www.conventionalcommits.org/ko/v1.0.0/)
+- **커밋 형식**: [타입]: [내용] (예: `feat: 검색바 컴포넌트 추가`)
+- **커밋 타입**:
+    - `feat`: 새로운 기능 추가
+    - `fix`: 버그 수정
+    - `style`: 코드 포맷팅, 세미콜론 누락 등
+    - `refactor`: 코드 구조 개선 (기능 변화 X)
+    - `docs`: 문서 작성/수정
+- **브랜치 관리**: `main` 브랜치는 배포(프로덕션)용으로, 항상 안정적인 코드만 유지
+    > GitHub 규칙 추가 : Settings > Branches > Branch protection rules
+
+### (6) 프로젝트 운영
+
+- **자산 관리**
+    - **정적 파일**: public/ 폴더에 저장
+    - **대용량 파일**: 불필요한 대용량 파일은 업로드 금지
+- **접근성 & 반응형**
+    - **접근성**: 기본적인 웹 접근성(aria, alt 등) 준수
+    - **반응형**: 모바일/데스크탑 반응형 스타일 필수
+- **주의사항**
+    - `robots.ts`, `next.config.mjs`로 검색 엔진 크롤링 방지(배포시 수정/삭제 필요)
+
 ## 4. 라우트 관리
 
 이 프로젝트는 중앙 집중식 라우트 관리 방식을 사용합니다.
 
-### 4.1 새 페이지 추가 방법
+### (1) 새 페이지 추가 방법
 
 1. `src/app` 폴더에 새 페이지 폴더와 `page.js` 파일을 생성
 2. `src/routes/config.js` 파일의 `appRoutes` 배열에 새 라우트 정보 추가:
@@ -109,7 +128,7 @@ export const appRoutes = [
 ];
 ```
 
-### 4.2 라우트 관련 파일 구조
+### (2) 라우트 관련 파일 구조
 
 - `src/routes/config.js`: 모든 라우트 정의
 - `src/routes/hooks.js`: 네비게이션 메뉴용 훅
@@ -118,7 +137,7 @@ export const appRoutes = [
 - `src/routes/index.js`: 모든 라우트 관련 기능을 내보내는 파일
 - `src/app/api/routes/route.js`: 라우트 정보를 제공하는 API 엔드포인트
 
-### 4.3 임포트 방식
+### (3) 임포트 방식
 
 성능 최적화를 위해 직접 임포트 방식을 사용합니다:
 
@@ -131,43 +150,11 @@ import { getRoutes } from '@/routes/api';
 // import { useAppRoutes, getRoutes } from '@/routes';
 ```
 
-## 5. 협업 규칙
-
-### 5.1 커밋 컨벤션 [🔗](https://www.conventionalcommits.org/ko/v1.0.0/)
-
-- **형식**: [타입]: [내용] (예: `feat: 검색바 컴포넌트 추가`)
-- **주요 타입**:
-    - `feat`: 새로운 기능 추가
-    - `fix`: 버그 수정
-    - `style`: 코드 포맷팅, 세미콜론 누락 등
-    - `refactor`: 코드 구조 개선 (기능 변화 X)
-    - `docs`: 문서 작성/수정
-
-### 5.2 브랜치 관리
-
-> GitHub 규칙 추가 : Settings > Branches > Branch protection rules
-
-- `main`: 배포(프로덕션)용 브랜치, 항상 안정적인 코드만 유지
-
-### 5.3 자산 관리
-
-- **정적 파일**: public/ 폴더에 저장
-- **대용량 파일**: 불필요한 대용량 파일은 업로드 금지
-
-### 5.4 접근성 & 반응형
-
-- **접근성**: 기본적인 웹 접근성(aria, alt 등) 준수
-- **반응형**: 모바일/데스크탑 반응형 스타일 필수
-
-### 5.5 주의사항
-
-- `robots.ts`, `next.config.mjs`로 검색 엔진 크롤링 방지(배포시 수정/삭제 필요)
-
-## 6. 배포 가이드
+## 5. 배포
 
 - [Vercel Platform](https://vercel.com/)을 통한 자동 배포
 
-## 7. 참고 자료
+## 6. 참고 자료
 
 > Next.js에 대해 알아보려면, 아래 링크를 클릭하세요.
 
