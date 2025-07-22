@@ -85,7 +85,7 @@ export default function SearchBarPage() {
                 {value && (
                     <SearchResult>
                         <Icon name="search" size="md" filled />
-                        검색어: "{value}"
+                        검색어: {value}
                     </SearchResult>
                 )}
             </SearchContainer>

@@ -22,7 +22,7 @@ export const UIBox = Box;
 export const UIFlex = FlexContainer;
 
 // 모든 컴포넌트를 기본 내보내기
-export default {
+const CoreComponents = {
     H2,
     H3,
     H4,
@@ -31,3 +31,5 @@ export default {
     UIBox,
     UIFlex,
 };
+
+export default CoreComponents;

@@ -20,11 +20,11 @@ export const metadata = {
         },
         {
             rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap',
+            href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=optional',
         },
         {
             rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+            href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional',
         },
     ],
 };
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
             <head>
                 <link
                     rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional"
                 />
             </head>
             <body suppressHydrationWarning>
