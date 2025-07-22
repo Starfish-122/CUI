@@ -22,6 +22,10 @@ export const metadata = {
             rel: 'stylesheet',
             href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap',
         },
+        {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+        },
     ],
 };
 
@@ -29,6 +33,12 @@ export default function RootLayout({ children }) {
     return (
         <html lang="ko" suppressHydrationWarning>
             {/*  suppressHydrationWarning : React에게 이 요소와 그 자식 요소들에서 hydration 불일치 경고를 무시하도록 지시. */}
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                />
+            </head>
             <body suppressHydrationWarning>
                 <ClientLayout>{children}</ClientLayout>
             </body>

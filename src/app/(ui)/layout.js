@@ -5,8 +5,8 @@ import { media } from '@/styles/mixins';
 import { UIBox } from '@/components/base/core';
 
 const LayoutContainer = styled.div`
-    background: #f5f5f5;
-    padding: 1rem;
+    /* background: ${({ theme }) => theme.colors.gray100}; */
+    padding: ${({ theme }) => theme.spacing.md};
     min-height: 100vh;
     margin-left: 0;
 
@@ -14,10 +14,11 @@ const LayoutContainer = styled.div`
 `;
 
 const StyledUIBox = styled(UIBox)`
-    margin: 2rem auto;
+    padding: 0;
+    margin: ${({ theme }) => theme.spacing.xl} auto;
     min-height: 50vh;
-    background-color: #ffffff;
-    border-radius: 8px;
+    /* background-color: ${({ theme }) => theme.colors.light900}; */
+    border-radius: ${({ theme }) => theme.borderRadius.lg};
 `;
 
 export default function UiLayout({ children }) {

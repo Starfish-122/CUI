@@ -1,13 +1,21 @@
 import { forwardRef } from 'react';
-import { CheckBoxContainer, CheckBoxInput, CheckBoxLabel } from './checkBox-styles';
+import {
+    CheckBoxContainer,
+    CheckBoxInput,
+    CheckBoxLabel,
+    CheckIcon,
+    CheckPath,
+} from './checkBox-styles';
 
 /**
  * 체크박스 컴포넌트
  *
  * @param {Object} props
  * @param {string} [props.$title] - 체크박스 레이블 (children 대신 사용 가능)
- * @param {string} [props.$variant='primary'] - 체크박스 스타일 변형 ('primary' | 'secondary')
+ * @param {string} [props.$variant='primary'] - 체크박스 스타일 변형 ('primary' | 'secondary' | 'outline' | 'filled' | theme color name)
  * @param {string} [props.$size='md'] - 체크박스 크기 ('sm' | 'md' | 'lg')
+ * @param {string} [props.$bgColor] - 체크 시 배경색 (커스텀 색상)
+ * @param {string} [props.$textColor] - 체크 아이콘 색상 (커스텀 색상)
  * @param {string} props.id - 체크박스 고유 ID
  * @param {string} props.name - 체크박스 그룹 이름
  * @param {string} props.value - 체크박스 값
@@ -21,6 +29,8 @@ const CheckBox = forwardRef(
             $title,
             $variant = 'primary',
             $size = 'md',
+            $bgColor,
+            $textColor,
             id,
             name,
             value,
@@ -32,34 +42,46 @@ const CheckBox = forwardRef(
     ) => {
         const labelText = $title || children;
 
-        // 라디오 인풋 기본 속성
-        const CheckBoxInputProps = {
-            type: 'CheckBox',
+        // 공통 props
+        const commonProps = {
+            $size,
+            $textColor,
+            $bgColor,
+            $variant,
+        };
+
+        // 체크박스 인풋 props
+        const inputProps = {
+            type: 'checkbox',
             id,
             name,
             value,
             checked,
             onChange,
-            $variant,
-            $size,
             ref,
+            'data-variant': $variant,
+            ...commonProps,
             ...props,
         };
 
-        if (labelText) {
-            return (
-                <CheckBoxContainer>
-                    <CheckBoxLabel htmlFor={id}>
-                        <CheckBoxInput {...CheckBoxInputProps} />
-                        <span>{labelText}</span>
-                    </CheckBoxLabel>
-                </CheckBoxContainer>
-            );
-        }
+        // 체크 아이콘 렌더링 함수
+        const renderCheckIcon = () => (
+            <CheckIcon {...commonProps} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <CheckPath d="M20 6L9 17L4 12" strokeLinecap="round" strokeLinejoin="round" />
+            </CheckIcon>
+        );
 
         return (
             <CheckBoxContainer>
-                <CheckBoxInput {...CheckBoxInputProps} />
+                <div style={{ position: 'relative' }}>
+                    <CheckBoxInput {...inputProps} />
+                    {renderCheckIcon()}
+                </div>
+                {labelText && (
+                    <CheckBoxLabel htmlFor={id}>
+                        <span>{labelText}</span>
+                    </CheckBoxLabel>
+                )}
             </CheckBoxContainer>
         );
     }

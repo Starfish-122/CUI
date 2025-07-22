@@ -3,10 +3,12 @@
 import styled from 'styled-components';
 import { media, flexCenter, flexColumn } from '@/styles/mixins';
 
-// import Guide from '@/components/templates/Guide/Guide';
+import Main from '@/components/templates/Main/Main';
 
 const HeroSection = styled.section`
     margin-bottom: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 `;
 const HeroWrapper = styled.div`
     ${flexCenter};
@@ -32,7 +34,9 @@ export default function Home() {
                 </HeroWrapper>
             </HeroSection>
 
-            {/* <Guide /> */}
+            <HeroSection>
+                <Main />
+            </HeroSection>
         </>
     );
 }

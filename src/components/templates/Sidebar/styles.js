@@ -42,8 +42,9 @@ export const SidebarContainer = styled.aside`
 
 export const SidebarHeader = styled.div`
     padding: ${toRem(16)};
+    height: 3em;
     ${flexBetween};
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
 `;
 
 export const SidebarLogo = styled(Link)`

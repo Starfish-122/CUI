@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { flexCenter } from '@/styles/mixins';
+import Icon from '@/components/base/icon';
 
 export const SearchBarContainer = styled.div`
     ${flexCenter};
@@ -37,7 +38,9 @@ export default function SearchBar({ value, onChange, placeholder }) {
                     onChange={onChange}
                     placeholder={placeholder || '검색어를 입력하세요'}
                 />
-                <SearchButton type="submit">🔍</SearchButton>
+                <SearchButton type="submit">
+                    <Icon name="search" size="md" filled />
+                </SearchButton>
             </SearchBarContainer>
         </>
     );

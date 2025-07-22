@@ -23,31 +23,32 @@ const baseButtonStyles = css`
 
 const variantStyles = {
     primary: css`
-        background-color: ${({ theme }) => theme.colors.blue600};
+        background-color: ${({ theme }) => theme.colors.blue500};
         color: ${({ theme }) => theme.colors.light900};
         border: none;
 
         &:hover:not(:disabled) {
-            background-color: ${({ theme }) => theme.colors.blue600}cc;
+            background-color: ${({ theme }) => theme.colors.blue500}cc;
         }
     `,
 
     secondary: css`
-        background-color: ${({ theme }) => theme.colors.blue700};
+        background-color: ${({ theme }) => theme.colors.blue500};
         color: ${({ theme }) => theme.colors.light900};
         border: none;
 
         &:hover:not(:disabled) {
-            background-color: ${({ theme }) => theme.colors.blue700}cc;
+            background-color: ${({ theme }) => theme.colors.blue500}cc;
         }
     `,
 
     outline: css`
         background-color: transparent;
-        color: ${({ theme }) => theme.colors.black900700};
+        color: ${({ theme }) => theme.colors.blue500};
         border: 1px solid ${({ theme }) => theme.colors.blue500};
 
         &:hover:not(:disabled) {
+            color: ${({ theme }) => theme.colors.light900};
             background-color: ${({ theme }) => theme.colors.blue500};
         }
     `,

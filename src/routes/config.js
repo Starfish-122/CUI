@@ -33,10 +33,10 @@ export const sidebarCategories = [
         items: [
             { name: 'Button', path: '/button' },
             { name: 'Input', path: '/input' },
-            { name: 'Checkbox', path: '/checkbox' },
             { name: 'Select Box', path: '/select-box' },
             { name: 'Text Field', path: '/text-field' },
             { name: 'Range Slider', path: '/range-slider' },
+            // { name: 'Checkbox', path: '/checkbox' },
         ],
     },
     {
