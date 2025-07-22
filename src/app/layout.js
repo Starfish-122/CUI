@@ -27,8 +27,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="ko">
-            <body>
+        <html lang="ko" suppressHydrationWarning>
+            {/*  suppressHydrationWarning : React에게 이 요소와 그 자식 요소들에서 hydration 불일치 경고를 무시하도록 지시. */}
+            <body suppressHydrationWarning>
                 <ClientLayout>{children}</ClientLayout>
             </body>
         </html>

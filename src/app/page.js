@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 import { media, flexCenter, flexColumn } from '@/styles/mixins';
 
-import Guide from '@/components/templates/Guide/Guide';
+// import Guide from '@/components/templates/Guide/Guide';
 
 const HeroSection = styled.section`
     margin-bottom: 5rem;
@@ -28,11 +28,11 @@ export default function Home() {
         <>
             <HeroSection>
                 <HeroWrapper>
-                    <HeroTitle>Theme Guide🎨</HeroTitle>
+                    <HeroTitle>CUI</HeroTitle>
                 </HeroWrapper>
             </HeroSection>
 
-            <Guide />
+            {/* <Guide /> */}
         </>
     );
 }

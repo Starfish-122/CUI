@@ -1,7 +1,8 @@
 'use client';
 
 import styled from 'styled-components';
-import { media, flexCenter, flexBetween } from '@/styles/mixins';
+import { media } from '@/styles/mixins';
+import { UIBox } from '@/components/base/core';
 
 const LayoutContainer = styled.div`
     background: #f5f5f5;
@@ -11,19 +12,19 @@ const LayoutContainer = styled.div`
 
     ${media.lg(`margin-left: 17.5rem;`)};
 `;
-const Article = styled.article`
+
+const StyledUIBox = styled(UIBox)`
     margin: 2rem auto;
-    padding: 1rem;
     min-height: 50vh;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    background-color: #ffffff;
+    border-radius: 8px;
 `;
 
 export default function UiLayout({ children }) {
     return (
         <>
             <LayoutContainer>
-                <Article>{children}</Article>
+                <StyledUIBox>{children}</StyledUIBox>
             </LayoutContainer>
         </>
     );

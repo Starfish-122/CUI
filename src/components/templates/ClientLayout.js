@@ -78,7 +78,7 @@ export default function ClientLayout({ children }) {
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <LayoutContainer>
-                    <Header hasSidebar={hasSidebar} isSidebarOpen={isSidebarOpen} />
+                    <Header $hasSidebar={hasSidebar} $isSidebarOpen={isSidebarOpen} />
                     <ContentWrapper>
                         {hasSidebar && <Sidebar />}
                         <MainContent $hasSidebar={hasSidebar} $isSidebarOpen={isSidebarOpen}>

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: true, // 애플리케이션의 잠재적인 문제를 조기에 발견
+
     async headers() {
         return [
             {

@@ -6,7 +6,9 @@
 // 앱의 모든 라우트 정의 (홈 페이지 제외)
 export const appRoutes = [
     { path: 'about', label: 'About' },
-    { path: 'all', label: 'Components' },
+    { path: 'guide', label: 'Guide' },
+    { path: 'button', label: 'Components' },
+    // { path: 'all', label: 'Components' },
     // 새 라우트를 여기에 추가하세요
     // { path: 'newRoute', label: 'New Route' },
 ];
@@ -32,7 +34,6 @@ export const sidebarCategories = [
             { name: 'Button', path: '/button' },
             { name: 'Input', path: '/input' },
             { name: 'Checkbox', path: '/checkbox' },
-            { name: 'Radio Group', path: '/radio-group' },
             { name: 'Select Box', path: '/select-box' },
             { name: 'Text Field', path: '/text-field' },
             { name: 'Range Slider', path: '/range-slider' },

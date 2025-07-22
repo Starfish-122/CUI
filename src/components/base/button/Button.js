@@ -10,15 +10,15 @@ const Button = forwardRef(
         {
             children,
             className = '',
-            variant = 'primary',
-            size = 'md',
+            $variant = 'primary',
+            $size = 'md',
             href,
             disabled = false,
             icon,
             onClick,
-            fullWidth = false,
-            bgColor,
-            textColor,
+            $fullWidth = false,
+            $bgColor,
+            $textColor,
             ...props
         },
         ref
@@ -41,15 +41,15 @@ const Button = forwardRef(
 
         return (
             <BasicButton
-                variant={variant}
-                size={size}
-                fullWidth={fullWidth}
+                $variant={$variant}
+                $size={$size}
+                $fullWidth={$fullWidth}
                 disabled={disabled}
                 onClick={onClick}
                 className={className}
                 ref={ref}
-                bgColor={bgColor}
-                textColor={textColor}
+                $bgColor={$bgColor}
+                $textColor={$textColor}
                 {...props}
             >
                 {content}
@@ -57,19 +57,6 @@ const Button = forwardRef(
         );
     }
 );
-
-/*
-<BasicButton
-                className={allClasses}
-                disabled={disabled}
-                onClick={onClick}
-                ref={ref}
-                variant={variant}
-                {...props}
-            >
-                {content}
-            </BasicButton>
- */
 
 Button.displayName = 'Button';
 

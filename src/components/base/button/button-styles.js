@@ -8,7 +8,7 @@ const baseButtonStyles = css`
     font-weight: 500;
     cursor: pointer;
     transition: ${({ theme }) => theme.transitions.short};
-    width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
+    width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
 
     &:disabled {
         opacity: 0.5;
@@ -73,24 +73,24 @@ const sizeStyles = {
 export const BasicButton = styled.button`
     ${baseButtonStyles}
 
-    ${({ variant = 'primary' }) => variantStyles[variant] || variantStyles.primary}
+    ${({ $variant = 'primary' }) => variantStyles[$variant] || variantStyles.primary}
   
     
-    ${({ size = 'md' }) => sizeStyles[size] || sizeStyles.md}
+    ${({ $size = 'md' }) => sizeStyles[$size] || sizeStyles.md}
     
     
-    ${({ bgColor }) =>
-        bgColor &&
+    ${({ $bgColor }) =>
+        $bgColor &&
         `
-        background-color: ${bgColor};
+        background-color: ${$bgColor};
         &:hover:not(:disabled) {
-            background-color: ${bgColor}cc;
+            background-color: ${$bgColor}cc;
         }
     `}
     
-    ${({ textColor }) =>
-        textColor &&
+    ${({ $textColor }) =>
+        $textColor &&
         `
-        color: ${textColor};
+        color: ${$textColor};
     `}
 `;

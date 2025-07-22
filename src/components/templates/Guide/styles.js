@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { toRem } from '@/styles/utils';
-import { media, flexCenter, flexColumn } from '@/styles/mixins';
+import { flex, boxShadow, media, flexCenter, flexColumn } from '@/styles/mixins';
 
 export const ContentSection = styled.section`
     max-width: ${toRem(1024)};

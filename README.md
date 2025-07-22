@@ -87,6 +87,26 @@ src/
 - **styled-components**: 컴포넌트 기반 스타일링 사용
 - **테마**: theme.js를 통한 일관된 디자인 시스템 적용
 - **믹스인**: mixins.js에서 재사용 가능한 스타일 패턴 관리
+- **커스텀 props**: DOM으로 전달되지 않아야 하는 props에는 `$` 접두어 사용
+
+    ```javascript
+    // 잘못된 사용법
+    const Button = styled.button`
+        width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
+        background: ${(props) => props.bgColor || 'transparent'};
+    `;
+
+    // 올바른 사용법
+    const Button = styled.button`
+        width: ${(props) => (props.$fullWidth ? '100%' : 'auto')};
+        background: ${(props) => props.$bgColor || 'transparent'};
+    `;
+
+    // 컴포넌트 사용
+    <Button $fullWidth $bgColor="blue">
+        버튼
+    </Button>;
+    ```
 
 ### (5) 커밋 및 브랜치 관리
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { toRem } from '@/styles/utils';
 
 const LayoutContainer = styled.div`
-    background: ${({ theme }) => theme.colors.blue100};
+    /* background: ${({ theme }) => theme.colors.blue100}; */
     padding: 2rem;
     max-width: ${toRem(1024)};
     margin: auto;
