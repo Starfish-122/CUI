@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Switch from '@/components/base/switch/Switch';
 import UILayout from '@/components/templates/UILayout/UILayout';
+import Icon from '@/components/base/icon';
 import SectionTitle from '@/components/base/SectionTitle';
 import { SectionHeader, SwitchContainer, SwitchRow, SwitchLabel, SwitchValue } from './styles';
 
@@ -50,7 +51,14 @@ const SwitchGroup = ({ switches, switchStates, handleSwitchChange }) => (
                     disabled={disabled}
                     label={label}
                 />
-                <SwitchValue>{switchStates[name] ? 'ON' : 'OFF'}</SwitchValue>
+                {/* <SwitchValue>{switchStates[name] ? 'ON' : 'OFF'}</SwitchValue> */}
+                <SwitchValue>
+                    {switchStates[name] ? (
+                        <Icon $color="red" name="Lightbulb" />
+                    ) : (
+                        <Icon $color="#ccc" name="light_off" />
+                    )}
+                </SwitchValue>
             </SwitchRow>
         ))}
     </SwitchContainer>
