@@ -27,12 +27,12 @@ export const routePaths = appRoutes.map((route) => route.path);
 // 사이드바에 표시할 카테고리 및 컴포넌트 정의
 export const sidebarCategories = [
     {
-        id: 'components',
-        name: 'Components',
+        id: 'Progress',
+        name: 'Progress',
         items: [
             { name: 'Button', path: '/button' },
-            { name: 'CheckBox', path: '/checkbox' },
             { name: 'Radio', path: '/radio' },
+            { name: 'CheckBox', path: '/checkbox' },
             { name: 'Switch', path: '/switch' },
             { name: 'Search Bar', path: '/search-bar' },
             // { name: 'Select Box', path: '/select-box' },
