@@ -7,8 +7,7 @@
 export const appRoutes = [
     { path: 'about', label: 'About' },
     { path: 'guide', label: 'Guide' },
-    { path: 'button', label: 'Components' },
-    // { path: 'all', label: 'Components' },
+    { path: 'all', label: 'Components' },
     // 새 라우트를 여기에 추가하세요
     // { path: 'newRoute', label: 'New Route' },
 ];
@@ -28,14 +27,17 @@ export const routePaths = appRoutes.map((route) => route.path);
 // 사이드바에 표시할 카테고리 및 컴포넌트 정의
 export const sidebarCategories = [
     {
-        id: 'inputs',
-        name: 'Inputs',
+        id: 'components',
+        name: 'Components',
         items: [
             { name: 'Button', path: '/button' },
-            { name: 'Input', path: '/input' },
-            { name: 'Select Box', path: '/select-box' },
-            { name: 'Text Field', path: '/text-field' },
-            { name: 'Range Slider', path: '/range-slider' },
+            { name: 'CheckBox', path: '/checkbox' },
+            { name: 'Radio', path: '/radio' },
+            { name: 'Switch', path: '/switch' },
+            { name: 'Search Bar', path: '/search-bar' },
+            // { name: 'Select Box', path: '/select-box' },
+            // { name: 'Text Field', path: '/text-field' },
+            // { name: 'Range Slider', path: '/range-slider' },
             // { name: 'Checkbox', path: '/checkbox' },
         ],
     },
@@ -43,7 +45,6 @@ export const sidebarCategories = [
         id: 'navigation',
         name: 'Navigation',
         items: [
-            { name: 'Search Bar', path: '/search-bar' },
             { name: 'Breadcrumb', path: '/breadcrumb' },
             { name: 'Pagination', path: '/pagination' },
             { name: 'Tabs', path: '/tabs' },
