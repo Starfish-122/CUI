@@ -34,9 +34,9 @@ const getBackgroundColor = ({ $bgColor, $variant, theme }) => {
     if ($bgColor) return $bgColor;
 
     const variantColors = {
-        outline: theme.colors.white,
+        outline: theme.colors.light900,
         filled: theme.colors.blue100,
-        primary: theme.colors.blue500,
+        default: theme.colors.gray500,
         blue: theme.colors.blue500,
     };
 
@@ -49,7 +49,7 @@ const getBorderColor = ({ $bgColor, $variant, theme }) => {
     const variantColors = {
         outline: theme.colors.blue500,
         filled: theme.colors.blue300,
-        primary: theme.colors.blue500,
+        default: theme.colors.gray500,
         blue: theme.colors.blue500,
     };
 
@@ -126,33 +126,27 @@ export const CheckBoxInput = styled.input`
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.light900};
     flex-shrink: 0;
 
     ${({ $size = 'md' }) => sizeStyles[$size] || sizeStyles.md}
 
-    &:hover {
-        border-color: ${({ theme }) => theme.colors.blue400};
+    &:hover,&:focus {
+        outline: none;
+        border-color: ${getBorderColor};
         transform: scale(1.05);
-        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+        box-shadow: 0 0.5rem 0.5rem 0 ${getBorderColor}cc;
     }
 
     &:checked {
         background: ${getBackgroundColor};
         border-color: ${getBorderColor};
         transform: scale(1.1);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        box-shadow: ${({ theme }) => theme.shadows.sm};
     }
 
     &:focus:checked {
-        box-shadow:
-            0 0 0 3px rgba(59, 130, 246, 0.2),
-            0 4px 12px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 0 0 4px ${getBorderColor};
     }
 `;
 

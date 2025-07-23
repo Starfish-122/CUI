@@ -12,7 +12,7 @@ import {
  *
  * @param {Object} props
  * @param {string} [props.$title] - 체크박스 레이블 (children 대신 사용 가능)
- * @param {string} [props.$variant='primary'] - 체크박스 스타일 변형 ('primary' | 'secondary' | 'outline' | 'filled' | theme color name)
+ * @param {string} [props.$variant='default'] - 체크박스 스타일 변형 ('default' | 'secondary' | 'outline' | 'filled' | theme color name)
  * @param {string} [props.$size='md'] - 체크박스 크기 ('sm' | 'md' | 'lg')
  * @param {string} [props.$bgColor] - 체크 시 배경색 (커스텀 색상)
  * @param {string} [props.$textColor] - 체크 아이콘 색상 (커스텀 색상)
@@ -27,7 +27,7 @@ const CheckBox = forwardRef(
         {
             children,
             $title,
-            $variant = 'primary',
+            $variant = 'default',
             $size = 'md',
             $bgColor,
             $textColor,
@@ -36,6 +36,7 @@ const CheckBox = forwardRef(
             value,
             checked,
             onChange,
+            disabled,
             ...props
         },
         ref
@@ -58,6 +59,7 @@ const CheckBox = forwardRef(
             value,
             checked,
             onChange,
+            disabled,
             ref,
             'data-variant': $variant,
             ...commonProps,
