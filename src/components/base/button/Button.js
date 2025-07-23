@@ -1,60 +1,57 @@
 'use client';
 
-import Link from 'next/link';
 import { forwardRef } from 'react';
-// import './button.scss';
 import { BasicButton } from './button-styles';
+
+// 기본값 상수
+const DEFAULT_PROPS = {
+    className: '',
+    $variant: 'default',
+    $size: 'md',
+    disabled: false,
+    $fullWidth: false,
+};
 
 const Button = forwardRef(
     (
         {
             children,
-            className = '',
-            $variant = 'primary',
-            $size = 'md',
-            href,
-            disabled = false,
-            icon,
+            className = DEFAULT_PROPS.className,
+            $variant = DEFAULT_PROPS.$variant,
+            $size = DEFAULT_PROPS.$size,
+            disabled = DEFAULT_PROPS.disabled,
             onClick,
-            $fullWidth = false,
+            $text,
+            $fullWidth = DEFAULT_PROPS.$fullWidth,
             $bgColor,
             $textColor,
             ...props
         },
         ref
     ) => {
-        const content = (
+        // 버튼 내용 렌더링
+        const renderContent = () => (
             <>
-                {icon && <i>{icon}</i>}
                 {children}
+                {$text && <span>{$text}</span>}
             </>
         );
 
-        // href가 있으면 Link, 없으면 button으로 렌더링
-        if (href && !disabled) {
-            return (
-                <Link href={href} className={className} ref={ref} {...props}>
-                    {content}
-                </Link>
-            );
-        }
+        // 전달할 props 정리
+        const buttonProps = {
+            $variant,
+            $size,
+            $fullWidth,
+            disabled,
+            onClick,
+            className,
+            ref,
+            $bgColor,
+            $textColor,
+            ...props,
+        };
 
-        return (
-            <BasicButton
-                $variant={$variant}
-                $size={$size}
-                $fullWidth={$fullWidth}
-                disabled={disabled}
-                onClick={onClick}
-                className={className}
-                ref={ref}
-                $bgColor={$bgColor}
-                $textColor={$textColor}
-                {...props}
-            >
-                {content}
-            </BasicButton>
-        );
+        return <BasicButton {...buttonProps}>{renderContent()}</BasicButton>;
     }
 );
 

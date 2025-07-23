@@ -34,7 +34,14 @@ const MainContent = styled.main`
     padding: ${toRem(20)};
     transition: margin-left 0.3s ease;
 
-    ${(props) => props.$hasSidebar && props.$isSidebarOpen && media.lg`margin-left: ${toRem(280)};`}
+    ${(props) =>
+        props.$hasSidebar &&
+        props.$isSidebarOpen &&
+        `
+        @media (min-width: 1024px) {
+            margin-left: 17.5rem;
+        }
+        `}
 
     margin: 0 auto;
     min-height: 70vh;
@@ -85,7 +92,7 @@ export default function ClientLayout({ children }) {
                             {children}
                         </MainContent>
                     </ContentWrapper>
-                    <Footer />
+                    <Footer $hasSidebar={hasSidebar} $isSidebarOpen={isSidebarOpen} />
                 </LayoutContainer>
             </ThemeProvider>
         </StyledComponentsRegistry>

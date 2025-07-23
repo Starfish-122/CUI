@@ -28,7 +28,7 @@ const SearchResult = styled.div`
         ${({ theme }) => theme.colors.light900} 100%
     );
     border-radius: ${({ theme }) => theme.borderRadius.md};
-    border: 2px solid ${({ theme }) => theme.colors.green200};
+    border: 2px solid ${({ theme }) => theme.colors.gray200};
     color: ${({ theme }) => theme.colors.gray700};
     font-weight: 500;
     text-align: center;
@@ -69,9 +69,6 @@ export default function SearchBarPage() {
         <UILayout
             title="SearchBar 컴포넌트"
             subtitle="실시간 검색 기능을 확인해보세요"
-            primaryColor="green400"
-            secondaryColor="green300"
-            subtitleColor="green100"
             icon={<Icon name="search" size="lg" filled color="#ffffff" />}
         >
             <SearchContainer>

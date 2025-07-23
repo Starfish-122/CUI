@@ -52,6 +52,12 @@ const theme = {
         green300: '#86efac',
         green200: '#bbf7d0',
         green100: '#dcfce7',
+
+        primary: '#1976d2',
+        secondary: '#6c757d',
+        success: '#22c55e',
+        warning: '#f59e0b',
+        error: '#ef4444',
     },
 
     fontSizes: {

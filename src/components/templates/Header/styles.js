@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header`
 
 export const Container = styled.div`
     ${flexBetween};
-    max-width: 1024px;
+    /* max-width: 1024px; */
     margin: 0 auto;
     padding: ${toRem(16)} ${toRem(20)};
 `;
