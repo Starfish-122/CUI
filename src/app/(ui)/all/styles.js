@@ -58,7 +58,7 @@ export const ComponentCard = styled.div`
     &:hover {
         box-shadow: ${({ theme }) => theme.shadows.md};
         transform: translateY(-4px);
-        border-color: ${({ theme }) => theme.colors.purple300 || '#9333ea'};
+        border-color: ${({ theme }) => theme.colors.gray900};
     }
 `;
 

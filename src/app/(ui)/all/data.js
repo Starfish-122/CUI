@@ -24,7 +24,7 @@ export const components = [
         name: 'Switch',
         icon: 'toggle_on',
         description: 'Switch 컴포넌트',
-        status: 'ready',
+        status: 'in-progress',
         path: '/switch',
     },
     {
