@@ -12,7 +12,7 @@ export default function ButtonPage() {
 
             <ButtonContainer>
                 <Button $text="기본 버튼" />
-                <Button $variant="filled" $text="채워진 버튼" />
+                {/* <Button $variant="filled" $text="채워진 버튼" /> */}
                 <Button $variant="outline" $text="테두리 버튼" />
                 <Button $variant="text" $text="텍스트 버튼" />
             </ButtonContainer>

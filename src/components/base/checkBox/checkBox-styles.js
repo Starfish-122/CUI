@@ -155,6 +155,7 @@ export const CheckBoxLabel = styled.label`
     align-items: center;
     cursor: pointer;
     user-select: none;
+    gap: 1rem;
 
     span {
         font-size: ${({ theme }) => theme.fontSizes.md};

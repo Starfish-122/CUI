@@ -61,9 +61,9 @@ const ProgressNumber = styled.button`
 
 const ProgressText = styled.div`
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
-    margin-top: 0.5rem;
+    margin: 1rem auto;
 `;
 
 const List = styled.ul`
@@ -235,8 +235,7 @@ export default function Main() {
     const [curriculum, setCurriculum] = useState(initialCurriculum);
 
     return (
-        <section>
-            <H2>📌 진행 상황</H2>
+        <section style={{ marginTop: '10%' }}>
             <ProgressSection curriculum={curriculum} setCurriculum={setCurriculum} />
             <List>
                 {curriculum.map((item) => (

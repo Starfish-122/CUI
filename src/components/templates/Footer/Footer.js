@@ -27,16 +27,14 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                 <FooterSection>
                     <FooterBrand>
                         <BrandLogo>CUI</BrandLogo>
-                        <BrandName>CUI Design System</BrandName>
-                        <BrandDescription>
-                            현대적이고 일관된 사용자 인터페이스를 위한 React 컴포넌트 라이브러리
-                        </BrandDescription>
+                        <BrandName>Concentrix User Interface</BrandName>
+                        <BrandDescription>React 컴포넌트 UI 만들기!</BrandDescription>
                     </FooterBrand>
                 </FooterSection>
 
                 {/* 빠른 링크 섹션 */}
                 <FooterSection>
-                    <SectionTitle>빠른 링크</SectionTitle>
+                    {/* <SectionTitle>빠른 링크</SectionTitle> */}
                     <FooterLinks>
                         <LinkItem>
                             <Link href="/">홈</Link>
@@ -53,12 +51,11 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                     </FooterLinks>
                 </FooterSection>
 
-                {/* 개발자 리소스 섹션 */}
-                <FooterSection>
+                {/* <FooterSection>
                     <SectionTitle>개발자 리소스</SectionTitle>
                     <FooterLinks>
                         <LinkItem>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Starfish-122/CUI" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </LinkItem>
@@ -78,7 +75,7 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                             </a>
                         </LinkItem>
                     </FooterLinks>
-                </FooterSection>
+                </FooterSection> */}
             </FooterContent>
 
             <FooterDivider />

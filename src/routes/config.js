@@ -5,7 +5,7 @@
 
 // 앱의 모든 라우트 정의 (홈 페이지 제외)
 export const appRoutes = [
-    { path: 'about', label: 'About' },
+    // { path: 'about', label: 'About' },
     { path: 'guide', label: 'Guide' },
     { path: 'all', label: 'Components' },
     // 새 라우트를 여기에 추가하세요

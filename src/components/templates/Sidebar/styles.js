@@ -8,7 +8,7 @@ export const SidebarContainer = styled.aside`
     height: 100vh;
     position: fixed;
     top: 0;
-    left: ${toRem(-280)};
+    left: 0;
     background-color: #fff;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
     display: flex;
@@ -16,15 +16,20 @@ export const SidebarContainer = styled.aside`
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-    z-index: 1200;
+    z-index: 9;
     box-shadow: 0 ${toRem(2)} ${toRem(4)} rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease;
 
-    ${(props) =>
-        props.$isOpen &&
-        `
-        left: 0;
-    `}
+    /* 모바일에서만 transition 적용하여 성능 최적화 */
+    @media (max-width: 1023px) {
+        left: ${toRem(-280)};
+        transition: left 0.3s ease;
+
+        ${(props) =>
+            props.$isOpen &&
+            `
+            left: 0;
+        `}
+    }
 
     &::-webkit-scrollbar {
         width: ${toRem(4)};
@@ -45,6 +50,8 @@ export const SidebarHeader = styled.div`
     height: 3em;
     ${flexBetween};
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
+    /* 하이드레이션 중에도 즉시 표시되도록 */
+    background-color: #fff;
 `;
 
 export const SidebarLogo = styled(Link)`
@@ -55,7 +62,6 @@ export const SidebarLogo = styled(Link)`
 
 export const LogoIcon = styled.div`
     ${flexCenter};
-
     padding: 0 1rem;
     height: ${toRem(32)};
     font-weight: 700;
@@ -96,6 +102,8 @@ export const CloseButton = styled.button`
 export const SidebarContent = styled.nav`
     padding: ${toRem(8)} 0;
     flex: 1;
+    /* 하이드레이션 중에도 즉시 표시되도록 */
+    background-color: #fff;
 `;
 
 export const CategoryList = styled.ul`
@@ -104,57 +112,67 @@ export const CategoryList = styled.ul`
     margin: 0;
 `;
 
-export const CategoryItem = styled.li``;
+export const CategoryItem = styled.li`
+    margin: 0;
+`;
 
 export const CategoryHeader = styled.div`
-    ${flexBetween};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: ${toRem(12)} ${toRem(16)};
-    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
-    font-size: ${toRem(14)};
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.gray700};
+    transition: background-color 0.2s ease;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: ${({ theme }) => theme.colors.gray50};
     }
 
     ${(props) =>
         props.$expanded &&
         `
-        background-color: rgba(0, 0, 0, 0.02);
+        background-color: ${props.theme.colors.gray50};
     `}
 `;
 
 export const CategoryIcon = styled.span`
-    font-size: ${toRem(10)};
+    font-size: ${toRem(12)};
+    transition: transform 0.2s ease;
 `;
 
 export const ItemsList = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+    background-color: ${({ theme }) => theme.colors.gray25};
 `;
 
-export const Item = styled.li``;
+export const Item = styled.li`
+    margin: 0;
+`;
 
 export const ItemLink = styled(Link)`
     display: block;
     padding: ${toRem(8)} ${toRem(16)} ${toRem(8)} ${toRem(32)};
-    font-size: ${toRem(14)};
-    color: rgba(0, 0, 0, 0.87);
     text-decoration: none;
-    transition: background-color 0.2s;
+    color: ${({ theme }) => theme.colors.gray600};
+    font-size: ${toRem(14)};
+    transition: all 0.2s ease;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: ${({ theme }) => theme.colors.gray100};
+        color: ${({ theme }) => theme.colors.gray800};
     }
 
-    ${({ $isActive }) =>
-        $isActive &&
+    ${(props) =>
+        props.$isActive &&
         `
-        color: #3f51b5;
-        background-color: rgba(63, 81, 181, 0.08);
+        background-color: ${props.theme.colors.blue50};
+        color: ${props.theme.colors.blue600};
         font-weight: 500;
+        border-right: 2px solid ${props.theme.colors.blue600};
     `}
 `;
 
@@ -165,17 +183,10 @@ export const SidebarOverlay = styled.div`
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1100;
-    visibility: hidden;
-    opacity: 0;
+    z-index: 1199;
+    opacity: ${(props) => (props.$visible ? 1 : 0)};
+    visibility: ${(props) => (props.$visible ? 'visible' : 'hidden')};
     transition:
-        visibility 0.3s,
-        opacity 0.3s;
-
-    ${(props) =>
-        props.$visible &&
-        `
-        visibility: visible;
-        opacity: 1;
-    `}
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 `;
