@@ -30,14 +30,15 @@ CUI/
 ├── src/                   # 소스 코드
 │   ├── app/               # Next.js 앱 라우터 폴더 (루트)
 │   │   ├── (pages)/       # 페이지 관련 (라우팅 그룹, URL에 미표출)
-│   │   │   ├── about/     # 소개 페이지
 │   │   │   ├── guide/     # 가이드 페이지
 │   │   │   └── layout.js  # 페이지 레이아웃
 │   │   ├── (ui)/          # UI 컴포넌트 페이지 (라우팅 그룹, URL에 미표출)
 │   │   │   ├── all/       # 전체 컴포넌트 페이지
 │   │   │   ├── button/    # 버튼 컴포넌트 페이지
-│   │   │   ├── input/     # 입력 컴포넌트 페이지
+│   │   │   ├── checkbox/  # 체크박스 컴포넌트 페이지
+│   │   │   ├── radio/     # 라디오 버튼 컴포넌트 페이지
 │   │   │   ├── search-bar/ # 검색바 컴포넌트 페이지
+│   │   │   ├── switch/    # 스위치 컴포넌트 페이지
 │   │   │   └── layout.js  # UI 페이지 레이아웃
 │   │   ├── api/           # API 라우트
 │   │   │   └── routes/    # 라우트 정보 API
@@ -53,7 +54,8 @@ CUI/
 │   │   │   ├── core/      # 핵심 컴포넌트 (H1, H2, UIBox, UIFlex 등)
 │   │   │   ├── icon/      # 아이콘 컴포넌트
 │   │   │   ├── radio/     # 라디오 버튼 컴포넌트
-│   │   │   └── SectionTitle/ # 섹션 제목 컴포넌트
+│   │   │   ├── SectionTitle/ # 섹션 제목 컴포넌트
+│   │   │   └── switch/    # 스위치 컴포넌트
 │   │   ├── common/        # base 컴포넌트를 조합한 큰 UI 블록
 │   │   │   ├── labelRadio/ # 라벨이 있는 라디오 컴포넌트
 │   │   │   └── searchBar/  # 검색바 컴포넌트
@@ -67,6 +69,8 @@ CUI/
 │   │       └── ClientLayout.js # 클라이언트 레이아웃 컴포넌트
 │   ├── lib/               # 유틸리티 및 헬퍼 함수
 │   │   └── registry.js    # 스타일 레지스트리
+│   ├── playground/        # 컴포넌트 테스트 및 실험용 폴더
+│   │   └── ButtonPL/      # 버튼 컴포넌트 플레이그라운드
 │   ├── routes/            # 라우팅 관련 코드
 │   │   ├── config.js      # 라우트 설정
 │   │   ├── hooks.js       # 라우트 관련 훅
@@ -206,7 +210,23 @@ export const appRoutes = [
 - `src/routes/index.js`: 모든 라우트 관련 기능을 내보내는 파일
 - `src/app/api/routes/route.js`: 라우트 정보를 제공하는 API 엔드포인트
 
-### (3) 임포트 방식
+### (3) 현재 라우트 구성
+
+**메인 라우트**:
+
+- `/`: 홈 페이지
+- `/guide`: 가이드 페이지
+- `/all`: 전체 컴포넌트 페이지
+
+**UI 컴포넌트 라우트**:
+
+- `/button`: 버튼 컴포넌트
+- `/checkbox`: 체크박스 컴포넌트
+- `/radio`: 라디오 버튼 컴포넌트
+- `/search-bar`: 검색바 컴포넌트
+- `/switch`: 스위치 컴포넌트
+
+### (4) 임포트 방식
 
 성능 최적화를 위해 직접 임포트 방식을 사용합니다:
 
@@ -220,8 +240,6 @@ import { getRoutes } from '@/routes/api';
 ```
 
 ## 5. 개발 환경 설정
-
-### (1) 개발 서버 실행
 
 ```bash
 # 개발 서버 시작
@@ -240,21 +258,18 @@ npm run lint
 npm run format
 ```
 
-### (2) 환경 설정 파일
-
-- `.nvmrc`: Node.js 버전 관리 (22.16.0)
-- `.prettierrc`: Prettier 설정
-- `.prettierignore`: Prettier 무시 파일
-- `eslint.config.mjs`: ESLint 설정 (ESLint 9 플랫 설정)
-- `next.config.mjs`: Next.js 설정
-- `tsconfig.json`: TypeScript 설정
-
 ## 6. 배포
 
 - [Vercel Platform](https://vercel.com/)을 통한 자동 배포
 - `next.config.mjs`에서 검색 엔진 크롤링 방지 설정 (배포시 수정 필요)
 
-## 7. 참고 자료
+## 7. 플레이그라운드
+
+프로젝트에는 `src/playground/` 폴더가 있어 컴포넌트를 테스트하고 실험할 수 있습니다.
+
+- `ButtonPL/`: 버튼 컴포넌트 플레이그라운드
+
+## 8. 참고 자료
 
 > Next.js에 대해 알아보려면, 아래 링크를 클릭하세요.
 
