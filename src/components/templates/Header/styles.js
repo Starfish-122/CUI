@@ -18,8 +18,13 @@ export const HeaderContainer = styled.header`
 `;
 
 export const Container = styled.div`
-    ${flexBetween};
+    /* ${flexBetween}; */
     /* max-width: 1024px; */
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
     margin: 0 auto;
     padding: ${toRem(16)} ${toRem(20)};
 `;

@@ -3,7 +3,7 @@ import { H3 } from '@/components/base/core';
 
 const StyledSectionTitle = styled(H3)`
     color: ${({ theme }) => theme.colors.gray800};
-    margin: ${({ theme }) => theme.spacing.xl} 0 ${({ theme }) => theme.spacing.lg} 0;
+    margin: ${({ theme }) => theme.spacing.wide} 0 ${({ theme }) => theme.spacing.lg} 0;
     font-size: ${({ theme }) => theme.fontSizes.xl};
     font-weight: 600;
     position: relative;

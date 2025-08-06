@@ -35,6 +35,12 @@ export default function Header({ $hasSidebar = false, $isSidebarOpen = false }) 
     return (
         <HeaderContainer $hasSidebar={$hasSidebar} $isSidebarOpen={$isSidebarOpen}>
             <Container>
+                <Hamburger onClick={toggleSidebar} aria-label="메뉴 토글">
+                    <HamburgerLine />
+                    <HamburgerLine />
+                    <HamburgerLine />
+                </Hamburger>
+
                 <Logo>
                     <Link href="/">
                         <h1>CUI</h1>
@@ -57,12 +63,6 @@ export default function Header({ $hasSidebar = false, $isSidebarOpen = false }) 
                         ))}
                     </NavList>
                 </Navigation>
-
-                <Hamburger onClick={toggleSidebar} aria-label="메뉴 토글">
-                    <HamburgerLine />
-                    <HamburgerLine />
-                    <HamburgerLine />
-                </Hamburger>
             </Container>
         </HeaderContainer>
     );

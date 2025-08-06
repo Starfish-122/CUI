@@ -1,26 +1,13 @@
 import styled from 'styled-components';
-
-export const PlaygroundOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: ${({ theme }) => theme.spacing.lg};
-`;
+import { toRem } from '@/styles/utils';
 
 export const PlaygroundContainer = styled.div`
     background: ${({ theme }) => theme.colors.light900};
+    border: 1px solid ${({ theme }) => theme.colors.gray200};
     border-radius: ${({ theme }) => theme.borderRadius.xl};
-    box-shadow: ${({ theme }) => theme.shadows.xxxl};
-    width: 90vw;
-    max-width: 1000px;
-    height: 80vh;
+    box-shadow: ${({ theme }) => theme.shadows.lg};
+    width: 100%;
+    margin-bottom: ${({ theme }) => theme.spacing.xl};
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -32,9 +19,10 @@ export const PlaygroundHeader = styled.div`
     align-items: center;
     padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.xl};
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray200};
+    background: ${({ theme }) => theme.colors.gray50};
 `;
 
-export const PlaygroundTitle = styled.h2`
+export const PlaygroundTitle = styled.h3`
     color: ${({ theme }) => theme.colors.gray800};
     font-size: ${({ theme }) => theme.fontSizes.xl};
     font-weight: 600;
@@ -68,32 +56,18 @@ export const ActionButton = styled.button`
     }
 `;
 
-export const CloseButton = styled.button`
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: ${({ theme }) => theme.spacing.sm};
-    border-radius: ${({ theme }) => theme.borderRadius.md};
-    color: ${({ theme }) => theme.colors.gray600};
-    transition: all ${({ theme }) => theme.transitions.fast};
-
-    &:hover {
-        background: ${({ theme }) => theme.colors.gray200};
-        color: ${({ theme }) => theme.colors.gray800};
-    }
-`;
-
 export const PlaygroundContent = styled.div`
     display: flex;
-    flex: 1;
-    overflow: hidden;
+    flex-wrap: wrap;
+    /* min-height: 400px; */
 `;
 
 export const PlaygroundSidebar = styled.div`
-    width: 30%;
+    flex: 1;
+    min-width: ${toRem(200)};
     border-right: 1px solid ${({ theme }) => theme.colors.gray200};
     background: ${({ theme }) => theme.colors.gray50};
-    overflow-y: auto;
+    /* overflow-y: auto; */
     padding: ${({ theme }) => theme.spacing.lg};
 `;
 
@@ -101,7 +75,7 @@ export const SidebarSection = styled.div`
     margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const SidebarTitle = styled.h3`
+export const SidebarTitle = styled.p`
     color: ${({ theme }) => theme.colors.gray800};
     font-size: ${({ theme }) => theme.fontSizes.lg};
     font-weight: 600;
@@ -115,9 +89,9 @@ export const SidebarTitle = styled.h3`
 
 export const PlaygroundMain = styled.div`
     flex: 1;
+    min-width: 70%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 `;
 
 export const PlaygroundPreview = styled.div`
@@ -132,7 +106,7 @@ export const PlaygroundPreview = styled.div`
     gap: ${({ theme }) => theme.spacing.lg};
 `;
 
-export const PreviewTitle = styled.h4`
+export const PreviewTitle = styled.p`
     color: ${({ theme }) => theme.colors.gray700};
     font-size: ${({ theme }) => theme.fontSizes.md};
     font-weight: 500;
@@ -149,6 +123,10 @@ export const PlaygroundCode = styled.div`
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: ${({ theme }) => theme.fontSizes.sm};
     position: relative;
+
+    pre {
+        white-space: pre-wrap;
+    }
 `;
 
 export const CodeHeader = styled.div`

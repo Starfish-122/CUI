@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { toRem } from '@/styles/utils';
+import { toRem, mediaQuery } from '@/styles/utils';
 import { flexCenter, flexBetween } from '@/styles/mixins';
 import Link from 'next/link';
 
 export const SidebarContainer = styled.aside`
     width: ${toRem(280)};
-    height: 100vh;
+    /* height: 100vh; */
     position: fixed;
     top: 0;
-    left: 0;
+    /* left: 0; */
     background-color: #fff;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
     display: flex;
@@ -19,16 +19,19 @@ export const SidebarContainer = styled.aside`
     z-index: 9;
     box-shadow: 0 ${toRem(2)} ${toRem(4)} rgba(0, 0, 0, 0.1);
 
-    /* 모바일에서만 transition 적용하여 성능 최적화 */
-    @media (max-width: 1023px) {
-        left: ${toRem(-280)};
-        transition: left 0.3s ease;
+    height: 100%;
+    left: ${toRem(-280)};
+    transition: left 0.3s ease;
 
-        ${(props) =>
-            props.$isOpen &&
-            `
+    ${(props) =>
+        props.$isOpen &&
+        `
             left: 0;
         `}
+
+    ${mediaQuery('sm')} {
+        left: 0;
+        transition: none;
     }
 
     &::-webkit-scrollbar {
@@ -102,7 +105,6 @@ export const CloseButton = styled.button`
 export const SidebarContent = styled.nav`
     padding: ${toRem(8)} 0;
     flex: 1;
-    /* 하이드레이션 중에도 즉시 표시되도록 */
     background-color: #fff;
 `;
 
@@ -183,7 +185,7 @@ export const SidebarOverlay = styled.div`
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1199;
+    z-index: 1;
     opacity: ${(props) => (props.$visible ? 1 : 0)};
     visibility: ${(props) => (props.$visible ? 'visible' : 'hidden')};
     transition:

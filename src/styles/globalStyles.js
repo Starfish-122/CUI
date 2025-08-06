@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   body {
         font-family: ${fontFamily.default};
         font-size:16px;
+        box-sizing: border-box;
     }
 `;
 

@@ -32,9 +32,32 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                     </FooterBrand>
                 </FooterSection>
 
-                {/* 빠른 링크 섹션 */}
+                <FooterSocial>
+                    <SocialLink
+                        href="https://github.com/Starfish-122/CUI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+                        <span className="material-symbols-outlined">code</span>
+                    </SocialLink>
+                    {/* <SocialLink
+                        href="https://twitter.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Twitter"
+                    >
+                        <span className="material-symbols-outlined">share</span>
+                    </SocialLink> */}
+                    <SocialLink href="mailto:sera.lee@concentrix.com" aria-label="Email">
+                        <span className="material-symbols-outlined">mail</span>
+                    </SocialLink>
+                </FooterSocial>
+
+                {/* 
+                        
                 <FooterSection>
-                    {/* <SectionTitle>빠른 링크</SectionTitle> */}
+                     <SectionTitle>빠른 링크</SectionTitle> 
                     <FooterLinks>
                         <LinkItem>
                             <Link href="/">홈</Link>
@@ -50,8 +73,7 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                         </LinkItem>
                     </FooterLinks>
                 </FooterSection>
-
-                {/* <FooterSection>
+                <FooterSection>
                     <SectionTitle>개발자 리소스</SectionTitle>
                     <FooterLinks>
                         <LinkItem>
@@ -78,34 +100,10 @@ export default function Footer({ $hasSidebar = false, $isSidebarOpen = false }) 
                 </FooterSection> */}
             </FooterContent>
 
-            <FooterDivider />
-
-            {/* 하단 섹션 */}
+            {/* <FooterDivider />
             <FooterBottom>
                 <Copyright>© {currentYear} CUI Design System. All rights reserved.</Copyright>
-
-                <FooterSocial>
-                    <SocialLink
-                        href="https://github.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub"
-                    >
-                        <span className="material-symbols-outlined">code</span>
-                    </SocialLink>
-                    <SocialLink
-                        href="https://twitter.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Twitter"
-                    >
-                        <span className="material-symbols-outlined">share</span>
-                    </SocialLink>
-                    <SocialLink href="mailto:contact@cui.com" aria-label="Email">
-                        <span className="material-symbols-outlined">mail</span>
-                    </SocialLink>
-                </FooterSocial>
-            </FooterBottom>
+            </FooterBottom> */}
         </FooterContainer>
     );
 }

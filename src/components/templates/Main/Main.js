@@ -2,13 +2,16 @@
 
 import { useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import { media, flex, flexCenter, flexColumn } from '@/styles/mixins';
+import { media, flex, flexCenter, flexColumn, inlineFlex } from '@/styles/mixins';
 import { H2, H3, H4, UIFlex, UIBox } from '@/components/base/core';
 
 // 애니메이션
 const blink = keyframes`
-  0%  { width: 0; }
-  100% { width:100%; }
+  0%  { opacity: 0; }
+  25% { opacity: 1; }
+  50% { opacity: 0; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
 `;
 
 // 스타일 컴포넌트들
@@ -86,18 +89,23 @@ const Item = styled.li`
     gap: ${({ $isCurrent }) => ($isCurrent ? '0.5em' : '0')};
     font-weight: ${({ $isCurrent }) => ($isCurrent ? 'bold' : 'normal')};
     color: ${({ $isCurrent }) => ($isCurrent ? '#0070f3' : '#444')};
+    position: relative;
 
-    &:after {
+    &:before {
         content: '';
-        display: block;
-        background-color: ${({ $isCurrent }) => ($isCurrent ? '#0070f3' : '#444')};
-        height: 6px;
-        width: 0;
+        display: ${({ $isCurrent }) => ($isCurrent ? 'inline-flex' : 'none')};
+        background-color: ${({ theme }) => theme.colors.blue400};
+        padding: 0.5rem;
+        color: ${({ $isCurrent }) => ($isCurrent ? '#fff' : '')};
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
 
         ${({ $isCurrent }) =>
             $isCurrent &&
             css`
-                animation: ${blink} 5s infinite;
+                animation: ${blink} 0.5s infinite;
             `}
     }
 `;
@@ -119,13 +127,29 @@ const initialCurriculum = [
         ],
     },
     {
-        label: 'Button 컴포넌트 제작',
+        label: '디자인 시스템 적용',
+        done: false,
+        current: false,
+        content: [
+            { label: 'Theme 시스템 구축', done: true, current: false },
+            { label: 'Typography 시스템', done: true, current: false },
+            { label: 'Color 팔레트 정의', done: true, current: false },
+        ],
+    },
+    {
+        label: '컴포넌트 제작',
         done: true,
         current: true,
         content: [
-            { label: 'Button 컴포넌트 기본 구조', done: true, current: false },
-            { label: '다양한 variant 지원', done: false, current: true },
-            { label: '스타일링 시스템 적용', done: false, current: false },
+            { label: 'Button', done: true, current: false },
+            { label: 'Input-radio', done: true, current: false },
+            { label: 'Input-checkbox', done: true, current: false },
+            { label: 'Input-checkbox-switch', done: true, current: false },
+            { label: 'Input-text', done: false, current: true },
+            { label: 'Input-select', done: false, current: false },
+            // { label: 'Input-textarea', done: false, current: false },
+            // { label: 'Input-date', done: false, current: false },
+            // { label: 'Input-time', done: false, current: false },
         ],
     },
     {
@@ -148,16 +172,7 @@ const initialCurriculum = [
             { label: '코드 예제 표시', done: false, current: false },
         ],
     },
-    {
-        label: '디자인 시스템 적용',
-        done: false,
-        current: false,
-        content: [
-            { label: 'Theme 시스템 구축', done: false, current: false },
-            { label: 'Typography 시스템', done: false, current: false },
-            { label: 'Color 팔레트 정의', done: false, current: false },
-        ],
-    },
+
     {
         label: '배포 준비',
         done: false,
@@ -222,7 +237,8 @@ const CurriculumItem = ({ item }) => (
             <CurriculumList>
                 {item.content.map((contentItem, index) => (
                     <Item key={index} $isCurrent={contentItem.current}>
-                        {contentItem.done ? '✅' : '⬜'} {contentItem.label}
+                        {contentItem.done ? '✅' : '⬜'}
+                        {contentItem.label}
                     </Item>
                 ))}
             </CurriculumList>

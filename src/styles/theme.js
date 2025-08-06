@@ -77,6 +77,7 @@ const theme = {
         lg: '1.5rem',
         xl: '2rem',
         xxl: '3rem',
+        wide: '6rem',
     },
 
     breakpoints: {

@@ -5,9 +5,13 @@ import UILayout from '@/components/templates/UILayout/UILayout';
 import SectionTitle from '@/components/base/SectionTitle';
 import { ButtonContainer } from './styles';
 import Icon from '@/components/base/icon';
+import ButtonPlayground from '@/playground/ButtonPL/ButtonPlayground';
+
 export default function ButtonPage() {
     return (
         <UILayout title="Button 컴포넌트" subtitle="기본, 크기, 옵션, 커스텀 색상 버튼">
+            <ButtonPlayground />
+
             <SectionTitle>버튼 변형</SectionTitle>
 
             <ButtonContainer>

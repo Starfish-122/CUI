@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import { useTheme } from 'styled-components';
 import Icon from '@/components/base/icon';
 import Button from '@/components/base/button';
 import CheckBox from '@/components/base/checkBox';
+import ColorPalette from './ColorPalette';
 import {
-    PlaygroundOverlay,
     PlaygroundContainer,
     PlaygroundHeader,
     PlaygroundTitle,
     HeaderActions,
     ActionButton,
-    CloseButton,
     PlaygroundContent,
     PlaygroundSidebar,
     SidebarSection,
@@ -29,7 +29,8 @@ import {
     ControlSelect,
 } from './styles';
 
-const ButtonPlayground = ({ isOpen, onClose }) => {
+const ButtonPlayground = () => {
+    const theme = useTheme();
     const [controls, setControls] = useState({
         text: '버튼',
         $variant: 'default',
@@ -40,8 +41,27 @@ const ButtonPlayground = ({ isOpen, onClose }) => {
     });
     const [copied, setCopied] = useState(false);
 
+    // theme에서 색상 정보를 가져와서 사용
+    const getThemeColors = () => {
+        return [
+            { name: 'primary', value: theme?.colors?.primary || '#1976d2' },
+            { name: 'secondary', value: theme?.colors?.secondary || '#6c757d' },
+            { name: 'success', value: theme?.colors?.success || '#22c55e' },
+            { name: 'warning', value: theme?.colors?.warning || '#f59e0b' },
+            { name: 'error', value: theme?.colors?.error || '#ef4444' },
+        ];
+    };
+
     const handleControlChange = (key, value) => {
         setControls((prev) => ({ ...prev, [key]: value }));
+    };
+
+    const handleColorSelect = (color) => {
+        if (controls.$bgColor === color) {
+            handleControlChange('$bgColor', '');
+        } else {
+            handleControlChange('$bgColor', color);
+        }
     };
 
     const generateCode = () => {
@@ -82,146 +102,115 @@ const ButtonPlayground = ({ isOpen, onClose }) => {
         });
     };
 
-    if (!isOpen) return null;
-
     return (
-        <PlaygroundOverlay onClick={onClose}>
-            <PlaygroundContainer onClick={(e) => e.stopPropagation()}>
-                <PlaygroundHeader>
-                    <PlaygroundTitle>
-                        <Icon name="joystick" size="md" />
-                        Playground
-                    </PlaygroundTitle>
-                    <HeaderActions>
-                        <ActionButton onClick={handleReset}>
-                            <Icon name="refresh" size="sm" />
-                            초기화
-                        </ActionButton>
-                        <CloseButton onClick={onClose}>
-                            <Icon name="close" size="md" />
-                        </CloseButton>
-                    </HeaderActions>
-                </PlaygroundHeader>
+        <PlaygroundContainer>
+            <PlaygroundHeader>
+                <PlaygroundTitle>Button Playground</PlaygroundTitle>
+                <HeaderActions>
+                    <ActionButton onClick={handleReset}>
+                        <Icon name="refresh" size="sm" />
+                        초기화
+                    </ActionButton>
+                </HeaderActions>
+            </PlaygroundHeader>
 
-                <PlaygroundContent>
-                    <PlaygroundSidebar>
-                        <SidebarSection>
-                            <SidebarTitle>
-                                <Icon name="tune" size="sm" />
-                                만들어보기
-                            </SidebarTitle>
+            <PlaygroundContent>
+                <PlaygroundSidebar>
+                    <SidebarSection>
+                        <ControlGroup>
+                            <ControlLabel>버튼 내용</ControlLabel>
+                            <ControlInput
+                                type="text"
+                                value={controls.text}
+                                onChange={(e) => handleControlChange('text', e.target.value)}
+                                placeholder="버튼 텍스트를 입력하세요"
+                            />
+                        </ControlGroup>
 
-                            <ControlGroup>
-                                <ControlLabel>버튼 내용</ControlLabel>
-                                <ControlInput
-                                    type="text"
-                                    value={controls.text}
-                                    onChange={(e) => handleControlChange('text', e.target.value)}
-                                    placeholder="버튼 텍스트를 입력하세요"
-                                />
-                            </ControlGroup>
-
-                            <ControlGroup>
-                                <ControlLabel>버튼 타입</ControlLabel>
-                                <ControlSelect
-                                    value={controls.$variant}
-                                    onChange={(e) =>
-                                        handleControlChange('$variant', e.target.value)
-                                    }
-                                >
-                                    <option value="default">Default</option>
-                                    <option value="filled">Filled</option>
-                                    <option value="outline">Outline</option>
-                                    <option value="text">Text</option>
-                                </ControlSelect>
-                            </ControlGroup>
-
-                            <ControlGroup>
-                                <ControlLabel>버튼 색상(선택)</ControlLabel>
-                                <ControlSelect
-                                    value={controls.$bgColor}
-                                    onChange={(e) =>
-                                        handleControlChange('$bgColor', e.target.value)
-                                    }
-                                >
-                                    <option value="">기본 색상 사용</option>
-                                    <option value="primary">Primary</option>
-                                    <option value="secondary">Secondary</option>
-                                    <option value="success">Success</option>
-                                    <option value="warning">Warning</option>
-                                    <option value="error">Error</option>
-                                </ControlSelect>
-                            </ControlGroup>
-
-                            <ControlGroup>
-                                <ControlLabel>버튼 크기</ControlLabel>
-                                <ControlSelect
-                                    value={controls.$size}
-                                    onChange={(e) => handleControlChange('$size', e.target.value)}
-                                >
-                                    <option value="sm">Small</option>
-                                    <option value="md">Medium</option>
-                                    <option value="lg">Large</option>
-                                </ControlSelect>
-                            </ControlGroup>
-
-                            <ControlGroup>
-                                <CheckBox
-                                    type="checkbox"
-                                    id="pl-disabled"
-                                    name="disabled"
-                                    checked={controls.disabled}
-                                    onChange={(e) =>
-                                        handleControlChange('disabled', e.target.checked)
-                                    }
-                                >
-                                    비활성화
-                                </CheckBox>
-                            </ControlGroup>
-
-                            <ControlGroup>
-                                <CheckBox
-                                    id="pl-fullWidth"
-                                    name="fullWidth"
-                                    checked={controls.$fullWidth}
-                                    onChange={(e) =>
-                                        handleControlChange('$fullWidth', e.target.checked)
-                                    }
-                                >
-                                    전체 너비(100%)
-                                </CheckBox>
-                            </ControlGroup>
-                        </SidebarSection>
-                    </PlaygroundSidebar>
-
-                    <PlaygroundMain>
-                        <PlaygroundPreview>
-                            <PreviewTitle>미리보기</PreviewTitle>
-
-                            <Button
-                                $variant={controls.$variant}
-                                $bgColor={controls.$bgColor || undefined}
-                                $size={controls.$size}
-                                disabled={controls.disabled}
-                                $fullWidth={controls.$fullWidth}
+                        <ControlGroup>
+                            <ControlLabel>버튼 타입</ControlLabel>
+                            <ControlSelect
+                                value={controls.$variant}
+                                onChange={(e) => handleControlChange('$variant', e.target.value)}
                             >
-                                {controls.text}
-                            </Button>
-                        </PlaygroundPreview>
-                    </PlaygroundMain>
-                </PlaygroundContent>
+                                <option value="default">Default</option>
+                                <option value="filled">Filled</option>
+                                <option value="outline">Outline</option>
+                                <option value="text">Text</option>
+                            </ControlSelect>
+                        </ControlGroup>
 
-                <PlaygroundCode>
-                    <CodeHeader>
-                        <CodeTitle>생성된 코드</CodeTitle>
-                        <CopyButton onClick={handleCopyCode}>
-                            {copied ? '복사됨!' : '복사'}
-                        </CopyButton>
-                    </CodeHeader>
-                    <pre>{generateCode()}</pre>
-                </PlaygroundCode>
-            </PlaygroundContainer>
-        </PlaygroundOverlay>
+                        <ColorPalette
+                            colors={getThemeColors()}
+                            selectedColor={controls.$bgColor}
+                            onColorSelect={handleColorSelect}
+                            label="버튼 색상"
+                        />
+
+                        <ControlGroup>
+                            <ControlLabel>버튼 크기</ControlLabel>
+                            <ControlSelect
+                                value={controls.$size}
+                                onChange={(e) => handleControlChange('$size', e.target.value)}
+                            >
+                                <option value="sm">Small</option>
+                                <option value="md">Medium</option>
+                                <option value="lg">Large</option>
+                            </ControlSelect>
+                        </ControlGroup>
+
+                        <ControlGroup>
+                            <CheckBox
+                                type="checkbox"
+                                id="pl-disabled"
+                                name="disabled"
+                                checked={controls.disabled}
+                                onChange={(e) => handleControlChange('disabled', e.target.checked)}
+                            >
+                                비활성화
+                            </CheckBox>
+                        </ControlGroup>
+
+                        <ControlGroup>
+                            <CheckBox
+                                id="pl-fullWidth"
+                                name="fullWidth"
+                                checked={controls.$fullWidth}
+                                onChange={(e) =>
+                                    handleControlChange('$fullWidth', e.target.checked)
+                                }
+                            >
+                                전체 너비(100%)
+                            </CheckBox>
+                        </ControlGroup>
+                    </SidebarSection>
+                </PlaygroundSidebar>
+
+                <PlaygroundMain>
+                    <PlaygroundPreview>
+                        <PreviewTitle>미리보기</PreviewTitle>
+
+                        <Button
+                            $variant={controls.$variant}
+                            $bgColor={controls.$bgColor || undefined}
+                            $size={controls.$size}
+                            disabled={controls.disabled}
+                            $fullWidth={controls.$fullWidth}
+                        >
+                            {controls.text}
+                        </Button>
+                    </PlaygroundPreview>
+                </PlaygroundMain>
+            </PlaygroundContent>
+
+            <PlaygroundCode>
+                <CodeHeader>
+                    <CodeTitle>생성된 코드</CodeTitle>
+                    <CopyButton onClick={handleCopyCode}>{copied ? '복사됨!' : '복사'}</CopyButton>
+                </CodeHeader>
+                <pre>{generateCode()}</pre>
+            </PlaygroundCode>
+        </PlaygroundContainer>
     );
 };
 

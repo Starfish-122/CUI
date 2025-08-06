@@ -3,19 +3,25 @@
 import styled from 'styled-components';
 import { media } from '@/styles/mixins';
 import { UIBox } from '@/components/base/core';
+import QuickNav from '@/components/templates/QuickNav/QuickNav';
 
 const StyledUIBox = styled(UIBox)`
     padding: 0;
-    margin: ${({ theme }) => theme.spacing.xl} auto;
+    margin: auto;
     min-height: 50vh;
-    /* background-color: ${({ theme }) => theme.colors.light900}; */
-    border-radius: ${({ theme }) => theme.borderRadius.lg};
+    /* background-color: ${({ theme }) => theme.colors.blue400}; */
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: 3fr auto;
 `;
 
 export default function UiLayout({ children }) {
     return (
         <>
-            <StyledUIBox>{children}</StyledUIBox>
+            <StyledUIBox>
+                {children}
+                <QuickNav />
+            </StyledUIBox>
         </>
     );
 }
