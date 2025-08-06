@@ -2,3 +2,12 @@ node_modules
 .next
 build
 public
+*.min.js
+*.min.css
+*.map
+coverage
+dist
+.git
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

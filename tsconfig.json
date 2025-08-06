@@ -27,7 +27,8 @@
             "@/lib/*": ["src/lib/*"],
             "@/routes/*": ["src/routes/*"],
             "@/styles/*": ["src/styles/*"],
-            "@/utils/*": ["src/utils/*"]
+            "@/utils/*": ["src/utils/*"],
+            "@/playground/*": ["src/playground/*"]
         }
     },
     "include": [

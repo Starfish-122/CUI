@@ -1,0 +1,23 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "prettier.requireConfig": true,
+    "prettier.useEditorConfig": false,
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/.next/**": true,
+        "**/build/**": true,
+        "**/dist/**": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/build": true,
+        "**/dist": true
+    },
+    "typescript.preferences.includePackageJsonAutoImports": "off",
+    "typescript.suggest.autoImports": false
+}
