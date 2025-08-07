@@ -1,6 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { useAppRoutes } from '@/routes/hooks';
 import { sidebarCategories } from '@/routes/config';
@@ -9,7 +8,6 @@ import {
     SidebarHeader,
     SidebarLogo,
     LogoIcon,
-    LogoText,
     VersionTag,
     CloseButton,
     SidebarContent,
@@ -30,7 +28,6 @@ export default function Sidebar() {
     const [isTablet, setIsTablet] = useState(false);
     const sidebarRef = useRef(null);
 
-    // 카테고리 확장 상태 관리
     const [expandedCategories, setExpandedCategories] = useState({
         all: true,
         inputs: true,
@@ -39,12 +36,12 @@ export default function Sidebar() {
         dataDisplay: false,
     });
 
-    // 화면 크기에 따라 사이드바 상태 설정
     useEffect(() => {
         const checkIsTablet = () => {
             const Tablet = window.innerWidth < 1024;
             setIsTablet(Tablet);
             setIsSidebarOpen(!Tablet); // PC에서는 펼침, 모바일에서는 접음
+            console.log(Tablet);
         };
 
         // 초기 로드 시 확인
@@ -58,7 +55,6 @@ export default function Sidebar() {
         };
     }, []);
 
-    // 카테고리 확장/축소 토글
     const toggleCategory = (category) => {
         setExpandedCategories((prev) => ({
             ...prev,
@@ -66,19 +62,16 @@ export default function Sidebar() {
         }));
     };
 
-    // 사이드바 토글 함수
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
 
-    // 사이드바 닫기 함수
-    const closeSidebar = () => {
+    const closeSidebar = useCallback(() => {
         if (isTablet) {
             setIsSidebarOpen(false);
         }
-    };
+    }, [isTablet]);
 
-    // 커스텀 이벤트 리스너 등록
     useEffect(() => {
         const handleToggleEvent = () => {
             toggleSidebar();
@@ -99,14 +92,12 @@ export default function Sidebar() {
             }
         };
 
-        // 현재 경로 변경 시 이벤트 처리
         handleRouteChange();
 
-        // 경로 변경 이벤트 리스너 추가
         return () => {
             // 컴포넌트 언마운트 시 정리
         };
-    }, [pathname, isTablet]);
+    }, [pathname, isTablet, closeSidebar]);
 
     // 사이드바 외부 클릭 시 닫기 (모바일에서만)
     useEffect(() => {
@@ -132,7 +123,7 @@ export default function Sidebar() {
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
-    }, [isSidebarOpen, isTablet]);
+    }, [isSidebarOpen, isTablet, closeSidebar]);
 
     return (
         <>
@@ -142,7 +133,6 @@ export default function Sidebar() {
                 <SidebarHeader>
                     <SidebarLogo href="/">
                         <LogoIcon>CUI</LogoIcon>
-                        {/* <LogoText>Concentrix UI</LogoText> */}
                     </SidebarLogo>
                     <VersionTag>v1.0</VersionTag>
                     {isTablet && (
@@ -153,12 +143,6 @@ export default function Sidebar() {
                 </SidebarHeader>
 
                 <SidebarContent>
-                    {expandedCategories.all && (
-                        <ItemLink href="/all" $isActive={pathname === '/all'}>
-                            All components
-                        </ItemLink>
-                    )}
-
                     <CategoryList>
                         {sidebarCategories.map((category) => (
                             <CategoryItem key={category.id}>

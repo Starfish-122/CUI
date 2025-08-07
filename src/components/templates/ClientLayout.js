@@ -33,7 +33,8 @@ const MainContent = styled.main`
     flex: 1;
     padding: ${toRem(20)};
     transition: margin-left 0.3s ease;
-
+    margin: 0 auto;
+    min-height: 70vh;
     ${(props) =>
         props.$hasSidebar &&
         props.$isSidebarOpen &&
@@ -42,9 +43,6 @@ const MainContent = styled.main`
             margin-left: 17.5rem;
         }
         `}
-
-    margin: 0 auto;
-    min-height: 70vh;
 `;
 
 export default function ClientLayout({ children }) {

@@ -89,7 +89,7 @@ export const StatusBadge = styled.span`
     display: inline-block;
     padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
     background: ${({ $status, theme }) =>
-        $status === 'ready'
+        $status === 'completed'
             ? theme.colors.green600
             : $status === 'in-progress'
               ? theme.colors.blue400

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import {
     QuickNavContainer,
     NavTitle,
     NavList,
     NavLink,
-    NavLinkH1,
     NavLinkH2,
     NavLinkH3,
     NavLinkH4,
@@ -13,64 +13,86 @@ import {
 export default function QuickNav() {
     const [headings, setHeadings] = useState([]);
     const [activeHeading, setActiveHeading] = useState('');
+    const pathname = usePathname();
 
     useEffect(() => {
-        // UILayout(ui/**/page.js)에서 헤딩 태그 찾기
-        const findUILayoutContent = () => {
+        // 페이지 전환 시 상태 초기화
+        setHeadings([]);
+        setActiveHeading('');
+
+        // 페이지 로드 후 헤딩 찾기
+        const findHeadings = () => {
             const uiLayoutContent = document.querySelector('[data-ui-layout-content]');
-            if (uiLayoutContent) {
-                return uiLayoutContent;
+
+            if (!uiLayoutContent) {
+                console.log('data-ui-layout-content 없다고???');
+                return [];
             }
 
-            const styledUIBox = document.querySelector('[class*="StyledUIBox"]');
-            if (styledUIBox) {
-                const firstChild = styledUIBox.children[0];
-                if (firstChild) {
-                    return firstChild;
-                }
-            }
+            const headings = uiLayoutContent.querySelectorAll('h2, h3, h4, h5, h6');
 
-            // body 전체에서 검색 (fallback)
-            return document.body;
+            // console.log('찾은 해딩 태그 :', headings.length);
+
+            // 각 헤딩의 정보를 로그로 출력
+            // headings.forEach((heading, index) => {
+            //     console.log(`Heading ${index + 1}:`, {
+            //         tagName: heading.tagName,
+            //         text: heading.textContent.trim(),
+            //         id: heading.id,
+            //         className: heading.className,
+            //     });
+            // });
+
+            return Array.from(headings);
         };
 
-        const contentContainer = findUILayoutContent();
-        const headingElements = contentContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        // 페이지 로드 후 지연을 두고 헤딩을 찾기
+        const timer = setTimeout(() => {
+            const headingElements = findHeadings();
 
-        const headingData = Array.from(headingElements).map((element, index) => {
-            const id = element.id || `heading-${index}`;
-            if (!element.id) {
-                element.id = id;
-            }
-            return {
-                id,
-                text: element.textContent.trim(),
-                level: parseInt(element.tagName.charAt(1)),
-                element,
-            };
-        });
+            // 현재 페이지 이름 추출 (예: /ui/button -> button)
+            const pageName = pathname.split('/').pop() || 'page';
 
-        setHeadings(headingData);
+            const headingData = headingElements.map((element, index) => {
+                const id = element.id || `heading-${pageName}-${index}`;
+                if (!element.id) {
+                    element.id = id;
+                }
+                console.log('id :', id);
+                console.log('element :', element);
+                return {
+                    id,
+                    text: element.textContent.trim(),
+                    level: parseInt(element.tagName.charAt(1)),
+                    element,
+                };
+            });
 
-        // 현재 보이는 헤딩 감지
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveHeading(entry.target.id);
-                    }
-                });
-            },
-            {
-                rootMargin: '-20% 0px -70% 0px',
-                threshold: 0,
-            }
-        );
+            // console.log('헤딩 데이터 :', headingData);
+            setHeadings(headingData);
 
-        headingElements.forEach((element) => observer.observe(element));
+            // 보이는 헤딩 감지
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            setActiveHeading(entry.target.id);
+                        }
+                    });
+                },
+                {
+                    rootMargin: '-10% 0px -80% 0px',
+                    threshold: 0,
+                }
+            );
 
-        return () => observer.disconnect();
-    }, []);
+            headingElements.forEach((element) => observer.observe(element));
+
+            return () => observer.disconnect();
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [pathname]); // pathname이 변경될 때마다 실행
 
     const scrollToHeading = (id) => {
         const element = document.getElementById(id);
@@ -89,12 +111,6 @@ export default function QuickNav() {
         };
 
         switch (heading.level) {
-            case 1:
-                return (
-                    <NavLinkH1 key={heading.id} {...props}>
-                        {heading.text}
-                    </NavLinkH1>
-                );
             case 2:
                 return (
                     <NavLinkH2 key={heading.id} {...props}>

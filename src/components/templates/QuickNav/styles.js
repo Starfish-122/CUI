@@ -10,10 +10,10 @@ export const QuickNavContainer = styled.nav`
     max-height: 30vh;
     overflow-y: auto;
     position: sticky;
-    top: 0%;
+    top: 6%;
     font-size: ${({ theme }) => theme.fontSizes.xs};
     border-radius: ${({ theme }) => theme.borderRadius.md};
-    box-shadow: ${({ theme }) => theme.shadows.sm};
+    box-sizing: border-box;
 
     ${media.md`
         display: flex;
@@ -69,25 +69,16 @@ export const NavLink = styled.a`
     `}
 `;
 
-export const NavLinkH1 = styled(NavLink)`
-    font-weight: 600;
-    font-size: ${({ theme }) => theme.fontSizes.sm};
-    padding-left: ${toRem(8)};
-`;
-
 export const NavLinkH2 = styled(NavLink)`
     font-weight: 500;
-    padding-left: ${toRem(16)};
 `;
 
 export const NavLinkH3 = styled(NavLink)`
-    font-weight: 400;
-    padding-left: ${toRem(24)};
+    padding-left: ${toRem(16)};
     font-size: ${({ theme }) => theme.fontSizes.xs};
 `;
 
 export const NavLinkH4 = styled(NavLink)`
-    font-weight: 400;
-    padding-left: ${toRem(32)};
+    padding-left: ${toRem(24)};
     font-size: ${({ theme }) => theme.fontSizes.xs};
 `;

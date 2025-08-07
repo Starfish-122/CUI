@@ -17,7 +17,7 @@ import {
 
 /**
  * 헤더 컴포넌트
- * routes/hooks.js에서 제공하는 훅을 사용하여 네비게이션 메뉴를 표시합니다.
+ * routes/hooks.js 훅으로 네비게이션 메뉴 표시
  */
 export default function Header({ $hasSidebar = false, $isSidebarOpen = false }) {
     const currentPath = usePathname();

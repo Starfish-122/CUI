@@ -1,14 +1,19 @@
 import styled from 'styled-components';
-import { toRem, mediaQuery } from '@/styles/utils';
-import { flexCenter, flexBetween } from '@/styles/mixins';
+import { toRem } from '@/styles/utils';
+import { flexCenter, flexBetween, media } from '@/styles/mixins';
 import Link from 'next/link';
 
 export const SidebarContainer = styled.aside`
-    width: ${toRem(280)};
-    /* height: 100vh; */
+    width: ${toRem(240)};
+    height: 100%;
     position: fixed;
-    top: 0;
-    /* left: 0; */
+    /* top: 0; */
+    left: 0;
+    ${(props) =>
+        !props.$isOpen &&
+        `
+            left: ${toRem(-280)};
+        `}
     background-color: #fff;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
     display: flex;
@@ -16,12 +21,9 @@ export const SidebarContainer = styled.aside`
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-    z-index: 9;
     box-shadow: 0 ${toRem(2)} ${toRem(4)} rgba(0, 0, 0, 0.1);
-
-    height: 100%;
-    left: ${toRem(-280)};
     transition: left 0.3s ease;
+    z-index: 9;
 
     ${(props) =>
         props.$isOpen &&
@@ -29,10 +31,10 @@ export const SidebarContainer = styled.aside`
             left: 0;
         `}
 
-    ${mediaQuery('sm')} {
+    ${media.lg`
         left: 0;
         transition: none;
-    }
+    `}
 
     &::-webkit-scrollbar {
         width: ${toRem(4)};
@@ -52,8 +54,6 @@ export const SidebarHeader = styled.div`
     padding: ${toRem(16)};
     height: 3em;
     ${flexBetween};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
-    /* 하이드레이션 중에도 즉시 표시되도록 */
     background-color: #fff;
 `;
 
@@ -157,24 +157,24 @@ export const Item = styled.li`
 
 export const ItemLink = styled(Link)`
     display: block;
-    padding: ${toRem(8)} ${toRem(16)} ${toRem(8)} ${toRem(32)};
+    margin: 0 ${toRem(16)} 0 ${toRem(32)};
+    padding: ${toRem(8)} 0;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.gray600};
     font-size: ${toRem(14)};
     transition: all 0.2s ease;
 
     &:hover {
-        background-color: ${({ theme }) => theme.colors.gray100};
+        background-color: ${({ theme }) => theme.colors.blue100};
         color: ${({ theme }) => theme.colors.gray800};
     }
 
     ${(props) =>
         props.$isActive &&
         `
-        background-color: ${props.theme.colors.blue50};
-        color: ${props.theme.colors.blue600};
+        color: ${props.theme.colors.blue400};
         font-weight: 500;
-        border-right: 2px solid ${props.theme.colors.blue600};
+        border-right: 4px solid ${props.theme.colors.blue400};
     `}
 `;
 

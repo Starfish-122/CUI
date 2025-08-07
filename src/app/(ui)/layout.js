@@ -1,7 +1,6 @@
 'use client';
 
 import styled from 'styled-components';
-import { media } from '@/styles/mixins';
 import { UIBox } from '@/components/base/core';
 import QuickNav from '@/components/templates/QuickNav/QuickNav';
 

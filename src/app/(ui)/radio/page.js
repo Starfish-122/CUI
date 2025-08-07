@@ -5,6 +5,7 @@ import Radio from '@/components/base/radio';
 import UILayout from '@/components/templates/UILayout/UILayout';
 import SectionTitle from '@/components/base/SectionTitle/SectionTitle';
 import { SectionHeader, RadioGroup, RadioRow, ResultBox } from './styles';
+import RadioPlayground from '@/playground/RadioPL/RadioPlayground';
 
 // 라디오 데이터 정의
 const RADIO_DATA = {
@@ -104,6 +105,7 @@ export default function RadioPage() {
 
     return (
         <UILayout title="Radio 컴포넌트 가이드" subtitle="input type=radio">
+            <RadioPlayground />
             <SectionTitle>기본 라디오 버튼</SectionTitle>
             <RadioGroupComponent
                 data={RADIO_DATA.styles}

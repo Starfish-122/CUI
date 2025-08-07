@@ -2,22 +2,22 @@ export const components = [
     {
         name: 'Button',
         icon: 'radio_button_checked',
-        description: '다양한 스타일과 변형을 지원하는 버튼 컴포넌트',
-        status: 'ready',
+        description: 'playground 포함',
+        status: 'completed',
         path: '/button',
     },
     {
         name: 'Radio',
         icon: 'radio_button_checked',
         description: 'Radio 컴포넌트',
-        status: 'ready',
+        status: 'in-progress',
         path: '/radio',
     },
     {
         name: 'Checkbox',
         icon: 'check_box',
         description: 'Checkbox 컴포넌트',
-        status: 'ready',
+        status: 'in-progress',
         path: '/checkbox',
     },
     {
@@ -59,7 +59,7 @@ export const components = [
 
 export const getStatusText = (status) => {
     switch (status) {
-        case 'ready':
+        case 'completed':
             return '완료';
         case 'in-progress':
             return '진행중';

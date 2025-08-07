@@ -1,30 +1,31 @@
 import styled from 'styled-components';
 import { toRem } from '@/styles/utils';
-import { media, flexCenter, flexBetween } from '@/styles/mixins';
+import { media } from '@/styles/mixins';
 import Link from 'next/link';
 
 export const HeaderContainer = styled.header`
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
     transition: margin-left 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: ${({ theme }) => theme.colors.light900};
 
-    ${(props) =>
+    /* ${(props) =>
         props.$hasSidebar &&
         props.$isSidebarOpen &&
         `
         @media (min-width: 1024px) {
             padding-left: 17.5rem;
         }
-        `}
+        `} */
 `;
 
 export const Container = styled.div`
-    /* ${flexBetween}; */
-    /* max-width: 1024px; */
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: ${({ theme }) => theme.spacing.md};
     margin: 0 auto;
     padding: ${toRem(16)} ${toRem(20)};
 `;
@@ -33,6 +34,7 @@ export const Logo = styled.div`
     a {
         text-decoration: none;
         color: ${({ theme }) => theme.colors.gray900};
+        transition: ${({ theme }) => theme.transitions.short};
 
         &:hover {
             color: ${({ theme }) => theme.colors.blue600};
@@ -40,16 +42,19 @@ export const Logo = styled.div`
     }
 
     h1 {
-        font-size: ${toRem(20)};
+        font-size: ${({ theme }) => theme.fontSizes.xl};
         font-weight: 600;
     }
 `;
 
-export const Navigation = styled.nav``;
+export const Navigation = styled.nav`
+    flex: 1;
+`;
 
 export const NavList = styled.ul`
     display: flex;
-    gap: ${toRem(24)};
+    justify-content: flex-end;
+    gap: ${({ theme }) => theme.spacing.xxl};
     list-style: none;
     padding: 0;
     margin: 0;
@@ -62,8 +67,8 @@ export const NavItem = styled.li`
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ $isActive, theme }) => ($isActive ? theme.colors.blue600 : theme.colors.gray700)};
-    transition: color 0.2s;
-    font-size: ${toRem(14)};
+    transition: ${({ theme }) => theme.transitions.short};
+    font-size: ${({ theme }) => theme.fontSizes.sm};
     font-weight: ${({ $isActive }) => ($isActive ? '600' : '400')};
     position: relative;
     padding: ${toRem(8)} ${toRem(4)};
@@ -88,7 +93,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Hamburger = styled.button`
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: ${toRem(24)};
@@ -98,14 +103,14 @@ export const Hamburger = styled.button`
     cursor: pointer;
     padding: 0;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-        display: flex;
-    }
+    ${media.lg`
+        display: none;
+    `}
 `;
 
 export const HamburgerLine = styled.span`
     width: 100%;
     height: ${toRem(2)};
     background-color: ${({ theme }) => theme.colors.gray800};
-    transition: all 0.3s ease;
+    transition: ${({ theme }) => theme.transitions.medium};
 `;

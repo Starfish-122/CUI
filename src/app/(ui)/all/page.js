@@ -15,19 +15,8 @@ import {
 } from './styles';
 
 export default function All() {
-    const [isButtonPlaygroundOpen, setIsButtonPlaygroundOpen] = useState(false);
-
     const handleCardClick = (component) => {
-        if (component.name === 'Button') {
-            setIsButtonPlaygroundOpen(true);
-        } else {
-            // 다른 컴포넌트는 기존 방식대로 페이지 이동
-            window.location.href = component.path;
-        }
-    };
-
-    const handleButtonPlaygroundClose = () => {
-        setIsButtonPlaygroundOpen(false);
+        window.location.href = component.path;
     };
 
     return (
@@ -48,11 +37,6 @@ export default function All() {
                     </ComponentCard>
                 ))}
             </ComponentsGrid>
-
-            <ButtonPlayground
-                isOpen={isButtonPlaygroundOpen}
-                onClose={handleButtonPlaygroundClose}
-            />
         </UILayout>
     );
 }

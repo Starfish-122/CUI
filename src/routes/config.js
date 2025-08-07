@@ -27,49 +27,33 @@ export const routePaths = appRoutes.map((route) => route.path);
 // 사이드바에 표시할 카테고리 및 컴포넌트 정의
 export const sidebarCategories = [
     {
-        id: 'Progress',
-        name: 'Progress',
+        id: 'completed',
+        name: 'Completed',
+        items: [{ name: 'Button', path: '/button' }],
+    },
+    {
+        id: 'in-progress',
+        name: 'In Progress',
         items: [
-            { name: 'Button', path: '/button' },
             { name: 'Radio', path: '/radio' },
             { name: 'CheckBox', path: '/checkbox' },
             { name: 'Switch', path: '/switch' },
             { name: 'Search Bar', path: '/search-bar' },
-            // { name: 'Select Box', path: '/select-box' },
-            // { name: 'Text Field', path: '/text-field' },
-            // { name: 'Range Slider', path: '/range-slider' },
-            // { name: 'Checkbox', path: '/checkbox' },
         ],
     },
     {
-        id: 'navigation',
-        name: 'Navigation',
+        id: 'planned',
+        name: 'Planned',
         items: [
-            { name: 'Breadcrumb', path: '/breadcrumb' },
+            { name: 'Modal', path: '/modal' },
+            { name: 'Tooltip', path: '/tooltip' },
+            { name: 'Select', path: '/select' },
+            { name: 'Text Field', path: '/text-field' },
+            { name: 'Range Slider', path: '/range-slider' },
             { name: 'Pagination', path: '/pagination' },
             { name: 'Tabs', path: '/tabs' },
             { name: 'Accordion', path: '/accordion' },
             { name: 'Dropdown', path: '/dropdown' },
-        ],
-    },
-    {
-        id: 'layout',
-        name: 'Layout',
-        items: [
-            { name: 'Grid Container', path: '/grid-container' },
-            { name: 'Collapse Section', path: '/collapse-section' },
-        ],
-    },
-    {
-        id: 'dataDisplay',
-        name: 'Data Display',
-        items: [
-            { name: 'Table', path: '/table' },
-            { name: 'Card', path: '/card' },
-            { name: 'List', path: '/list' },
-            { name: 'Badge', path: '/badge' },
-            { name: 'Alert', path: '/alert' },
-            { name: 'Tooltip', path: '/tooltip' },
         ],
     },
 ];

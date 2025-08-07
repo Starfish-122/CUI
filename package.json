@@ -17,6 +17,7 @@
         "next": "15.3.4",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "react-syntax-highlighter": "^15.6.1",
         "sass": "^1.89.2",
         "styled-components": "^6.1.19",
         "styled-normalize": "^8.1.1",
