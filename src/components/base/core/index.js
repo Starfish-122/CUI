@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading, Section, Box, FlexContainer } from './UIStyles';
+import { Heading, Section, Box, FlexContainer, Table } from './UIStyles';
 
 // 헤딩 컴포넌트들 내보내기
 export const H2 = Heading.H2;
@@ -20,6 +20,7 @@ export const UIBox = Box;
 
 // 플렉스 컨테이너 내보내기
 export const UIFlex = FlexContainer;
+export const UITable = Table;
 
 // 모든 컴포넌트를 기본 내보내기
 const CoreComponents = {
@@ -30,6 +31,7 @@ const CoreComponents = {
     UISection,
     UIBox,
     UIFlex,
+    UITable,
 };
 
 export default CoreComponents;

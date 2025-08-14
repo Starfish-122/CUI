@@ -1,14 +1,10 @@
-/**
- * 애플리케이션의 라우트 설정
- * 새 페이지를 추가할 때는 이 파일의 appRoutes 배열에만 항목을 추가하면 됩니다.
- */
-
+// 애플리케이션의 라우트 설정
 // 앱의 모든 라우트 정의 (홈 페이지 제외)
 export const appRoutes = [
     // { path: 'about', label: 'About' },
     { path: 'guide', label: 'Guide' },
-    { path: 'all', label: 'Components' },
-    // 새 라우트를 여기에 추가하세요
+    { path: 'button', label: 'Components' },
+    // 새 라우트 추가
     // { path: 'newRoute', label: 'New Route' },
 ];
 

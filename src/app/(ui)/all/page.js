@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Icon from '@/components/base/icon';
 import UILayout from '@/components/templates/UILayout/UILayout';
-import ButtonPlayground from 'src/playground/ButtonPL/ButtonPlayground';
 import { components, getStatusText } from './data';
 import {
     ComponentsGrid,

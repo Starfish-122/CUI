@@ -1,59 +1,21 @@
 'use client';
 import { useState } from 'react';
-import styled from 'styled-components';
 import SearchBar from '@/components/common/searchBar';
 import UILayout from '@/components/templates/UILayout/UILayout';
+import SectionTitle from '@/components/base/SectionTitle';
 import Icon from '@/components/base/icon';
-
-const SearchContainer = styled.div`
-    padding: ${({ theme }) => theme.spacing.xl};
-    background: ${({ theme }) => theme.colors.light900};
-    border-radius: ${({ theme }) => theme.borderRadius.lg};
-    box-shadow: ${({ theme }) => theme.shadows.md};
-    border: 1px solid ${({ theme }) => theme.colors.gray200};
-    transition: all ${({ theme }) => theme.transitions.medium};
-
-    &:hover {
-        box-shadow: ${({ theme }) => theme.shadows.lg};
-        transform: translateY(-2px);
-    }
-`;
-
-const SearchResult = styled.div`
-    margin-top: ${({ theme }) => theme.spacing.lg};
-    padding: ${({ theme }) => theme.spacing.md};
-    background: linear-gradient(
-        135deg,
-        ${({ theme }) => theme.colors.gray100} 0%,
-        ${({ theme }) => theme.colors.light900} 100%
-    );
-    border-radius: ${({ theme }) => theme.borderRadius.md};
-    border: 2px solid ${({ theme }) => theme.colors.gray200};
-    color: ${({ theme }) => theme.colors.gray700};
-    font-weight: 500;
-    text-align: center;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const DemoSection = styled.div`
-    margin-top: ${({ theme }) => theme.spacing.xxl};
-`;
-
-const SectionTitle = styled.h3`
-    color: ${({ theme }) => theme.colors.gray800};
-    margin-bottom: ${({ theme }) => theme.spacing.lg};
-    font-size: ${({ theme }) => theme.fontSizes.xl};
-    font-weight: 600;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${({ theme }) => theme.spacing.sm};
-`;
+import CodeBlock from '@/components/base/CodeBlock';
+import {
+    basicCode,
+    controlledCode,
+    withIconCode,
+    disabledCode,
+    customStyleCode,
+    eventHandlingCode,
+    searchBarProps,
+} from './data';
+import PropsTable from '@/components/base/PropsTable';
+import { SearchContainer, SearchResult, DemoSection } from './styles';
 
 export default function SearchBarPage() {
     const [value, setValue] = useState('');
@@ -71,6 +33,10 @@ export default function SearchBarPage() {
             subtitle="실시간 검색 기능을 확인해보세요"
             icon={<Icon name="search" size="lg" filled color="#ffffff" />}
         >
+            <SectionTitle>사용법</SectionTitle>
+            <CodeBlock code={basicCode} language="jsx" title="Basic Usage" />
+
+            <SectionTitle>기본 검색바</SectionTitle>
             <SearchContainer>
                 <SearchBar
                     value={value}
@@ -87,11 +53,23 @@ export default function SearchBarPage() {
                 )}
             </SearchContainer>
 
+            <SectionTitle>제어된 검색바</SectionTitle>
+            <CodeBlock code={controlledCode} language="jsx" title="Controlled Component" />
+
+            <SectionTitle>아이콘과 함께 사용</SectionTitle>
+            <CodeBlock code={withIconCode} language="jsx" title="With Icon" />
+
+            <SectionTitle>비활성화 상태</SectionTitle>
+            <CodeBlock code={disabledCode} language="jsx" title="Disabled State" />
+
+            <SectionTitle>커스텀 스타일</SectionTitle>
+            <CodeBlock code={customStyleCode} language="jsx" title="Custom Styling" />
+
+            <SectionTitle>이벤트 처리</SectionTitle>
+            <CodeBlock code={eventHandlingCode} language="jsx" title="Event Handling" />
+
             <DemoSection>
-                <SectionTitle>
-                    <Icon name="history" size="md" />
-                    최근 검색어
-                </SectionTitle>
+                <SectionTitle>최근 검색어</SectionTitle>
                 <SearchContainer>
                     {searchHistory.length > 0 ? (
                         searchHistory.map((item, index) => (
@@ -108,6 +86,9 @@ export default function SearchBarPage() {
                     )}
                 </SearchContainer>
             </DemoSection>
+
+            <SectionTitle>Props</SectionTitle>
+            <PropsTable props={searchBarProps} />
         </UILayout>
     );
 }

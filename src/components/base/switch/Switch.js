@@ -98,6 +98,7 @@ const Switch = forwardRef(
                 role="switch"
                 aria-checked={isChecked}
                 aria-disabled={disabled}
+                data-disabled={disabled}
                 {...props}
             >
                 {label && <span className="switch-label">{label}</span>}

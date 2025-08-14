@@ -4,7 +4,18 @@ import { useState } from 'react';
 import CheckBox from '@/components/base/checkBox';
 import UILayout from '@/components/templates/UILayout/UILayout';
 import SectionTitle from '@/components/base/SectionTitle/SectionTitle';
+import CodeBlock from '@/components/base/CodeBlock';
 import { SectionHeader, StyledUIBox, CheckboxGrid, ResultBox } from './styles';
+import {
+    importCode,
+    variantCode,
+    sizeCode,
+    colorCode,
+    eventCode,
+    groupCode,
+    checkboxProps,
+} from './data';
+import PropsTable from '@/components/base/PropsTable';
 
 // 체크박스 데이터 정의
 const CHECKBOX_DATA = {
@@ -120,8 +131,11 @@ export default function CheckboxPage() {
     };
 
     return (
-        <UILayout title="Checkbox 컴포넌트 가이드" subtitle="input type=checkbox">
-            <SectionTitle>기본 체크박스</SectionTitle>
+        <UILayout title="Checkbox 컴포넌트" subtitle="다중 선택 입력 요소">
+            <SectionTitle>사용법</SectionTitle>
+            <CodeBlock code={importCode} language="javascript" title="Import" />
+
+            <SectionTitle>체크박스 변형</SectionTitle>
             <StyledUIBox $variant="outline">
                 <CheckboxGroup
                     checkboxList={CHECKBOX_DATA.styles}
@@ -129,8 +143,9 @@ export default function CheckboxPage() {
                     handleCheckboxChange={handleCheckboxChange}
                 />
             </StyledUIBox>
+            <CodeBlock code={variantCode} language="jsx" title="Variants" />
 
-            <SectionTitle>크기</SectionTitle>
+            <SectionTitle>체크박스 크기</SectionTitle>
             <StyledUIBox $variant="outline">
                 <CheckboxGroup
                     checkboxList={CHECKBOX_DATA.sizes}
@@ -138,6 +153,7 @@ export default function CheckboxPage() {
                     handleCheckboxChange={handleCheckboxChange}
                 />
             </StyledUIBox>
+            <CodeBlock code={sizeCode} language="jsx" title="Sizes" />
 
             <SectionTitle>커스텀 색상</SectionTitle>
             <ResultBox style={{ marginBottom: '1rem' }}>
@@ -145,11 +161,21 @@ export default function CheckboxPage() {
             </ResultBox>
             <StyledUIBox $variant="outline">
                 <CheckboxGroup
-                    checkboxList={CHECKBOX_DATA.customColors}
+                    checkboxList={CHECKBOX_DATA.customColors.slice(0, 3)}
                     checkboxStates={checkboxStates}
                     handleCheckboxChange={handleCheckboxChange}
                 />
             </StyledUIBox>
+            <CodeBlock code={colorCode} language="jsx" title="Colors" />
+
+            <SectionTitle>이벤트 처리</SectionTitle>
+            <CodeBlock code={eventCode} language="jsx" title="Event Handling" />
+
+            <SectionTitle>그룹 사용법</SectionTitle>
+            <CodeBlock code={groupCode} language="jsx" title="Group Usage" />
+
+            <SectionTitle>Props</SectionTitle>
+            <PropsTable props={checkboxProps} />
         </UILayout>
     );
 }

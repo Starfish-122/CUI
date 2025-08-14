@@ -5,7 +5,11 @@ import Switch from '@/components/base/switch/Switch';
 import UILayout from '@/components/templates/UILayout/UILayout';
 import Icon from '@/components/base/icon';
 import SectionTitle from '@/components/base/SectionTitle';
+import CodeBlock from '@/components/base/CodeBlock';
+import SwitchPlayground from './Playground';
 import { SectionHeader, SwitchContainer, SwitchRow, SwitchLabel, SwitchValue } from './styles';
+import { importCode, variantCode, sizeCode, optionCode, eventCode, switchProps } from './data';
+import PropsTable from '@/components/base/PropsTable';
 
 // 스위치 데이터 정의
 const SWITCH_DATA = {
@@ -40,7 +44,6 @@ const SwitchGroup = ({ switches, switchStates, handleSwitchChange }) => (
     <SwitchContainer>
         {switches.map(({ name, label, variant, size, disabled, bgColor, thumbColor }) => (
             <SwitchRow key={name}>
-                {/* <SwitchLabel>{label}:</SwitchLabel> */}
                 <Switch
                     $variant={variant}
                     $size={size}
@@ -51,7 +54,6 @@ const SwitchGroup = ({ switches, switchStates, handleSwitchChange }) => (
                     disabled={disabled}
                     label={label}
                 />
-                {/* <SwitchValue>{switchStates[name] ? 'ON' : 'OFF'}</SwitchValue> */}
                 <SwitchValue>
                     {switchStates[name] ? (
                         <Icon $color="red" name="Lightbulb" />
@@ -90,34 +92,43 @@ export default function SwitchPage() {
     };
 
     return (
-        <UILayout title="Switch 컴포넌트 가이드" subtitle="toggle, input type=checkbox">
+        <UILayout title="Switch 컴포넌트" subtitle="토글 스위치, 체크박스 대체">
+            <SwitchPlayground />
+
+            <SectionTitle>사용법</SectionTitle>
+            <CodeBlock code={importCode} language="javascript" title="Import" />
+
+            <SectionTitle>스위치 변형</SectionTitle>
             <SwitchGroup
                 switches={SWITCH_DATA.variants.filter(
-                    (item) => item.name === 'default' || item.name === 'disabled'
+                    (item) => item.name === 'default' || item.name !== 'disabled'
                 )}
                 switchStates={switchStates}
                 handleSwitchChange={handleSwitchChange}
             />
+            <CodeBlock code={variantCode} language="jsx" title="Variants" />
 
-            <SwitchGroup
-                switches={SWITCH_DATA.variants.filter(
-                    (item) => item.name !== 'default' && item.name !== 'disabled'
-                )}
-                switchStates={switchStates}
-                handleSwitchChange={handleSwitchChange}
-            />
-
+            <SectionTitle>스위치 크기</SectionTitle>
             <SwitchGroup
                 switches={SWITCH_DATA.sizes}
                 switchStates={switchStates}
                 handleSwitchChange={handleSwitchChange}
             />
+            <CodeBlock code={sizeCode} language="jsx" title="Sizes" />
 
+            <SectionTitle>스위치 옵션</SectionTitle>
             <SwitchGroup
-                switches={SWITCH_DATA.special.filter((item) => item.name === 'custom')}
+                switches={SWITCH_DATA.special}
                 switchStates={switchStates}
                 handleSwitchChange={handleSwitchChange}
             />
+            <CodeBlock code={optionCode} language="jsx" title="Options" />
+
+            <SectionTitle>이벤트 처리</SectionTitle>
+            <CodeBlock code={eventCode} language="jsx" title="Event Handling" />
+
+            <SectionTitle>Props</SectionTitle>
+            <PropsTable props={switchProps} />
         </UILayout>
     );
 }

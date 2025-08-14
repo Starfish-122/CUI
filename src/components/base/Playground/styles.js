@@ -61,7 +61,6 @@ export const ActionButton = styled.button`
 export const PlaygroundContent = styled.div`
     display: flex;
     flex-wrap: wrap;
-    /* min-height: 400px; */
 `;
 
 export const PlaygroundSidebar = styled.div`
@@ -69,7 +68,6 @@ export const PlaygroundSidebar = styled.div`
     min-width: ${toRem(200)};
     border-right: 1px solid ${({ theme }) => theme.colors.gray200};
     background: ${({ theme }) => theme.colors.gray50};
-    /* overflow-y: auto; */
     padding: ${({ theme }) => theme.spacing.lg};
 `;
 
@@ -92,7 +90,6 @@ export const PlaygroundPreview = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border-bottom: 1px solid ${({ theme }) => theme.colors.gray200}; */
     gap: ${({ theme }) => theme.spacing.lg};
 `;
 
@@ -107,11 +104,6 @@ export const PreviewTitle = styled.p`
 export const PlaygroundCode = styled(CodeBlockContainer)`
     margin: ${({ theme }) => theme.spacing.lg};
     box-shadow: none;
-
-    /* height: 180px;    
-    overflow-y: auto;
-    position: relative;
-    */
 `;
 
 export const CodeTitle = styled.span`
@@ -122,13 +114,6 @@ export const CodeTitle = styled.span`
 export const ControlGroup = styled.div`
     margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
-
-// export const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-//     margin: 0;
-//     border-radius: 0;
-//     font-size: ${({ theme }) => theme.fontSizes.sm};
-//     line-height: 1.5;
-// `;
 
 export const ControlLabel = styled.label`
     display: block;
@@ -219,12 +204,6 @@ export const ColorPickerContainer = styled.div`
     display: inline-block;
 `;
 
-/**
- * @typedef {Object} ColorPickerButtonProps
- * @property {string} [$color] - 버튼 배경색
- */
-
-/** @type {import('styled-components').StyledComponent<'button', any, { $color?: string }>} */
 export const ColorPickerButton = styled.button`
     width: ${toRem(40)};
     height: ${toRem(40)};

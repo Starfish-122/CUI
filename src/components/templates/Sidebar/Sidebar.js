@@ -29,11 +29,14 @@ export default function Sidebar() {
     const sidebarRef = useRef(null);
 
     const [expandedCategories, setExpandedCategories] = useState({
-        all: true,
-        inputs: true,
-        navigation: false,
-        layout: false,
-        dataDisplay: false,
+        // all: true,
+        // inputs: true,
+        // navigation: false,
+        // layout: false,
+        // dataDisplay: false,
+        completed: true,
+        'in-progress': false,
+        planned: false,
     });
 
     useEffect(() => {
@@ -131,9 +134,7 @@ export default function Sidebar() {
 
             <SidebarContainer ref={sidebarRef} $isOpen={isSidebarOpen}>
                 <SidebarHeader>
-                    <SidebarLogo href="/">
-                        <LogoIcon>CUI</LogoIcon>
-                    </SidebarLogo>
+                    {/* <SidebarLogo href="/"><LogoIcon>CUI</LogoIcon></SidebarLogo> */}
                     <VersionTag>v1.0</VersionTag>
                     {isTablet && (
                         <CloseButton onClick={closeSidebar} aria-label="사이드바 닫기">

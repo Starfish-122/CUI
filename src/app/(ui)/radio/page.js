@@ -4,8 +4,19 @@ import { useState } from 'react';
 import Radio from '@/components/base/radio';
 import UILayout from '@/components/templates/UILayout/UILayout';
 import SectionTitle from '@/components/base/SectionTitle/SectionTitle';
+import CodeBlock from '@/components/base/CodeBlock';
 import { SectionHeader, RadioGroup, RadioRow, ResultBox } from './styles';
-import RadioPlayground from '@/playground/RadioPL/RadioPlayground';
+
+import {
+    importCode,
+    variantCode,
+    sizeCode,
+    colorCode,
+    eventCode,
+    groupCode,
+    radioProps,
+} from './data';
+import PropsTable from '@/components/base/PropsTable';
 
 // 라디오 데이터 정의
 const RADIO_DATA = {
@@ -104,34 +115,48 @@ export default function RadioPage() {
     const [selectedVariant, setSelectedVariant] = useState('default');
 
     return (
-        <UILayout title="Radio 컴포넌트 가이드" subtitle="input type=radio">
-            <RadioPlayground />
-            <SectionTitle>기본 라디오 버튼</SectionTitle>
+        <UILayout title="Radio 컴포넌트" subtitle="단일 선택 입력 요소">
+            <SectionTitle>사용법</SectionTitle>
+            <CodeBlock code={importCode} language="javascript" title="Import" />
+
+            <SectionTitle>라디오 버튼 변형</SectionTitle>
             <RadioGroupComponent
                 data={RADIO_DATA.styles}
                 selectedValue={selectedVariant}
                 onSelect={setSelectedVariant}
                 name="style"
             />
+            <CodeBlock code={variantCode} language="jsx" title="Variants" />
 
-            <SectionTitle>크기</SectionTitle>
+            <SectionTitle>라디오 버튼 크기</SectionTitle>
             <RadioGroupComponent
                 data={RADIO_DATA.sizes}
                 selectedValue={selectedSize}
                 onSelect={setSelectedSize}
                 name="size"
             />
+            <CodeBlock code={sizeCode} language="jsx" title="Sizes" />
 
             <SectionTitle>커스텀 색상</SectionTitle>
             <ResultBox style={{ marginBottom: '1rem' }}>
                 배경색, 텍스트 색상($textColor를 지정하지 않으면 자동으로 대비 색상이 선택)
             </ResultBox>
             <RadioGroupComponent
-                data={RADIO_DATA.customColors}
+                data={RADIO_DATA.customColors.slice(0, 3)}
                 selectedValue={selectedFruit}
                 onSelect={setSelectedFruit}
                 name="custom"
             />
+            <CodeBlock code={colorCode} language="jsx" title="Colors" />
+
+            <SectionTitle>이벤트 처리</SectionTitle>
+            <CodeBlock code={eventCode} language="jsx" title="Event Handling" />
+
+            <SectionTitle>그룹 사용법</SectionTitle>
+            <CodeBlock code={groupCode} language="jsx" title="Group Usage" />
+
+            <SectionTitle>Props</SectionTitle>
+            <PropsTable props={radioProps} />
         </UILayout>
     );
 }

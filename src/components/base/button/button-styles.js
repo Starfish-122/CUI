@@ -3,7 +3,6 @@ import { inlineFlex } from '@/styles/mixins';
 
 // 상수 정의
 const VARIANTS = {
-    DEFAULT: 'default',
     FILLED: 'filled',
     OUTLINE: 'outline',
     TEXT: 'text',
@@ -98,13 +97,6 @@ const createVariantStyle = (theme, variant, bgColor) => {
 
 // 기본 variant 스타일 (bgColor가 없을 때 사용)
 const variantStyles = {
-    [VARIANTS.DEFAULT]: css`
-        background-color: ${({ theme }) => theme.colors.blue500};
-        color: ${({ theme }) => theme.colors.light900};
-        border: none;
-        ${({ theme }) => createHoverEffect(theme.colors.blue500)}
-    `,
-
     [VARIANTS.FILLED]: css`
         background-color: ${({ theme }) => theme.colors.blue500};
         color: ${({ theme }) => theme.colors.light900};
@@ -165,8 +157,7 @@ const createCustomTextColorStyle = ($textColor) => {
 export const BasicButton = styled.button`
     ${baseButtonStyles}
 
-    ${({ $variant = VARIANTS.DEFAULT }) =>
-        variantStyles[$variant] || variantStyles[VARIANTS.DEFAULT]}
+    ${({ $variant = VARIANTS.FILLED }) => variantStyles[$variant] || variantStyles[VARIANTS.FILLED]}
   
     ${({ $size = SIZES.MD }) => sizeStyles[$size] || sizeStyles[SIZES.MD]}
     

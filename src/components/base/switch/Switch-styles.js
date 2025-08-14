@@ -23,11 +23,6 @@ const baseSwitchStyles = css`
     gap: 1rem;
     cursor: pointer;
     user-select: none;
-
-    &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
 `;
 
 // 크기별 스타일
@@ -84,6 +79,24 @@ const sizeStyles = {
     `,
 };
 
+// 공통 트랙 스타일
+const trackBaseStyles = css`
+    position: relative;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+`;
+
+// 공통 썸 스타일
+const thumbBaseStyles = css`
+    position: absolute;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
 // Variant별 색상 스타일
 const variantStyles = {
     [VARIANTS.DEFAULT]: css`
@@ -93,7 +106,6 @@ const variantStyles = {
 
         .switch-thumb {
             background-color: ${({ theme }) => theme.colors.light900};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         &.checked .switch-track {
@@ -103,12 +115,11 @@ const variantStyles = {
 
     [VARIANTS.PRIMARY]: css`
         .switch-track {
-            background-color: ${({ theme }) => theme.colors.gray300};
+            background-color: ${({ theme }) => theme.colors.gray200};
         }
 
         .switch-thumb {
             background-color: ${({ theme }) => theme.colors.light900};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         &.checked .switch-track {
@@ -118,12 +129,11 @@ const variantStyles = {
 
     [VARIANTS.SUCCESS]: css`
         .switch-track {
-            background-color: ${({ theme }) => theme.colors.gray300};
+            background-color: ${({ theme }) => theme.colors.green100};
         }
 
         .switch-thumb {
             background-color: ${({ theme }) => theme.colors.light900};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         &.checked .switch-track {
@@ -133,12 +143,11 @@ const variantStyles = {
 
     [VARIANTS.WARNING]: css`
         .switch-track {
-            background-color: ${({ theme }) => theme.colors.gray300};
+            background-color: #fef3c7;
         }
 
         .switch-thumb {
             background-color: ${({ theme }) => theme.colors.light900};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         &.checked .switch-track {
@@ -148,12 +157,11 @@ const variantStyles = {
 
     [VARIANTS.ERROR]: css`
         .switch-track {
-            background-color: ${({ theme }) => theme.colors.gray300};
+            background-color: ${({ theme }) => theme.colors.red100};
         }
 
         .switch-thumb {
             background-color: ${({ theme }) => theme.colors.light900};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         &.checked .switch-track {
@@ -168,15 +176,52 @@ const createCustomColorStyle = ({ $bgColor, $thumbColor }) => {
 
     return css`
         .switch-track {
-            background-color: ${$bgColor || '#d1d5db'};
+            background-color: ${$bgColor || '#dee2e6'};
         }
 
         .switch-thumb {
             background-color: ${$thumbColor || '#ffffff'};
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
     `;
 };
+
+// 비활성화 스타일
+const disabledStyles = css`
+    opacity: 0.3 !important;
+
+    .switch-track {
+        background-color: ${({ theme }) => theme.colors.gray400} !important;
+        cursor: not-allowed !important;
+        /* pointer-events: none !important; */
+    }
+
+    .switch-thumb {
+        background-color: ${({ theme }) => theme.colors.gray500} !important;
+        box-shadow: none !important;
+    }
+
+    .switch-label {
+        color: ${({ theme }) => theme.colors.gray500} !important;
+    }
+
+    &.checked .switch-track {
+        background-color: ${({ theme }) => theme.colors.gray400} !important;
+    }
+`;
+
+// 상호작용 스타일
+const interactionStyles = css`
+    // 포커스 스타일
+    &:focus-within .switch-track {
+        outline: 2px solid ${({ theme }) => theme.colors.blue400};
+        outline-offset: 2px;
+    }
+
+    // 호버 효과 (비활성화 상태가 아닐 때만)
+    &:hover:not(:disabled) .switch-track {
+        opacity: 0.8;
+    }
+`;
 
 export const SwitchContainer = styled.div`
     ${baseSwitchStyles}
@@ -184,32 +229,36 @@ export const SwitchContainer = styled.div`
     ${({ $variant = VARIANTS.DEFAULT }) =>
         variantStyles[$variant] || variantStyles[VARIANTS.DEFAULT]}
     ${({ $bgColor, $thumbColor }) => createCustomColorStyle({ $bgColor, $thumbColor })}
-    
+    ${interactionStyles}
+
+    // 비활성화 상태 스타일 (최우선 적용)
+    &:disabled,
+    &[disabled="true"],
+    &[disabled="disabled"],
+    &[data-disabled="true"] {
+        ${disabledStyles}
+    }
+
     // 숨겨진 체크박스
-    input[type="checkbox"] {
+    input[type='checkbox'] {
         position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         opacity: 0;
-        width: 0;
-        height: 0;
         margin: 0;
         padding: 0;
     }
 
     // 스위치 트랙
     .switch-track {
-        position: relative;
-        border-radius: 12px;
-        transition: background-color 0.2s ease;
-        display: flex;
-        align-items: center;
+        ${trackBaseStyles}
     }
 
     // 스위치 썸
     .switch-thumb {
-        position: absolute;
-        border-radius: 50%;
-        transition: transform 0.2s ease;
-        z-index: 1;
+        ${thumbBaseStyles}
     }
 
     // 라벨 스타일
@@ -217,21 +266,5 @@ export const SwitchContainer = styled.div`
         margin-left: 8px;
         font-size: 14px;
         color: ${({ theme }) => theme.colors.gray700};
-    }
-
-    // 포커스 스타일
-    &:focus-within .switch-track {
-        outline: 2px solid ${({ theme }) => theme.colors.blue400};
-        outline-offset: 2px;
-    }
-
-    // 호버 효과
-    &:hover:not(:disabled) .switch-track {
-        /* background-color: ${({ $bgColor }) => createCustomColorStyle({ $bgColor })}; */
-        opacity: 0.5;
-    }
-
-    &:hover:not(:disabled).checked .switch-track {
-        background-color: ${({ $bgColor }) => createCustomColorStyle({ $bgColor })};
     }
 `;
