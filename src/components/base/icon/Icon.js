@@ -16,7 +16,7 @@ const DEFAULT_COLOR = '#374151';
 
 const StyledIcon = styled.span`
     /* Google Fonts Material Symbols 기본 설정 */
-    font-family: 'Material Symbols Outlined' !important;
+    font-family: 'Material Symbols Outlined', 'Material Icons', sans-serif !important;
     font-weight: 400;
     line-height: 1;
     letter-spacing: normal;
@@ -52,6 +52,12 @@ const StyledIcon = styled.span`
     /* FILL 변형 설정 */
     font-variation-settings: ${({ $filled }) =>
         $filled ? "'FILL' 1, 'GRAD' 0, 'opsz' 24" : "'FILL' 0, 'GRAD' 0, 'opsz' 24"};
+
+    /* 폰트 로딩 실패 시 대체 스타일 */
+    @supports not (font-variation-settings: normal) {
+        font-family: 'Material Icons', sans-serif !important;
+        font-size: ${({ $size }) => SIZES[$size] || SIZES.md};
+    }
 `;
 
 /**
