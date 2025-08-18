@@ -122,13 +122,14 @@ const RadioPlayground = () => {
         <Radio
             id="preview-radio"
             name="preview"
-            children={controls.children}
             $variant={controls.$variant}
             $size={controls.$size}
             disabled={controls.disabled}
             checked={controls.checked}
             onChange={handleRadioChange}
-        />
+        >
+            {controls.children}
+        </Radio>
     );
 
     return (

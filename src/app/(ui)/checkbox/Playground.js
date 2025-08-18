@@ -125,13 +125,14 @@ const CheckBoxPlayground = () => {
         <CheckBox
             id="preview-checkbox"
             name="preview"
-            children={controls.children}
             $variant={controls.$variant}
             $size={controls.$size}
             disabled={controls.disabled}
             checked={controls.checked}
             onChange={handleCheckboxChange}
-        />
+        >
+            {controls.children}
+        </CheckBox>
     );
 
     return (
