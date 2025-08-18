@@ -25,7 +25,10 @@ export const sidebarCategories = [
     {
         id: 'completed',
         name: 'Completed',
-        items: [{ name: 'Button', path: '/button' }],
+        items: [
+            { name: 'Button', path: '/button' },
+            { name: 'Switch', path: '/switch' },
+        ],
     },
     {
         id: 'in-progress',
@@ -33,7 +36,6 @@ export const sidebarCategories = [
         items: [
             { name: 'Radio', path: '/radio' },
             { name: 'CheckBox', path: '/checkbox' },
-            { name: 'Switch', path: '/switch' },
             { name: 'Search Bar', path: '/search-bar' },
         ],
     },
