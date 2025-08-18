@@ -56,9 +56,9 @@ const SwitchGroup = ({ switches, switchStates, handleSwitchChange }) => (
                 />
                 <SwitchValue>
                     {switchStates[name] ? (
-                        <Icon $color="red" name="Lightbulb" />
+                        <Icon color="red" name="done" />
                     ) : (
-                        <Icon $color="#ccc" name="light_off" />
+                        <Icon color="#ccc" name="close" />
                     )}
                 </SwitchValue>
             </SwitchRow>

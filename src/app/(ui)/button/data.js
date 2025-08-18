@@ -10,7 +10,7 @@ export const sizeCode = `<Button $size="sm" $text="작음" />
 <Button $size="lg" $text="커버림" />`;
 
 export const optionCode = `<Button $text="아이콘과 같이 사용">
-    <Icon name="search_off" size="lg" $color="white" />
+                    <Icon name="search_off" size="lg" color="white" />
 </Button>
 
 <Button disabled $text="비활성화" />

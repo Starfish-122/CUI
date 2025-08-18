@@ -16,7 +16,7 @@ export default function ButtonPage() {
         <UILayout title="Button 컴포넌트" subtitle="기본, 크기, 옵션, 커스텀 색상 버튼">
             <ButtonPlayground />
 
-            <SectionTitle>사용법</SectionTitle>
+            {/* <SectionTitle>사용법</SectionTitle>
             <CodeBlock code={importCode} language="javascript" title="Import" />
 
             <SectionTitle>버튼 변형</SectionTitle>
@@ -39,7 +39,7 @@ export default function ButtonPage() {
             <SectionTitle>버튼 옵션</SectionTitle>
             <ButtonContainer>
                 <Button $text="아이콘과 같이 사용">
-                    <Icon name="search_off" size="lg" $color="white" />
+                    <Icon name="search_off" size="lg" color="white" />
                 </Button>
                 <Button disabled $text="비활성화" />
             </ButtonContainer>
@@ -59,7 +59,7 @@ export default function ButtonPage() {
             <CodeBlock code={colorCode} language="jsx" title="Colors" />
 
             <SectionTitle>Props</SectionTitle>
-            <PropsTable props={buttonProps} />
+            <PropsTable props={buttonProps} /> */}
         </UILayout>
     );
 }
