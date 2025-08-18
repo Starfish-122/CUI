@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H2 } from '@/components/base/core';
+import { H2 } from '@/components/utils/UIStyles';
 
 export const AllDemoContainer = styled.div`
     padding: ${({ theme }) => theme.spacing.xl};

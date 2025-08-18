@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { RadioContainer, RadioInput, RadioLabel } from './radio-styles';
+import { RadioContainer, RadioInput, RadioLabel } from './styles';
 
 /**
  * 라디오 버튼 컴포넌트

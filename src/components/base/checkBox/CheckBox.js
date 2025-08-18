@@ -1,11 +1,5 @@
 import { forwardRef } from 'react';
-import {
-    CheckBoxContainer,
-    CheckBoxInput,
-    CheckBoxLabel,
-    CheckIcon,
-    CheckPath,
-} from './checkBox-styles';
+import { CheckBoxContainer, CheckBoxInput, CheckBoxLabel, CheckIcon, CheckPath } from './styles';
 
 /**
  * 체크박스 컴포넌트

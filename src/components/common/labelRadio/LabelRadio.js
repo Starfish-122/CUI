@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { RadioInput, RadioLabel, RadioContainer } from '@/components/base/radio/radio-styles';
+import { RadioInput, RadioLabel, RadioContainer } from '@/components/base/radio/styles';
 
 const LabelRadio = forwardRef(
     (

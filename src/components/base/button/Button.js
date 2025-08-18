@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef } from 'react';
-import { BasicButton } from './button-styles';
+import { BasicButton } from './styles';
 
 // 기본값 상수
 const DEFAULT_PROPS = {

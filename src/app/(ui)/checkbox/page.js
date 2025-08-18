@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import CheckBox from '@/components/base/checkBox';
 import UILayout from '@/components/templates/UILayout/UILayout';
-import SectionTitle from '@/components/base/SectionTitle/SectionTitle';
-import CodeBlock from '@/components/base/CodeBlock';
+import SectionTitle from '@/components/utils/SectionTitle/SectionTitle';
+import CodeBlock from '@/components/utils/CodeBlock';
 import { SectionHeader, StyledUIBox, CheckboxGrid, ResultBox } from './styles';
 import {
     importCode,
@@ -15,7 +15,7 @@ import {
     groupCode,
     checkboxProps,
 } from './data';
-import PropsTable from '@/components/base/PropsTable';
+import PropsTable from '@/components/utils/PropsTable';
 
 // 체크박스 데이터 정의
 const CHECKBOX_DATA = {

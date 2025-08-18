@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { H2 } from '@/components/base/core';
+import { H2 } from '@/components/utils/UIStyles';
 import { media } from '@/styles/mixins';
 
 const DemoContainer = styled.div`

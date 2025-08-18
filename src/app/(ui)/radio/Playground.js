@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Radio from '@/components/base/radio/Radio';
 import CheckBox from '@/components/base/checkBox';
-import Frame from '@/components/base/Playground/Frame';
+import Frame from '@/components/utils/Playground/Frame';
 
 const RadioPlayground = () => {
     const [controls, setControls] = useState({

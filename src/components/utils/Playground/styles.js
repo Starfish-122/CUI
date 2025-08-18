@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { toRem } from '@/styles/utils';
-import { CodeBlockContainer } from '@/components/base/CodeBlock/styles';
+import { CodeBlockContainer } from '@/components/utils/CodeBlock/styles';
 
 export const PlaygroundContainer = styled.div`
     background: ${({ theme }) => theme.colors.light900};

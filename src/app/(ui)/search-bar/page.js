@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import SearchBar from '@/components/common/searchBar';
 import UILayout from '@/components/templates/UILayout/UILayout';
-import SectionTitle from '@/components/base/SectionTitle';
+import SectionTitle from '@/components/utils/SectionTitle';
 import Icon from '@/components/base/icon';
-import CodeBlock from '@/components/base/CodeBlock';
+import CodeBlock from '@/components/utils/CodeBlock';
 import {
     basicCode,
     controlledCode,
@@ -14,7 +14,7 @@ import {
     eventHandlingCode,
     searchBarProps,
 } from './data';
-import PropsTable from '@/components/base/PropsTable';
+import PropsTable from '@/components/utils/PropsTable';
 import { SearchContainer, SearchResult, DemoSection } from './styles';
 
 export default function SearchBarPage() {

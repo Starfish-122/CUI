@@ -4,12 +4,12 @@ import { useState } from 'react';
 import Switch from '@/components/base/switch/Switch';
 import UILayout from '@/components/templates/UILayout/UILayout';
 import Icon from '@/components/base/icon';
-import SectionTitle from '@/components/base/SectionTitle';
-import CodeBlock from '@/components/base/CodeBlock';
+import SectionTitle from '@/components/utils/SectionTitle';
+import CodeBlock from '@/components/utils/CodeBlock';
 import SwitchPlayground from './Playground';
 import { SectionHeader, SwitchContainer, SwitchRow, SwitchLabel, SwitchValue } from './styles';
 import { importCode, variantCode, sizeCode, optionCode, eventCode, switchProps } from './data';
-import PropsTable from '@/components/base/PropsTable';
+import PropsTable from '@/components/utils/PropsTable';
 
 // 스위치 데이터 정의
 const SWITCH_DATA = {

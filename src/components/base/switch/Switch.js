@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef, useState, useCallback } from 'react';
-import { SwitchContainer } from './Switch-styles';
+import { SwitchContainer } from './styles';
 
 const Switch = forwardRef(
     (

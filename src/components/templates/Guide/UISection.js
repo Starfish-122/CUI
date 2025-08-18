@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { H3, H4, ContentSection, UIBox, UIFlex } from '@/components/base/core';
+import { H3, H4, ContentSection, UIBox, UIFlex } from '@/components/utils/UIStyles';
 
 // 마진이 있는 UIBox
 const StyledUIBox = styled(UIBox)`

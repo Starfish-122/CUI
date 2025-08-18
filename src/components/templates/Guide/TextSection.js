@@ -2,7 +2,7 @@
 
 import React from 'react';
 import theme from '@/styles/theme';
-import { H2, H3, H4 } from '@/components/base/core';
+import { H2, H3, H4 } from '@/components/utils/UIStyles';
 import {
     ContentSection,
     SectionTitle,

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H2, UIBox } from '@/components/base/core';
+import { H2, UIBox } from '@/components/utils/UIStyles';
 
 // 공통 스타일 함수들
 const getThemeValue = (theme, path) => {

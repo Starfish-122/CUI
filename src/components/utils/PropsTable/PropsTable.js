@@ -1,6 +1,6 @@
 'use client';
 
-import { UITable } from '@/components/base/core';
+import { UITable } from '@/components/utils/UIStyles';
 
 const PropsTable = ({ props }) => {
     return (

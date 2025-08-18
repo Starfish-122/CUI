@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Radio from '@/components/base/radio';
 import UILayout from '@/components/templates/UILayout/UILayout';
-import SectionTitle from '@/components/base/SectionTitle/SectionTitle';
-import CodeBlock from '@/components/base/CodeBlock';
+import SectionTitle from '@/components/utils/SectionTitle/SectionTitle';
+import CodeBlock from '@/components/utils/CodeBlock';
 import { SectionHeader, RadioGroup, RadioRow, ResultBox } from './styles';
 
 import {
@@ -16,7 +16,7 @@ import {
     groupCode,
     radioProps,
 } from './data';
-import PropsTable from '@/components/base/PropsTable';
+import PropsTable from '@/components/utils/PropsTable';
 
 // 라디오 데이터 정의
 const RADIO_DATA = {

@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Icon from '@/components/base/icon';
-import CopyButton from '@/components/base/CopyButton';
-import ColorPalette from '@/components/base/Playground/ColorPalette';
+import CopyButton from '@/components/utils/CopyButton';
+import ColorPalette from '@/components/utils/Playground/ColorPalette';
 import {
     PlaygroundContainer,
     PlaygroundHeader,
@@ -24,8 +24,8 @@ import {
     ControlLabel,
     ControlInput,
     ControlSelect,
-} from '@/components/base/Playground/styles';
-import { CodeHeader, StyledSyntaxHighlighter } from '@/components/base/CodeBlock/styles';
+} from '@/components/utils/Playground/styles';
+import { CodeHeader, StyledSyntaxHighlighter } from '@/components/utils/CodeBlock/styles';
 
 const Frame = ({
     title = 'Playground',

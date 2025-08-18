@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Button from '@/components/base/button/Button';
 import CheckBox from '@/components/base/checkBox';
-import Frame from '@/components/base/Playground/Frame';
+import Frame from '@/components/utils/Playground/Frame';
 
 const ButtonPlayground = () => {
     const [controls, setControls] = useState({

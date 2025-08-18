@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import { media, flex, flexCenter, flexColumn, inlineFlex } from '@/styles/mixins';
-import { H2, H3, H4, UIFlex, UIBox } from '@/components/base/core';
+import { H2, H3, H4, UIFlex, UIBox } from '@/components/utils/UIStyles';
 
 // 애니메이션
 export const fadeIn = keyframes`

@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { UIBox } from '@/components/base/core';
+import { UIBox } from '@/components/utils/UIStyles';
 import QuickNav from '@/components/templates/QuickNav/QuickNav';
 
 const StyledUIBox = styled(UIBox)`

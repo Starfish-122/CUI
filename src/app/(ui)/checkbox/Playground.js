@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import CheckBox from '@/components/base/checkBox';
-import Frame from '@/components/base/Playground/Frame';
+import Frame from '@/components/utils/Playground/Frame';
 
 const CheckBoxPlayground = () => {
     const [controls, setControls] = useState({

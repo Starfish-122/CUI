@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Switch from '@/components/base/switch/Switch';
 import CheckBox from '@/components/base/checkBox';
-import Frame from '@/components/base/Playground/Frame';
+import Frame from '@/components/utils/Playground/Frame';
 
 const SwitchPlayground = () => {
     const [controls, setControls] = useState({

@@ -2,14 +2,14 @@
 
 import Button from '@/components/base/button/Button';
 import UILayout from '@/components/templates/UILayout/UILayout';
-import SectionTitle from '@/components/base/SectionTitle';
-import CodeBlock from '@/components/base/CodeBlock';
+import SectionTitle from '@/components/utils/SectionTitle';
+import CodeBlock from '@/components/utils/CodeBlock';
 import { ButtonContainer } from './styles';
 import Icon from '@/components/base/icon';
 // import ButtonPlayground from '@/playground/ButtonPL/ButtonPlayground';
 import ButtonPlayground from './Playground';
 import { importCode, variantCode, sizeCode, optionCode, colorCode, buttonProps } from './data';
-import PropsTable from '@/components/base/PropsTable';
+import PropsTable from '@/components/utils/PropsTable';
 
 export default function ButtonPage() {
     return (
