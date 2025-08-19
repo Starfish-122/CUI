@@ -38,7 +38,7 @@ export const StyledH2 = styled(H2)`
 `;
 
 export const Subtitle = styled.p`
-    color: ${({ theme }) => theme.colors.purple100 || '#f3e8ff'};
+    color: ${({ theme }) => theme.colors.blue100 || '#f3e8ff'};
     font-size: ${({ theme }) => theme.fontSizes.lg};
     margin: 0;
 `;
