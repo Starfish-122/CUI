@@ -30,6 +30,10 @@ const nextConfig = {
     // 컴파일러 최적화
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',
+        styledComponents: {
+            displayName: true,
+            ssr: true,
+        },
     },
 
     // 웹팩 최적화

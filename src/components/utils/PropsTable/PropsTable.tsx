@@ -1,6 +1,6 @@
 'use client';
 
-import { UITable } from '@/components/utils/UIStyles';
+import { StyledTable } from './styles';
 
 interface PropItem {
     name: string;
@@ -12,9 +12,10 @@ interface PropItem {
 
 interface PropsTableProps {
     props: PropItem[];
+    title?: string;
 }
 
-const PropsTable = ({ props }: PropsTableProps) => {
+const PropsTable = ({ props, title }: PropsTableProps) => {
     const renderDefaultValue = (defaultValue?: string): React.ReactNode => {
         if (!defaultValue) return '-';
 
@@ -42,29 +43,36 @@ const PropsTable = ({ props }: PropsTableProps) => {
     };
 
     return (
-        <UITable>
-            <thead>
-                <tr>
-                    <th>Prop</th>
-                    <th>Default</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {props.map((prop, index) => (
-                    <tr key={index}>
-                        <td>{prop.name}</td>
-                        <td>{renderDefaultValue(prop.default)}</td>
-                        <td>{prop.type}</td>
-                        <td>
-                            {prop.description}
-                            {renderOptions(prop.options)}
-                        </td>
+        <StyledTable>
+            <table>
+                <caption>{title}</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Prop</th>
+                        <th scope="col">Default</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
                     </tr>
-                ))}
-            </tbody>
-        </UITable>
+                </thead>
+                <tbody>
+                    {props.map((prop, index) => (
+                        <tr key={index}>
+                            <th scope="row" data-label="Prop">
+                                {prop.name}
+                            </th>
+                            <td data-label="Default">{renderDefaultValue(prop.default)}</td>
+                            <td data-label="Type">{prop.type}</td>
+                            <td data-label="Description">
+                                <p>
+                                    {prop.description}
+                                    {renderOptions(prop.options)}
+                                </p>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </StyledTable>
     );
 };
 

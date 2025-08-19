@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading, Section, Box, FlexContainer, Table } from './UIStyles';
+import { Heading, Section, Box, FlexContainer } from './UIStyles';
 
 interface ContentSectionProps {
     children: React.ReactNode;
@@ -21,7 +21,6 @@ export const UISection = Section;
 export const UIBox = Box;
 
 export const UIFlex = FlexContainer;
-export const UITable = Table;
 
 const CoreComponents = {
     H2,
@@ -31,7 +30,6 @@ const CoreComponents = {
     UISection,
     UIBox,
     UIFlex,
-    UITable,
 };
 
 export default CoreComponents;

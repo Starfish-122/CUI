@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-// 타입 정의
 interface FlexOptions {
     display?: string;
     direction?: string;
@@ -10,8 +9,8 @@ interface FlexOptions {
     gap?: string;
 }
 
-// 반응형 디자인을 위한 미디어 쿼리 헬퍼
 export const media = {
+    // min-width (기본)
     xs: (styles: any) => css`
         @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
             ${styles}
@@ -42,6 +41,30 @@ export const media = {
             ${styles}
         }
     `,
+
+    // max-width
+    max: {
+        sm: (styles: any) => css`
+            @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+                ${styles}
+            }
+        `,
+        md: (styles: any) => css`
+            @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+                ${styles}
+            }
+        `,
+        lg: (styles: any) => css`
+            @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+                ${styles}
+            }
+        `,
+        xl: (styles: any) => css`
+            @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+                ${styles}
+            }
+        `,
+    },
 };
 
 /**
@@ -101,7 +124,6 @@ export const inlineFlex = css`
     ${flex({ display: 'inline-flex', justify: 'center', align: 'center' })}
 `;
 
-// 텍스트 스타일링
 export const ellipsis = css`
     white-space: nowrap;
     overflow: hidden;
@@ -115,7 +137,6 @@ export const multiLineEllipsis = (lines = 2) => css`
     overflow: hidden;
 `;
 
-// 절대 위치 중앙 정렬
 export const absoluteCenter = css`
     position: absolute;
     top: 50%;
@@ -123,12 +144,10 @@ export const absoluteCenter = css`
     transform: translate(-50%, -50%);
 `;
 
-// 애니메이션 트랜지션
 export const transition = (property = 'all', duration = '0.3s', timing = 'ease-in-out') => css`
     transition: ${property} ${duration} ${timing};
 `;
 
-// 그림자 효과
 export const boxShadow = (level: 'sm' | 'md' | 'lg' | 'xl' = 'md') => css`
     box-shadow: ${({ theme }) => theme.shadows[level]};
 `;

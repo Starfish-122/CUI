@@ -54,12 +54,18 @@ export default function Header({ $hasSidebar = false, $isSidebarOpen = false }: 
 
         // 사이드바 토글 이벤트 리스너
         const handleSidebarToggle = () => {
-            setTimeout(checkSidebarState, 100); // DOM 업데이트 후 상태 확인
+            // DOM 업데이트를 기다린 후 상태 확인
+            requestAnimationFrame(() => {
+                setTimeout(checkSidebarState, 50);
+            });
         };
 
         // 사이드바 상태 변경 이벤트 리스너
         const handleSidebarStateChanged = (event: CustomEvent) => {
-            setIsSidebarOpen(event.detail.isOpen);
+            // 상태 업데이트를 다음 렌더링 사이클로 지연
+            requestAnimationFrame(() => {
+                setIsSidebarOpen(event.detail.isOpen);
+            });
         };
 
         window.addEventListener('toggle-sidebar', handleSidebarToggle);
@@ -69,7 +75,9 @@ export default function Header({ $hasSidebar = false, $isSidebarOpen = false }: 
         );
 
         // MutationObserver로 사이드바 상태 변화 감지
-        const observer = new MutationObserver(checkSidebarState);
+        const observer = new MutationObserver(() => {
+            requestAnimationFrame(checkSidebarState);
+        });
         const sidebar = document.querySelector('[data-sidebar]');
         if (sidebar) {
             observer.observe(sidebar, { attributes: true, attributeFilter: ['data-sidebar'] });

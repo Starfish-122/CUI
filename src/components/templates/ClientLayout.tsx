@@ -9,8 +9,9 @@ import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import Sidebar from '@/components/templates/Sidebar/Sidebar';
 import { usePathname } from 'next/navigation';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { toRem } from '@/styles/utils';
+import { media } from '@/styles/mixins';
 import { sidebarCategories } from '@/routes/config';
 
 interface LayoutContainerProps {
@@ -60,9 +61,12 @@ const LayoutContainer = styled.div<LayoutContainerProps>`
 `;
 
 const ContentWrapper = styled.div<ContentWrapperProps>`
-    display: flex;
-    flex-direction: row;
-    flex: 1;
+    display: block;
+    ${media.lg(css`
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    `)}
 `;
 
 const MainContent = styled.main<MainContentProps>`
@@ -74,11 +78,9 @@ const MainContent = styled.main<MainContentProps>`
     ${(props) =>
         props.$hasSidebar &&
         props.$isSidebarOpen &&
-        `
-        @media (min-width: ${TABLET_BREAKPOINT}px) {
+        media.lg(css`
             margin-left: ${SIDEBAR_MARGIN};
-        }
-        `}
+        `)}
 `;
 
 export default function ClientLayout({ children }: ClientLayoutProps) {
@@ -88,8 +90,10 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
     // 현재 경로에 따라 사이드바 표시 여부 결정
     useEffect(() => {
-        const shouldShow = shouldShowSidebar(pathname);
-        setHasSidebar(shouldShow);
+        if (pathname) {
+            const shouldShow = shouldShowSidebar(pathname);
+            setHasSidebar(shouldShow);
+        }
     }, [pathname]);
 
     useEffect(() => {

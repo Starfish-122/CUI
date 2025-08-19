@@ -109,26 +109,3 @@ export const FlexContainer = styled.div<FlexContainerProps>`
             wrap: $wrap || 'nowrap',
         })}
 `;
-
-export const Table = styled.table`
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    overflow: hidden;
-    margin-bottom: ${({ theme }) => theme.spacing.lg};
-
-    th,
-    td {
-        padding: ${({ theme }) => theme.spacing.md};
-        border: 1px solid ${({ theme }) => theme.colors.gray400};
-    }
-    th {
-        background-color: ${({ theme }) => theme.colors.gray100};
-    }
-    code {
-        background-color: ${({ theme }) => theme.colors.gray100};
-        padding: ${({ theme }) => theme.spacing.sm};
-        border-radius: ${({ theme }) => theme.borderRadius.sm};
-        display: inline-block;
-    }
-`;

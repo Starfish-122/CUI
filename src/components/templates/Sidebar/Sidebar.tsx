@@ -126,21 +126,21 @@ export default function Sidebar() {
     const toggleSidebar = useCallback(() => {
         setIsSidebarOpen((prev) => {
             const newState = !prev;
-
-            const event = new CustomEvent('sidebar-state-changed', {
-                detail: { isOpen: newState },
-            });
-            window.dispatchEvent(event);
             return newState;
         });
     }, []);
 
+    // 사이드바 상태 변경 이벤트를 별도 useEffect로 처리
+    useEffect(() => {
+        const event = new CustomEvent('sidebar-state-changed', {
+            detail: { isOpen: isSidebarOpen },
+        });
+        window.dispatchEvent(event);
+    }, [isSidebarOpen]);
+
     const closeSidebar = useCallback(() => {
         if (isTablet) {
             setIsSidebarOpen(false);
-
-            const event = new CustomEvent('sidebar-state-changed', { detail: { isOpen: false } });
-            window.dispatchEvent(event);
         }
     }, [isTablet]);
 
