@@ -33,11 +33,19 @@ export interface SearchBarProps {
     value: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
+    onSearch?: (searchValue: string) => void;
 }
 
-export default function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
+export default function SearchBar({ value, onChange, placeholder, onSearch }: SearchBarProps) {
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (onSearch && value.trim()) {
+            onSearch(value);
+        }
+    };
+
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <SearchBarContainer>
                 <SearchInput
                     type="text"
@@ -49,6 +57,6 @@ export default function SearchBar({ value, onChange, placeholder }: SearchBarPro
                     <Icon name="search" size="md" filled />
                 </SearchButton>
             </SearchBarContainer>
-        </>
+        </form>
     );
 }

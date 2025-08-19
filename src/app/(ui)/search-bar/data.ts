@@ -30,23 +30,16 @@ const handleSearch = (value) => {
 export const withIconCode: string = `<SearchBar 
     placeholder="아이콘이 있는 검색바"
     onSearch={(value) => console.log('검색:', value)}
-    icon={<Icon name="search" size="md" />}
 />`;
 
 export const disabledCode: string = `<SearchBar 
     placeholder="비활성화된 검색바"
-    disabled
     onSearch={(value) => console.log('검색:', value)}
 />`;
 
 export const customStyleCode: string = `<SearchBar 
     placeholder="커스텀 스타일 검색바"
     onSearch={(value) => console.log('검색:', value)}
-    style={{
-        backgroundColor: '#f0f0f0',
-        border: '2px solid #007bff',
-        borderRadius: '25px'
-    }}
 />`;
 
 export const eventHandlingCode: string = `const [searchValue, setSearchValue] = useState('');
@@ -91,36 +84,12 @@ export const searchBarProps: SearchBarProp[] = [
         name: 'onSearch',
         default: '-',
         type: 'Function',
-        description: '검색 실행 시 호출되는 콜백 함수',
+        description: '검색 실행 시 호출되는 콜백 함수 (Enter 키 또는 검색 버튼 클릭 시)',
     },
     {
         name: 'placeholder',
-        default: '-',
+        default: '검색어를 입력하세요',
         type: 'String',
         description: '입력 필드의 플레이스홀더 텍스트',
-    },
-    {
-        name: 'disabled',
-        default: 'false',
-        type: 'Boolean',
-        description: '검색바 비활성화 여부',
-    },
-    {
-        name: 'icon',
-        default: '-',
-        type: 'ReactNode',
-        description: '검색바에 표시할 아이콘',
-    },
-    {
-        name: 'style',
-        default: '-',
-        type: 'Object',
-        description: '인라인 스타일 객체',
-    },
-    {
-        name: 'className',
-        default: '-',
-        type: 'String',
-        description: '추가 CSS 클래스명',
     },
 ];

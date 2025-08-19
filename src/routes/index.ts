@@ -10,6 +10,3 @@ export { default as useAppRoutes } from './hooks';
 
 // 유틸리티 함수 내보내기
 export { formatRouteName, isValidRoute, generateNavLinks } from './utils';
-
-// API 로직 내보내기
-export { getRoutes } from './api';
