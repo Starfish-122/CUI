@@ -65,31 +65,31 @@ const CURRICULUM_DATA: Curriculum[] = [
     },
     {
         label: '컴포넌트 제작',
-        done: false,
-        current: true,
+        done: true,
+        current: false,
         content: [
             { label: 'Button', done: true, current: false },
             { label: 'Input-radio', done: true, current: false },
             { label: 'Input-checkbox', done: true, current: false },
             { label: 'Input-checkbox-switch', done: true, current: false },
-            { label: 'Input-text', done: false, current: true },
+            { label: 'Input-text', done: false, current: false },
             { label: 'Input-select', done: false, current: false },
         ],
     },
     {
         label: 'Playground 구성',
-        done: false,
+        done: true,
         current: false,
         content: [
-            { label: '컴포넌트 데모 페이지', done: false, current: false },
-            { label: '실시간 속성 변경 기능', done: false, current: false },
-            { label: '코드 예제 표시', done: false, current: false },
+            { label: '컴포넌트 데모 페이지', done: true, current: false },
+            { label: '실시간 속성 변경 기능', done: true, current: false },
+            { label: '코드 예제 표시', done: true, current: false },
         ],
     },
     {
         label: '배포 준비',
         done: false,
-        current: false,
+        current: true,
         content: [
             { label: 'npm 패키지 구성', done: false, current: false },
             { label: '문서화 작업', done: false, current: false },
@@ -201,10 +201,7 @@ export default function Main() {
 
     return (
         <MainContainer>
-            <Header
-                title="프로젝트 진행 상황"
-                description="현재 진행 중인 프로젝트의 단계별 진행 상황을 확인하고 관리할 수 있습니다. 각 단계의 세부 내용을 확인하세요."
-            />
+            <Header title="진행 상황" description="세부 내용" />
 
             <ProgressSectionComponent curriculum={curriculum} />
 
