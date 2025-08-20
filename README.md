@@ -10,7 +10,7 @@
 ### 기술 스택
 
 - **프레임워크**: Next.js (15.3.4)
-- **언어**: JavaScript/TypeScript
+- **언어**: TypeScript
 - **UI 라이브러리**: React (19.0.0)
 - **스타일링**: styled-components (6.1.19)
 - **코드 품질**: ESLint 9, Prettier
@@ -31,7 +31,7 @@ CUI/
 │   ├── app/               # Next.js 앱 라우터 폴더 (루트)
 │   │   ├── (pages)/       # 페이지 관련 (라우팅 그룹, URL에 미표출)
 │   │   │   ├── guide/     # 가이드 페이지
-│   │   │   └── layout.js  # 페이지 레이아웃
+│   │   │   └── layout.tsx # 페이지 레이아웃
 │   │   ├── (ui)/          # UI 컴포넌트 페이지 (라우팅 그룹, URL에 미표출)
 │   │   │   ├── all/       # 전체 컴포넌트 페이지
 │   │   │   ├── button/    # 버튼 컴포넌트 페이지
@@ -39,54 +39,52 @@ CUI/
 │   │   │   ├── radio/     # 라디오 버튼 컴포넌트 페이지
 │   │   │   ├── search-bar/ # 검색바 컴포넌트 페이지
 │   │   │   ├── switch/    # 스위치 컴포넌트 페이지
-│   │   │   └── layout.js  # UI 페이지 레이아웃
+│   │   │   └── layout.tsx # UI 페이지 레이아웃
 │   │   ├── api/           # API 라우트
-│   │   │   └── routes/    # 라우트 정보 API
-│   │   │       └── route.js
-│   │   ├── layout.js      # 전체 레이아웃 컴포넌트
-│   │   ├── page.js        # 메인 페이지 컴포넌트
-│   │   ├── not-found.js   # 404 페이지 컴포넌트
+│   │   │   └── routes/    # 라우트 정보 API (빈 폴더)
+│   │   ├── layout.tsx     # 전체 레이아웃 컴포넌트
+│   │   ├── page.tsx       # 메인 페이지 컴포넌트
+│   │   ├── not-found.tsx  # 404 페이지 컴포넌트
 │   │   └── robots.ts      # robots.txt 관련 파일
 │   ├── components/        # UI 컴포넌트
 │   │   ├── base/          # 기본 UI 컴포넌트 (더이상 쪼갤 수 없는 컴포넌트)
 │   │   │   ├── button/    # 버튼 컴포넌트
 │   │   │   ├── checkBox/  # 체크박스 컴포넌트
-│   │   │   ├── core/      # 핵심 컴포넌트 (H1, H2, UIBox, UIFlex 등)
 │   │   │   ├── icon/      # 아이콘 컴포넌트
 │   │   │   ├── radio/     # 라디오 버튼 컴포넌트
-│   │   │   ├── SectionTitle/ # 섹션 제목 컴포넌트
 │   │   │   └── switch/    # 스위치 컴포넌트
 │   │   ├── common/        # base 컴포넌트를 조합한 큰 UI 블록
 │   │   │   ├── labelRadio/ # 라벨이 있는 라디오 컴포넌트
 │   │   │   └── searchBar/  # 검색바 컴포넌트
-│   │   └── templates/     # 템플릿 컴포넌트
-│   │       ├── Footer/    # 푸터 컴포넌트
-│   │       ├── Guide/     # 가이드 템플릿 컴포넌트
-│   │       ├── Header/    # 헤더 컴포넌트
-│   │       ├── Main/      # 메인 컴포넌트
-│   │       ├── Sidebar/   # 사이드바 컴포넌트
-│   │       ├── UILayout/  # UI 레이아웃 컴포넌트
-│   │       └── ClientLayout.js # 클라이언트 레이아웃 컴포넌트
+│   │   ├── templates/     # 템플릿 컴포넌트
+│   │   │   ├── Footer/    # 푸터 컴포넌트
+│   │   │   ├── Guide/     # 가이드 템플릿 컴포넌트
+│   │   │   ├── Header/    # 헤더 컴포넌트
+│   │   │   ├── Main/      # 메인 컴포넌트
+│   │   │   ├── QuickNav/  # 빠른 네비게이션 컴포넌트
+│   │   │   ├── Sidebar/   # 사이드바 컴포넌트
+│   │   │   ├── UILayout/  # UI 레이아웃 컴포넌트
+│   │   │   └── ClientLayout.tsx # 클라이언트 레이아웃 컴포넌트
+│   │   └── utils/         # 유틸리티 컴포넌트
+│   │       ├── CodeBlock/ # 코드 블록 컴포넌트
+│   │       ├── CopyButton/ # 복사 버튼 컴포넌트
+│   │       ├── Playground/ # 플레이그라운드 컴포넌트
+│   │       ├── PropsTable/ # Props 테이블 컴포넌트
+│   │       ├── SectionTitle/ # 섹션 제목 컴포넌트
+│   │       └── UIStyles/  # UI 스타일 컴포넌트
 │   ├── lib/               # 유틸리티 및 헬퍼 함수
-│   │   └── registry.js    # 스타일 레지스트리
-│   ├── playground/        # 컴포넌트 테스트 및 실험용 폴더
-│   │   └── ButtonPL/      # 버튼 컴포넌트 플레이그라운드
+│   │   └── registry.tsx   # 스타일 레지스트리
 │   ├── routes/            # 라우팅 관련 코드
-│   │   ├── config.js      # 라우트 설정
-│   │   ├── hooks.js       # 라우트 관련 훅
-│   │   ├── utils.js       # 라우트 유틸리티 함수
-│   │   ├── api.js         # 라우트 API 로직
-│   │   └── index.js       # 통합 내보내기
+│   │   ├── config.ts      # 라우트 설정
+│   │   ├── hooks.ts       # 라우트 관련 훅
+│   │   ├── utils.ts       # 라우트 유틸리티 함수
+│   │   └── index.ts       # 통합 내보내기
 │   └── styles/            # 스타일
-│       ├── abstracts/     # SASS 추상화 스타일
-│       │   ├── _functions.scss # SASS 함수
-│       │   ├── _mixins.scss    # SASS 믹스인
-│       │   ├── _theme.scss     # SASS 테마
-│       │   └── _variables.scss # SASS 변수
-│       ├── theme.js       # JavaScript 테마 설정
-│       ├── utils.js       # 스타일 유틸리티 함수
-│       ├── mixins.js      # JavaScript 믹스인 함수
-│       └── globalStyles.js # 전역 스타일 설정
+│       ├── theme.ts       # TypeScript 테마 설정
+│       ├── utils.ts       # 스타일 유틸리티 함수
+│       ├── mixins.ts      # TypeScript 믹스인 함수
+│       ├── globalStyles.ts # 전역 스타일 설정
+│       └── styled.d.ts    # styled-components 타입 정의
 ├── .gitignore             # Git 무시 파일 목록
 ├── .nvmrc                 # Node.js 버전 설정
 ├── .prettierignore        # Prettier 무시 파일 목록
@@ -106,11 +104,11 @@ CUI/
 
 - **구조**: 각 컴포넌트는 폴더 단위로 관리
 - **스타일**: styled-components를 사용한 스타일링
-- **전역 스타일**: globalStyles.js에서 관리
+- **전역 스타일**: globalStyles.ts에서 관리
 - **컴포넌트 구조**:
-    - `index.js`: 메인 컴포넌트 파일
-    - `[ComponentName].js`: 컴포넌트 로직
-    - `[component-name]-styles.js`: 스타일 파일
+    - `index.ts`: 메인 컴포넌트 파일
+    - `[ComponentName].tsx`: 컴포넌트 로직
+    - `styles.ts`: 스타일 파일
 
 ### (2) 클라이언트/서버 컴포넌트
 
@@ -138,11 +136,11 @@ CUI/
 ### (4) 스타일링 가이드
 
 - **styled-components**: 컴포넌트 기반 스타일링 사용
-- **테마**: theme.js를 통한 일관된 디자인 시스템 적용
-- **믹스인**: mixins.js에서 재사용 가능한 스타일 패턴 관리
+- **테마**: theme.ts를 통한 일관된 디자인 시스템 적용
+- **믹스인**: mixins.ts에서 재사용 가능한 스타일 패턴 관리
 - **커스텀 props**: DOM으로 전달되지 않아야 하는 props에는 `$` 접두어 사용
 
-    ```javascript
+    ```typescript
     // 잘못된 사용법
     const Button = styled.button`
         width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
@@ -191,10 +189,10 @@ CUI/
 
 ### (1) 새 페이지 추가 방법
 
-1. `src/app` 폴더에 새 페이지 폴더와 `page.js` 파일을 생성
-2. `src/routes/config.js` 파일의 `appRoutes` 배열에 새 라우트 정보 추가:
+1. `src/app` 폴더에 새 페이지 폴더와 `page.tsx` 파일을 생성
+2. `src/routes/config.ts` 파일의 `appRoutes` 배열에 새 라우트 정보 추가:
 
-```javascript
+```typescript
 export const appRoutes = [
     // 기존 라우트들...
     { path: '새로운경로', label: '표시할이름' },
@@ -203,12 +201,11 @@ export const appRoutes = [
 
 ### (2) 라우트 관련 파일 구조
 
-- `src/routes/config.js`: 모든 라우트 정의
-- `src/routes/hooks.js`: 네비게이션 메뉴용 훅
-- `src/routes/utils.js`: 라우트 관련 유틸리티 함수
-- `src/routes/api.js`: 라우트 정보를 제공하는 API 로직
-- `src/routes/index.js`: 모든 라우트 관련 기능을 내보내는 파일
-- `src/app/api/routes/route.js`: 라우트 정보를 제공하는 API 엔드포인트
+- `src/routes/config.ts`: 모든 라우트 정의
+- `src/routes/hooks.ts`: 네비게이션 메뉴용 훅
+- `src/routes/utils.ts`: 라우트 관련 유틸리티 함수
+- `src/routes/index.ts`: 모든 라우트 관련 기능을 내보내는 파일
+- `src/app/api/routes/`: API 라우트 폴더 (현재 빈 폴더)
 
 ### (3) 현재 라우트 구성
 
@@ -230,13 +227,13 @@ export const appRoutes = [
 
 성능 최적화를 위해 직접 임포트 방식을 사용합니다:
 
-```javascript
+```typescript
 // 권장: 직접 임포트 방식 (성능 최적화)
 import { useAppRoutes } from '@/routes/hooks';
-import { getRoutes } from '@/routes/api';
+import { formatRouteName, isValidRoute, generateNavLinks } from '@/routes/utils';
 
 // 비권장: 간접 임포트 방식
-// import { useAppRoutes, getRoutes } from '@/routes';
+// import { useAppRoutes, formatRouteName } from '@/routes';
 ```
 
 ## 5. 개발 환경 설정
@@ -263,20 +260,65 @@ npm run format
 - [Vercel Platform](https://vercel.com/)을 통한 자동 배포
 - `next.config.mjs`에서 검색 엔진 크롤링 방지 설정 (배포시 수정 필요)
 
-## 7. 플레이그라운드
+## 7. 컴포넌트 구조
 
-프로젝트에는 `src/playground/` 폴더가 있어 컴포넌트를 테스트하고 실험할 수 있습니다.
+### 컴포넌트 분류
 
-- `ButtonPL/`: 버튼 컴포넌트 플레이그라운드
+**Base 컴포넌트** (`src/components/base/`):
 
-## 8. 참고 자료
+- 기본 UI 컴포넌트 (더이상 쪼갤 수 없는 컴포넌트)
+- Button, CheckBox, Icon, Radio, Switch
+
+**Common 컴포넌트** (`src/components/common/`):
+
+- Base 컴포넌트를 조합한 큰 UI 블록
+- LabelRadio, SearchBar
+
+**Template 컴포넌트** (`src/components/templates/`):
+
+- 페이지 레이아웃을 구성하는 템플릿 컴포넌트
+- Footer, Guide, Header, Main, QuickNav, Sidebar, UILayout, ClientLayout
+
+**Utils 컴포넌트** (`src/components/utils/`):
+
+- 재사용 가능한 유틸리티 컴포넌트
+- CodeBlock, CopyButton, Playground, PropsTable, SectionTitle, UIStyles
+
+## 8. 최근 업데이트
+
+### TypeScript 마이그레이션 완료
+
+- 모든 JavaScript 파일을 TypeScript로 변환
+- 타입 안전성 향상 및 개발 경험 개선
+- 컴포넌트 props 인터페이스 정의 완료
+
+### SearchBar 컴포넌트 개선
+
+- `onSearch` prop 추가로 검색 기능 구현
+- 폼 제출 및 Enter 키 처리 기능 추가
+- TypeScript 타입 정의 완료
+
+### 빌드 최적화
+
+- 불필요한 파일 제거 (`src/routes/api.ts`)
+- 코드베이스 정리 및 최적화
+- TypeScript 마이그레이션 완료
+- 배포 준비 완료
+
+### 프로젝트 구조 개선
+
+- 컴포넌트 구조 체계화 (Base, Common, Template, Utils)
+- 라우팅 시스템 최적화
+- 스타일링 시스템 통합
+
+## 9. 참고 자료
 
 > Next.js에 대해 알아보려면, 아래 링크를 클릭하세요.
 
 - [Next.js 공식 문서](https://nextjs.org/docs) - Next.js 기능과 API
 - [Next.js 튜토리얼](https://nextjs.org/learn) - Next.js 학습 가이드
 - [styled-components 문서](https://styled-components.com/docs) - 스타일링 라이브러리
-- [SASS 문서](https://sass-lang.com/documentation) - CSS 전처리기
+- [TypeScript 문서](https://www.typescriptlang.org/docs/) - TypeScript 가이드
 
 <!--
 ## PR(Pull Request) 규칙
